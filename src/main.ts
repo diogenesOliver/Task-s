@@ -1,10 +1,13 @@
 import express from 'express'
-import { returningScreen } from './controllers/linkController'
 
 const app = express()
-const PORT = 3000
+const PORT = 8080
 
-app.get('/', returningScreen)
+app.use(express.json())
+
+import router from './router'
+
+app.use('/api/', router)
 
 app.listen(PORT, () => {
     console.log(`Server runnning PORT ${PORT}`)
