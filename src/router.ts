@@ -1,6 +1,9 @@
 import { Router, Request, Response } from 'express'
-import { returningScreen } from './controllers/linkController'
+import { createTask } from './controllers/linkController'
+import { taskCreateValidation } from './middlewares/taskCreateValidation'
+
+import { validate } from './middlewares/handleValidation'
 
 const router = Router()
 
-export default router.get('/teste', returningScreen)
+export default router.post('/teste', taskCreateValidation(), validate, createTask)
