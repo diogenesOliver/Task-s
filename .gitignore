@@ -3,3 +3,5 @@
 /node_modules
 
 api-teste.http
+
+/.gitpod.yml
