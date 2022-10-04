@@ -10,10 +10,14 @@ const PORT = 8080
 
 app.use(express.json())
 
+import db from '../config/db'
+
 import router from './router'
 
 app.use('/api/', router)
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+    await db()
+
     console.log(`Server runnning PORT ${PORT}`)
 })
