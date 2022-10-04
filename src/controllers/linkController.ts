@@ -5,13 +5,20 @@ export async function createTask(req: Request, res: Response) {
 
     try{
 
-        const data = await req.body
-        const task = TaskModel.create(data)
+        const data = req.body
+        const task = await TaskModel.create(data)
 
         return res.status(200).json(task)
 
     }catch(e: any){
-        return res.status(404).json({ error: 'Houve um erro tente novamente mais tarde!' })
+        console.log(e)
+        return res.status(500).json({ error: 'Houve um erro tente novamente mais tarde!' })
     }
+
+}
+
+export async function filteringTask(req: Request, res: Response){
+
+    
 
 }
