@@ -33,3 +33,19 @@ export async function filteringTask(req: Request, res: Response){
     }
 
 }
+
+export async function getAllTasks(req: Request, res: Response){
+
+    try{
+        
+        const task = await TaskModel.find()
+
+        return res.status(200).json(task)
+
+    }catch(e: any){
+
+        return res.status(500).json({ e: "Houve um erro! tente novamente mais tarde!" })
+
+    }
+
+}
