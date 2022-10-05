@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express'
-import { createTask, filteringTask, getAllTasks } from './controllers/linkController'
+import { createTask, filteringTask, getAllTasks, removeTask } from './controllers/linkController'
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
 
 import { validate } from './middlewares/handleValidation'
@@ -9,3 +9,4 @@ const router = Router()
 export default router.post('/create', taskCreateValidation(), validate, createTask)
     .get('/find-task/:difficulty', filteringTask)
     .get('/all-tasks', getAllTasks)
+    .delete('/remove-task/:id', removeTask)
