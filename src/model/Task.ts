@@ -6,7 +6,8 @@ const taskSchema = new Schema(
 
         title: { type: String },
         description: { type: String },
-        difficulty: { type: Number }
+        difficulty: { type: Number },
+        status: { type: Boolean, default: false }
 
     },
     {
