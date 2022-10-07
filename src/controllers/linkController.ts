@@ -94,3 +94,9 @@ export async function updateTask(req: Request, res: Response){
     }
 
 }
+
+export async function findTaskByTitle(req: Request, res: Response){
+
+    
+
+}
