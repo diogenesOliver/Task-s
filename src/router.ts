@@ -11,3 +11,4 @@ export default router.post('/create', taskCreateValidation(), validate, createTa
     .get('/all-tasks', getAllTasks)
     .delete('/remove-task/:id', removeTask)
     .patch('/update-task/:id', taskCreateValidation(), validate, updateTask)
+    .get('/find-task/:title')

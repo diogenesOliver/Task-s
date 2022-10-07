@@ -103,6 +103,18 @@ export async function updateTask(req: Request, res: Response){
 
 export async function findTaskByTitle(req: Request, res: Response){
 
-    
+    try{
+
+        const findByTitle = req.params
+        const task = await TaskModel.find(findByTitle)
+
+        return res.status(200).json(task)
+
+    }catch(e: any){
+
+        Logger.error(`Error on System: ${e.message}`)
+        return res.status(500).json({ e: "Houve um erro! Tente novamente mais tarde!" })
+
+    }
 
 }
