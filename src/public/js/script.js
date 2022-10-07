@@ -11,7 +11,7 @@ async function apiTeste(){
     }).catch(e => {
         console.log(e)
     })
-        
+
 
 }
 
