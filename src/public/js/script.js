@@ -1,4 +1,4 @@
-async function apiTeste(){
+/* async function apiTeste(){
 
     fetch('/api/all-tasks').then(res => {
 
@@ -15,4 +15,15 @@ async function apiTeste(){
 
 }
 
-apiTeste()
+apiTeste() */
+
+async function consumindoApi(){
+
+    const response = await fetch('/api/all-tasks')
+    const data = await response.json()
+    
+    console.log(data)
+
+}
+
+consumindoApi()
