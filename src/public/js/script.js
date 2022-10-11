@@ -21,8 +21,12 @@ async function consumindoApi(){
 
     const response = await fetch('/api/all-tasks')
     const data = await response.json()
-    
-    console.log(data)
+
+    data.forEach(element => {
+        
+        console.log(`Temos esse ID ${element._id} que correspondea esse titulo ${element.title}`)
+
+    });
 
 }
 
