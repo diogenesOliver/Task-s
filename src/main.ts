@@ -5,7 +5,7 @@ import config from 'config'
 
 const app = express()
 
-const PORT = config.get<number>('port')
+const PORT = process.env.PORT || config.get<number>('port')
 
 app.use(express.json())
 app.use(express.static((`${__dirname}/public`)))
