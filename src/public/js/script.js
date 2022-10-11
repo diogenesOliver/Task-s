@@ -1,4 +1,4 @@
-const divElement = document.getElementsByClassName('div-teste')
+/* const divElement = document.getElementsByClassName('div-teste')
 
 async function consumindoApi() {
 
@@ -10,10 +10,13 @@ async function consumindoApi() {
     data.forEach(element => {
 
         const createCommunityElement = `
-        
-            <p>${element._id}</p>
-            <p>${element.title}</p>
-            <p>${element.difficulty}</p>
+            <hr>
+
+            <h2>${element._id}</h2>
+            <h2>${element.title}</h2>
+            <h2>${element.difficulty}</h2>
+
+            <hr>
 
         `
 
@@ -23,4 +26,4 @@ async function consumindoApi() {
 
 }
 
-consumindoApi()
+consumindoApi() */
