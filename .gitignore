@@ -5,3 +5,6 @@
 api-teste.http
 
 /.gitpod.yml
+
+src/public/sass/style.css
+src/public/sass/style.css.map
