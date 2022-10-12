@@ -6,3 +6,8 @@
 22Y-10-07 19:54:52:5452 - [31merror[39m: [31mError on System: Cast to Number failed for value "Titulo-atualizado-com-sucesso" (type string) at path "difficulty" for model "Task"[39m
 22Y-10-09 14:02:43:243 - [32minfo[39m: [32mServer runnning PORT 8080[39m
 22Y-10-09 14:15:11:1511 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+22Y-10-11 07:45:36:4536 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+22Y-10-11 09:14:30:1430 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+22Y-10-11 09:17:34:1734 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+22Y-10-11 09:20:21:2021 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+22Y-10-11 09:21:44:2144 - [32minfo[39m: [32mServer runnning PORT 8080[39m
