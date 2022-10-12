@@ -1,3 +1,5 @@
+@use './variables/colors';
+
 @forward './components/nav';
 
 
@@ -7,6 +9,6 @@
 }
 
 body{
-    background: rgb(0, 11, 26);
-    color: rgb(74, 216, 150);
+    background: colors.$main-bg-color;
+    color: colors.$main-font-color;
 }
