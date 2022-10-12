@@ -1,18 +1,29 @@
-async function apiTeste(){
+/* const divElement = document.getElementsByClassName('div-teste')
 
-    fetch('/api/all-tasks').then(res => {
+async function consumindoApi() {
 
-        res.json().then(data => {
+    const response = await fetch('/api/all-tasks')
+    const data = await response.json()
 
-            console.log(data)
+    console.log(data)
 
-        }).catch(err => { console.log(err) })
+    data.forEach(element => {
 
-    }).catch(e => {
-        console.log(e)
-    })
+        const createCommunityElement = `
+            <hr>
 
+            <h2>${element._id}</h2>
+            <h2>${element.title}</h2>
+            <h2>${element.difficulty}</h2>
+
+            <hr>
+
+        `
+
+        document.querySelector('.div-teste').innerHTML += createCommunityElement
+
+    });
 
 }
 
-apiTeste()
+consumindoApi() */
