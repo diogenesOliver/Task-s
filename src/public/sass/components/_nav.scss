@@ -1,4 +1,5 @@
 @use '../variables/fonts';
+@use '../variables/colors';
 
 nav{
     font-family: fonts.$main-font;
@@ -31,6 +32,6 @@ nav ul li{
 
 nav ul li a{
 
-    color: rgb(74, 216, 150);
+    color: colors.$main-font-color;
     text-decoration: none
 }
