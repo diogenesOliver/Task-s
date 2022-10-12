@@ -4,34 +4,11 @@
 nav{
     font-family: fonts.$main-font;
 
-    width: 100%;
-    height: 5rem;
+    padding: 2rem;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    align-items: center;
+    text-align: center;
 }
 
 nav h2{
-    cursor: pointer;
-}
-
-ul{
-    display: flex;
-
-    gap: 5rem;
-
-    text-decoration: none
-}
-
-nav ul li{
-    list-style: none
-}
-
-nav ul li a{
-
-    color: colors.$main-font-color;
-    text-decoration: none
+    font-size: 2.5rem;
 }
