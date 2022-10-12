@@ -12,3 +12,6 @@ export default router.post('/create', taskCreateValidation(), validate, createTa
     .delete('/remove-task/:id', removeTask)
     .patch('/update-task/:id', taskCreateValidation(), validate, updateTask)
     .get('/find-task/:title')
+    .get('/home', (req: Request, res: Response) => {
+        res.render('index.ejs')
+    })
