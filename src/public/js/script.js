@@ -1,4 +1,4 @@
-/* const divElement = document.getElementsByClassName('div-teste')
+const divElement = document.getElementsByClassName('div-teste')
 
 async function consumindoApi() {
 
@@ -26,4 +26,4 @@ async function consumindoApi() {
 
 }
 
-consumindoApi() */
+consumindoApi()
