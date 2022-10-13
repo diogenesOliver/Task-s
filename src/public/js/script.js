@@ -10,17 +10,17 @@ async function consumindoApi() {
     data.forEach(element => {
 
         const createCommunityElement = `
-            <hr>
-
-            <h2>${element._id}</h2>
-            <h2>${element.title}</h2>
-            <h2>${element.difficulty}</h2>
-
-            <hr>
+            
+            <div class="card-task">
+                <p>${element._id}</p>
+                <p>${element.title}</p>
+                <p>${element.difficulty}</p>
+            </div>
+           
 
         `
 
-        document.querySelector('.div-teste').innerHTML += createCommunityElement
+        document.querySelector('.tasks-style-card').innerHTML += createCommunityElement
 
     });
 
