@@ -1,0 +1,18 @@
+@use '../variables/fonts';
+@use '../variables/colors';
+
+.card-task{
+    height: 20rem;
+    width: 15rem;
+
+    border-radius: 1rem;
+
+    background: colors.$card-bg-color;
+
+}
+
+.tasks-style-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
