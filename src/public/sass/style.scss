@@ -12,3 +12,10 @@ body{
     background: colors.$main-bg-color;
     color: colors.$main-font-color;
 }
+
+.wrapper{
+    width: min(70rem, 100%);
+
+    margin-inline: auto;
+    padding-inline: 2.4rem;
+}
