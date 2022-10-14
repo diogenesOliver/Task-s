@@ -13,6 +13,12 @@ $border-radius: 1rem;
 
     font-family: fonts.$main-font;
 
+    transition: .3s;
+
+}
+
+.card-task:hover{
+    transform: translateY(-1rem);
 }
 
 .tasks-style-card{
