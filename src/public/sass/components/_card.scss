@@ -1,11 +1,13 @@
 @use '../variables/fonts';
 @use '../variables/colors';
 
+$border-radius: 1rem;
+
 .card-task{
     height: 20rem;
     width: 15rem;
 
-    border-radius: 1rem;
+    border-radius: $border-radius;
 
     background: colors.$card-bg-color;
 
@@ -15,4 +17,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.top-card{
+    width: 100%;
+    height: 6rem;
+
+    background-color: colors.$main-font-color;
+
+    border-radius: $border-radius;
 }
