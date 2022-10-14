@@ -10,13 +10,21 @@ async function consumindoApi() {
     data.forEach(element => {
 
         const createCommunityElement = `
-            
-            <div class="card-task">
-                <p>${element._id}</p>
-                <p>${element.title}</p>
-                <p>${element.difficulty}</p>
+
+        <div class="card-task">
+            <div class="top-card">
+                
             </div>
-           
+
+            <div class="informations">
+
+                <h3>${element.title}</h3>
+                <p>${element.description}</p>
+
+                <p>Dificuldade: ${element.difficulty}</p>
+
+            </div>
+        </div>
 
         `
 
