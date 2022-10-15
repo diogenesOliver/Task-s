@@ -1,15 +1,11 @@
-const divElement = document.getElementsByClassName('div-teste')
-
-async function consumindoApi() {
+async function creatingCardsOnScreen() {
 
     const response = await fetch('/api/all-tasks')
     const data = await response.json()
 
-    console.log(data)
-
     data.forEach(element => {
 
-        const createCommunityElement = `
+        const createCardTask = `
 
         <div class="card-task">
             <div class="top-card">
@@ -28,10 +24,10 @@ async function consumindoApi() {
 
         `
 
-        document.querySelector('.tasks-style-card').innerHTML += createCommunityElement
+        document.querySelector('.tasks-style-card').innerHTML += createCardTask
 
     });
 
 }
 
-consumindoApi()
+creatingCardsOnScreen()
