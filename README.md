@@ -4,4 +4,4 @@
 
 <p> OBS: Card data is data provided by the database. </p>
 
-<img src='./images-readme/task-new-image.png' style='height: 340px'>
+<img src='./readme-images/task-new-image.png' style='height: 340px'>
