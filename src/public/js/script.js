@@ -20,6 +20,9 @@ async function creatingCardsOnScreen() {
                 <p>Dificuldade: ${element.difficulty}</p>
 
             </div>
+
+            <button id="doneButton"> Concluído </button>
+
         </div>
 
         `
