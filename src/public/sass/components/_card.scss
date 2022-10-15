@@ -45,3 +45,27 @@ $border-radius: 1rem;
 
     line-height: 1.5rem;
 }
+
+.card-task button{
+    background-color: colors.$main-font-color;
+    font-family: fonts.$main-font;
+
+    width: 5rem;
+    height: 2rem;
+
+    margin-left: 9rem;
+    margin-top: 1rem;
+
+    border: none;
+
+    border-radius: $border-radius;
+    color: colors.$main-bg-color;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.card-task button:hover{
+    background-color: #36a873;
+}
