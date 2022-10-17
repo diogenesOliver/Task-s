@@ -15,12 +15,24 @@ $border-radius: 1rem;
 
     transition: .3s;
 
+    animation: card-animation .5s;
+
 }
 
 .card-task:hover{
     transform: translateY(-1rem);
 }
 
+@keyframes card-animation{
+    0%{
+        opacity: 0;
+        transform: translate3d(110px, 0, 0);
+    }
+    100%{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
 .tasks-style-card{
     display: flex;
     flex-direction: row;
