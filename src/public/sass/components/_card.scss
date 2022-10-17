@@ -46,6 +46,19 @@ $border-radius: 1rem;
     line-height: 1.5rem;
 }
 
+.informations p:nth-child(3){
+    
+    width: 50%;
+
+    background-color: colors.$color-difficulty-10;
+    color: colors.$card-bg-color;
+
+    border-radius: 1rem;
+    
+    padding-inline: 0.5rem;
+
+}
+
 .card-task button{
     background-color: colors.$main-font-color;
     font-family: fonts.$main-font;
