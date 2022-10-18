@@ -1,26 +1,37 @@
 import { UserModel } from "../model/User";
 import { Request, Response } from 'express'
 
+import Logger from '../../config/logger'
+
 import * as bcrypt from 'bcrypt'
 import * as jwt from 'jsonwebtoken'
 
-export async function creatingANewUser(req: Request, res: Response){
+export async function creatingANewUser(req: Request, res: Response) {
 
-    const { email, password, name, age } = req.body
+    try {
 
-    const salt = await bcrypt.genSalt(10)
-    const passwordCrypt = await bcrypt.hash(password, salt)
+        const { email, password, name, age } = req.body
 
-    const newUser = new UserModel(
+        const salt = await bcrypt.genSalt(10)
+        const passwordCrypt = await bcrypt.hash(password, salt)
 
-        {
-            email,
-            password: passwordCrypt,
-            name,
-            age
-        }
+        const newUser = new UserModel(
 
-    )
+            {
+                email,
+                password: passwordCrypt,
+                name,
+                age
+            }
 
-    res.status(200).send(newUser)
+        )
+
+        res.status(200).send(newUser)
+
+    } catch (e: any) {
+       
+        Logger.error(`Error on System: ${e.message}`)
+        return res.status(500).json({ e: "Houve um erro! Tente novamente mais tarde!" }) 
+
+    }
 }
