@@ -27,6 +27,7 @@ export async function creatingANewUser(req: Request, res: Response) {
         )
 
         res.status(200).send(newUser)
+        console.log(newUser)
 
     } catch (e: any) {
        
