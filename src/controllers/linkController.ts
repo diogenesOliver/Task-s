@@ -118,3 +118,7 @@ export async function findTaskByTitle(req: Request, res: Response){
     }
 
 }
+
+export async function renderHomePage(req: Request, res: Response){
+    res.render('index.ejs')
+}

@@ -42,4 +42,11 @@
 22Y-10-15 06:30:31:3031 - [32minfo[39m: [32mServer runnning PORT 8080[39m
 22Y-10-15 12:43:05:435 - [32minfo[39m: [32mServer runnning PORT 8080[39m
 22Y-10-17 07:53:37:5337 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+<<<<<<< HEAD
 22Y-10-17 09:17:29:1729 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+=======
+22Y-10-17 16:35:27:3527 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+22Y-10-17 16:44:56:4456 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+22Y-10-17 16:54:22:5422 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+22Y-10-17 17:08:25:825 - [32minfo[39m: [32mServer runnning PORT 8080[39m
+>>>>>>> b8b0c105636d57c5361f6f8ce581414b5b8fe587
