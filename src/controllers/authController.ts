@@ -6,8 +6,21 @@ import * as jwt from 'jsonwebtoken'
 
 export async function functionTeste(req: Request, res: Response){
 
-    const dataJson = req.body
+    const { email, password, name, age } = req.body
 
-    res.send(dataJson)
-    console.log(dataJson)
+    const salt = await bcrypt.genSalt(10)
+    const passwordCrypt = await bcrypt.hash(password, salt)
+
+    const newUser = new UserModel(
+
+        {
+            email,
+            password: passwordCrypt,
+            name,
+            age
+        }
+
+    )
+
+    res.status(200).send(newUser)
 }
