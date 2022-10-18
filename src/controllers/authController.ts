@@ -4,7 +4,7 @@ import { Request, Response } from 'express'
 import * as bcrypt from 'bcrypt'
 import * as jwt from 'jsonwebtoken'
 
-export async function functionTeste(req: Request, res: Response){
+export async function creatingANewUser(req: Request, res: Response){
 
     const { email, password, name, age } = req.body
 
