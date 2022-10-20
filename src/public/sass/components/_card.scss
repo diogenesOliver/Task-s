@@ -94,3 +94,13 @@ $border-radius: 1rem;
 .card-task button:hover{
     background-color: #36a873;
 }
+
+.top-card.task-completed{
+    height: 100%;
+    transition: .5s;
+}
+
+.informations.task-completed,
+.card-task button.task-completed{
+    display: none;
+}
