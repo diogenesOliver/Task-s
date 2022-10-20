@@ -26,8 +26,10 @@ export async function creatingANewUser(req: Request, res: Response) {
 
         )
 
-        res.status(200).send(newUser)
-        console.log(newUser)
+        const userCreated = await UserModel.create(newUser)
+
+        res.status(200).send(userCreated)
+        console.log(userCreated)
 
     } catch (e: any) {
        
