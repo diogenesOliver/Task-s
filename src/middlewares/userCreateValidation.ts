@@ -21,6 +21,7 @@ export const userCreateValidation = () => {
             .withMessage('Nome inválido')
             .isLength({ min: 5 })
             .withMessage('O nome informado é curto de mais'),
+            
 
         body('age')
             .isNumeric()

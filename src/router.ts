@@ -1,8 +1,9 @@
 import { Router, Request, Response } from 'express'
 import { createTask, filteringTask, getAllTasks, removeTask, updateTask, renderHomePage } from './controllers/linkController'
-import { functionTeste } from './controllers/authController'
+import { creatingANewUser } from './controllers/authController'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
+import {  userCreateValidation } from './middlewares/userCreateValidation'
 import { validate } from './middlewares/handleValidation'
 
 const router = Router()
@@ -15,4 +16,4 @@ export default router
     .delete('/remove-task/:id', removeTask)
     .patch('/update-task/:id', taskCreateValidation(), validate, updateTask)
     .get('/find-task/:title')
-    .post('/auth', functionTeste)
+    .post('/auth', userCreateValidation(), validate, creatingANewUser)
