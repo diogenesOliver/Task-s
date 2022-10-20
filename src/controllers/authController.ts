@@ -26,10 +26,10 @@ export async function creatingANewUser(req: Request, res: Response) {
 
         )
 
-        const userCreated = await UserModel.create(newUser)
+        const savingUserInDatabase = await UserModel.create(newUser)
 
-        res.status(200).send(userCreated)
-        console.log(userCreated)
+        res.status(200).send(savingUserInDatabase)
+        console.log(savingUserInDatabase)
 
     } catch (e: any) {
        
