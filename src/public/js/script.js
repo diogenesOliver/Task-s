@@ -1,17 +1,18 @@
-async function creatingCardsOnScreen() {
-
-    const response = await fetch('/api/all-tasks')
-    const data = await response.json()
-
-    data.forEach(element => {
-
-        if(element.difficulty >= 7){
+/* if(element.difficulty >= 7){
             console.log('Alto')
         }else if(element.difficulty < 7 && element.difficulty > 4){
             console.log('Medio')
         }else{
             console.log('Baixo')
         }
+*/
+
+async function creatingCardsOnScreen() {
+
+    const response = await fetch('/api/all-tasks')
+    const data = await response.json()
+
+    data.forEach(element => {
 
         const createCardTask = `
 
@@ -29,7 +30,7 @@ async function creatingCardsOnScreen() {
 
             </div>
 
-            <button id="doneButton"> Concluído </button>
+            <button id=${element._id}> Concluído </button>
 
         </div>
 
@@ -38,6 +39,16 @@ async function creatingCardsOnScreen() {
         document.querySelector('.tasks-style-card').innerHTML += createCardTask
 
     });
+
+    data.forEach(element => {
+
+        const doneButton = document.getElementById(element._id)
+
+        doneButton.addEventListener('click', () => {
+            console.log(element)
+        })
+
+    })
 
 }
 
