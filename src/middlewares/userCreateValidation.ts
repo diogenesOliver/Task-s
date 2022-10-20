@@ -8,32 +8,24 @@ export const userCreateValidation = () => {
             .isString()
             .withMessage('O email inválido')
             .isLength({ min: 20 })
-            .withMessage('O email informado é curto de mais')
-            .isEmpty()
-            .withMessage("O email é obrigatório"),
+            .withMessage('O email informado é curto de mais'),
 
         body('password')
             .isString()
             .withMessage('A senha deve ter no mínimo dois caracteres especiais')
             .isLength({ min: 10 })
-            .withMessage('A senha informada é curta de mais')
-            .isEmpty()
-            .withMessage("A senha é obrigatória"),
+            .withMessage('A senha informada é curta de mais'),
 
         body('name')
             .isString()
             .withMessage('Nome inválido')
             .isLength({ min: 5 })
-            .withMessage('O nome informado é curto de mais')
-            .isEmpty()
-            .withMessage("O nome é obrigatório"),
+            .withMessage('O nome informado é curto de mais'),
             
 
         body('age')
             .isNumeric()
             .withMessage('A idade informada é inválida')
-            .isEmpty()
-            .withMessage("A idade é obrigatória"),
     ]
 
 }
