@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express'
 import { createTask, filteringTask, getAllTasks, removeTask, updateTask, renderHomePage } from './controllers/linkController'
-import { creatingANewUser } from './controllers/authController'
+import { creatingANewUser, getAllUsers } from './controllers/authController'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
 import {  userCreateValidation } from './middlewares/userCreateValidation'
@@ -17,3 +17,4 @@ export default router
     .patch('/update-task/:id', taskCreateValidation(), validate, updateTask)
     .get('/find-task/:title')
     .post('/auth', userCreateValidation(), validate, creatingANewUser)
+    .get('/users', getAllUsers)
