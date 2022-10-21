@@ -1,15 +1,8 @@
-/* if(element.difficulty >= 7){
-            console.log('Alto')
-        }else if(element.difficulty < 7 && element.difficulty > 4){
-            console.log('Medio')
-        }else{
-            console.log('Baixo')
-        }
-*/
+const urlAPI = '/api/all-tasks'
 
-async function creatingCardsOnScreen() {
+async function creatingCards(){
 
-    const response = await fetch('/api/all-tasks')
+    const response = await fetch(urlAPI)
     const data = await response.json()
 
     data.forEach(element => {
@@ -40,6 +33,13 @@ async function creatingCardsOnScreen() {
 
     });
 
+}
+
+async function getById(){
+
+    const response = await fetch(urlAPI)
+    const data = await response.json()
+
     data.forEach(element => {
 
         const doneButton = document.getElementById(element._id)
@@ -52,4 +52,5 @@ async function creatingCardsOnScreen() {
 
 }
 
-creatingCardsOnScreen()
+creatingCards()
+getById()
