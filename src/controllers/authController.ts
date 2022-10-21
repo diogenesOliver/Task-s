@@ -32,9 +32,15 @@ export async function creatingANewUser(req: Request, res: Response) {
         console.log(savingUserInDatabase)
 
     } catch (e: any) {
-       
+
         Logger.error(`Error on System: ${e.message}`)
-        return res.status(500).json({ e: "Houve um erro! Tente novamente mais tarde!" }) 
+        return res.status(500).json({ e: "Houve um erro! Tente novamente mais tarde!" })
 
     }
+}
+
+export async function userAthenticate(req: Request, res: Response){
+
+    
+
 }
