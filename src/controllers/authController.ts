@@ -39,6 +39,23 @@ export async function creatingANewUser(req: Request, res: Response) {
     }
 }
 
+export async function getAllUsers(req: Request, res: Response){
+
+    try{
+
+        const users = await UserModel.find()
+
+        return res.status(200).json(users)
+
+    }catch(e: any){
+
+        Logger.error(`Error on system: ${e.message}`)
+        return res.status(500).json({ e: "Houve um erro! Tente novamente mais tarde" })
+
+    }
+
+}
+
 export async function userAthenticate(req: Request, res: Response){
 
     
