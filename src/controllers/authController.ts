@@ -15,6 +15,11 @@ export async function creatingANewUser(req: Request, res: Response) {
         const salt = await bcrypt.genSalt(10)
         const passwordCrypt = await bcrypt.hash(password, salt)
 
+        const userExist = await UserModel.findOne({ email: email })
+
+        if(userExist)
+            return res.status(400).send('O email digitado já esta em uso!')
+
         const newUser = new UserModel(
 
             {
@@ -53,11 +58,5 @@ export async function getAllUsers(req: Request, res: Response){
         return res.status(500).json({ e: "Houve um erro! Tente novamente mais tarde" })
 
     }
-
-}
-
-export async function userAthenticate(req: Request, res: Response){
-
-    
 
 }
