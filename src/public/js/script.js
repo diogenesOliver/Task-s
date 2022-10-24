@@ -45,7 +45,8 @@ async function getById(){
         const doneButton = document.getElementById(element._id)
 
         doneButton.addEventListener('click', () => {
-            console.log(element)
+            doneButton.style.background = 'red'
+            doneButton.style.color = 'white'
         })
 
     })
