@@ -72,7 +72,7 @@ $border-radius: 1rem;
 }
 
 .card-task button{
-    background-color: colors.$main-font-color;
+    background-color: #ffae005b;
     font-family: fonts.$main-font;
 
     width: 5rem;
@@ -89,10 +89,6 @@ $border-radius: 1rem;
     cursor: pointer;
 
     transition: .3s;
-}
-
-.card-task button:hover{
-    background-color: #36a873;
 }
 
 .top-card.task-completed{
