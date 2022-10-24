@@ -23,7 +23,7 @@ async function creatingCards(){
 
             </div>
 
-            <button id=${element._id}> Concluído </button>
+            <button id=${element._id}> Concluir </button>
 
         </div>
 
@@ -45,8 +45,11 @@ async function getById(){
         const doneButton = document.getElementById(element._id)
 
         doneButton.addEventListener('click', () => {
-            doneButton.style.background = 'red'
-            doneButton.style.color = 'white'
+            doneButton.style.background = '#36a873'
+
+            element.status = true
+
+            console.log(element)
         })
 
     })
