@@ -1,16 +1,26 @@
 import { UserModel } from "../model/User";
 import { Request, Response } from 'express'
 
+import * as authConfig from '../../config/authConfig.json'
+
 import Logger from '../../config/logger'
 
 import * as bcrypt from 'bcrypt'
 import * as jwt from 'jsonwebtoken'
 
+function generateToken(params = {}){
+
+    return jwt.sign(params, authConfig.secret, {
+        expiresIn: 86400
+    })
+
+}
+
 export async function creatingANewUser(req: Request, res: Response) {
 
     try {
 
-        const { email, password, name, age } = req.body
+        const { email, password, name, age, id } = req.body
 
         const salt = await bcrypt.genSalt(10)
         const passwordCrypt = await bcrypt.hash(password, salt)
@@ -33,7 +43,11 @@ export async function creatingANewUser(req: Request, res: Response) {
 
         const savingUserInDatabase = await UserModel.create(newUser)
 
-        res.status(200).send(savingUserInDatabase)
+        res.status(200).send({
+            savingUserInDatabase,
+            token: generateToken({ id: newUser.id })
+        })
+
         console.log(savingUserInDatabase)
 
     } catch (e: any) {
