@@ -2,6 +2,12 @@
 @use '../variables/colors';
 
 nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: center;
+
     font-family: fonts.$main-font;
 
     padding: 2rem;
@@ -11,4 +17,36 @@ nav{
 
 nav h2{
     font-size: 2.5rem;
+}
+
+.buttons{
+
+    display: flex;
+    
+    gap: 4rem;
+
+}
+
+.buttons button{
+
+    height: 2rem;
+    width: 5rem;
+
+    border-radius: 1rem;
+    border: none;
+
+    background-color: colors.$main-font-color;
+    color: colors.$main-bg-color;
+
+    font-family: fonts.$main-font;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+button:hover{
+    width: 6rem;
+
+    background-color: #29ac6f;
 }
