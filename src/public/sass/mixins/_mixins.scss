@@ -1,0 +1,19 @@
+@use '../variables/colors';
+
+@mixin style-modal(){
+
+    height: 30rem;
+    width: 25rem;
+
+    background-color: colors.$card-bg-color;
+
+    margin-left: 39.5%;
+    margin-top: -10rem;
+
+    border-radius: 1rem;
+
+    position: absolute;
+
+    display: none;
+
+}
