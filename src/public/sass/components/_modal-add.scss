@@ -1,0 +1,5 @@
+@use '../mixins/mixins';
+
+.modal-add{
+    @include mixins.style-modal()
+}
