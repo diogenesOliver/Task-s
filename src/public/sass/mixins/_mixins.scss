@@ -1,5 +1,7 @@
 @use '../variables/colors';
 
+$border-radius: 1rem;
+
 @mixin style-modal(){
 
     height: 30rem;
@@ -10,9 +12,20 @@
     margin-left: 39.5%;
     margin-top: -10rem;
 
-    border-radius: 1rem;
+    border-radius: $border-radius;
 
     position: absolute;
 
+
+}
+
+@mixin style-top-modal(){
+
+    width: 100%;
+    height: 5rem;
+
+    background-color: colors.$main-font-color;
+
+    border-radius: $border-radius;
 
 }
