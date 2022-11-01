@@ -1,5 +1,18 @@
 import { Router, Request, Response } from 'express'
-import { createTask, filteringTask, getAllTasks, removeTask, updateTask, renderHomePage, changingCardStatus } from './controllers/linkController'
+import {
+
+    createTask,
+    filteringTask,
+    getAllTasks,
+    removeTask,
+    updateTask,
+    renderHomePage,
+    changingCardStatus,
+    gettingAllTasksCompleted,
+    gettingAllUncompletedTasks
+
+ } from './controllers/linkController'
+
 import { creatingANewUser, getAllUsers } from './controllers/authController'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
@@ -19,3 +32,5 @@ export default router
     .post('/auth', userCreateValidation(), validate, creatingANewUser)
     .get('/users', getAllUsers)
     .patch('/update-status/:id', changingCardStatus)
+    .get('/task-completed', gettingAllTasksCompleted)
+    .get('/task-uncompleted', gettingAllUncompletedTasks)
