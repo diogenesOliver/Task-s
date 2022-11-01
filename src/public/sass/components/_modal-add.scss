@@ -1,18 +1,46 @@
 @use '../mixins/mixins';
 
-.modal-add{
+@use '../variables/fonts';
+
+.modal-add {
     @include mixins.style-modal();
 
     animation: modal-animation .4s;
 }
 
-@keyframes modal-animation{
+.top-modal {
+    @include mixins.style-top-modal();
 
-    0%{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    align-items: center;
+
+    gap: 15rem;
+}
+
+.top-modal h2,
+.top-modal p{
+    color: white;
+
+    font-family: fonts.$main-font;
+}
+
+.top-modal p{
+    font-size: 1.4rem;
+
+    cursor: pointer;
+}
+
+@keyframes modal-animation {
+
+    0% {
         opacity: 0;
         transform: translateY(-200px);
     }
-    100%{
+
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
