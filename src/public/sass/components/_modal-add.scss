@@ -6,6 +6,8 @@
     @include mixins.style-modal();
 
     animation: modal-animation .4s;
+
+    display: none
 }
 
 .top-modal {
