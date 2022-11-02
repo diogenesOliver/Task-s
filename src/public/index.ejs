@@ -11,24 +11,7 @@
 
 <body>
 
-    <nav class="wrapper">
-        <h2>Task-S !</h2>
-
-        <div class="buttons">
-
-            <button id="buttonAdd"> + New </button>
-            <select>
-
-                <option selected disabled> Filter </option>
-                <option value="all">Todas</option>
-                <option value="concluded">Concluídas</option>
-                <option value="unconcluded">Não Concluídas</option>
-
-            </select>
-            <button> Edit </button>
-
-        </div>
-    </nav>
+    <%- include('partials/nav'); %>
 
     <div class="wrapper tasks-style-card">
 
@@ -64,6 +47,7 @@
 
     <script src="./js/script.js"></script>
     <script src="./js/modalAdd.js"></script>
+    <script src="./js/taskFilter.js"></script>
 </body>
 
 </html>
