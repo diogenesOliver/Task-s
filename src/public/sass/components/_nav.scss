@@ -27,7 +27,7 @@ nav h2{
 
 }
 
-.buttons button{
+.buttons button, .buttons select{
 
     height: 2rem;
     width: 5rem;
@@ -47,8 +47,19 @@ nav h2{
     font-weight: bold;
 }
 
-button:hover{
-    width: 6rem;
-
+button:hover, select:hover{
     background-color: #29ac6f;
+}
+
+/* Select */
+
+.buttons select{
+    appearance: none;
+
+    width: 8rem;
+    text-align: center;
+}
+
+.buttons select option{
+    background: white;
 }
