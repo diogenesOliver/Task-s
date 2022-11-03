@@ -9,7 +9,8 @@ import {
     renderHomePage,
     changingCardStatus,
     gettingAllTasksCompleted,
-    gettingAllUncompletedTasks
+    gettingAllUncompletedTasks,
+    renderPageCompletedTasks
 
  } from './controllers/linkController'
 
@@ -34,3 +35,4 @@ export default router
     .patch('/update-status/:id', changingCardStatus)
     .get('/task-completed', gettingAllTasksCompleted)
     .get('/task-uncompleted', gettingAllUncompletedTasks)
+    .get('/completed-tasks', renderPageCompletedTasks)
