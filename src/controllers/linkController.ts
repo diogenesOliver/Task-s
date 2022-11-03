@@ -119,10 +119,6 @@ export async function findTaskByTitle(req: Request, res: Response){
 
 }
 
-export async function renderHomePage(req: Request, res: Response){
-    res.render('index.ejs')
-}
-
 export async function changingCardStatus(req: Request, res: Response){
 
     try{
@@ -182,4 +178,18 @@ export async function gettingAllUncompletedTasks(req: Request, res: Response){
 
     }
 
+}
+
+/* Render pages */
+
+export async function renderHomePage(req: Request, res: Response){
+    res.render('index.ejs')
+}
+
+export async function renderPageUncompletedTasks(req: Request, res: Response) {
+    res.render('uncompletedTaksPage.ejs')
+}
+
+export async function renderPageCompletedTasks(req: Request, res: Response) {
+    res.render('completedTasks.ejs')
 }
