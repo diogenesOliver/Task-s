@@ -45,10 +45,6 @@ async function getById(){
         const doneButton = document.getElementById(element._id)
 
         doneButton.addEventListener('click', () => {
-            doneButton.style.background = '#36a873'
-
-            element.status = true
-
             console.log(element)
         })
 
