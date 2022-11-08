@@ -99,12 +99,13 @@ p {
     background-color: #287a54;
 }
 
+/* Task completed  - SCSS */
+
 .top-card.task-completed {
     height: 100%;
     transition: .5s;
 }
 
-.informations.task-completed,
-.card-task button.task-completed {
+.task-completed {
     display: none;
 }
