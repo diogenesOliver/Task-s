@@ -10,7 +10,7 @@ async function creatingCards(){
         const createCardTask = `
 
         <div class="card-task">
-            <div class="top-card">
+            <div class="top-card" id=${element.createdAt}>
                 
             </div>
 
@@ -43,9 +43,10 @@ async function getById(){
     data.forEach(element => {
 
         const doneButton = document.getElementById(element._id)
+        const topCardAnimation = document.getElementById(element.createdAt)
 
         doneButton.addEventListener('click', () => {
-            console.log(element)
+            topCardAnimation.style.background = 'red'
         })
 
     })
