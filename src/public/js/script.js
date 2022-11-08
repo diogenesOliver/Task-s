@@ -14,7 +14,7 @@ async function creatingCards(){
                 
             </div>
 
-            <div class="informations">
+            <div class="informations" id=${element.updatedAt}>
 
                 <h3>${element.title}</h3>
                 <p>${element.description}</p>
@@ -44,9 +44,13 @@ async function getById(){
 
         const doneButton = document.getElementById(element._id)
         const topCardAnimation = document.getElementById(element.createdAt)
+        const titleAnimation = document.getElementById(element.title)
 
         doneButton.addEventListener('click', () => {
-            topCardAnimation.style.background = 'red'
+            topCardAnimation.classList.add('task-completed')
+            doneButton.classList.add('task-completed')
+            
+            titleAnimation.classList.add('task-completed')
         })
 
     })
