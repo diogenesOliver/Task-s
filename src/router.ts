@@ -14,7 +14,13 @@ import {
 
  } from './controllers/linkController'
 
-import { creatingANewUser, getAllUsers } from './controllers/authController'
+import {
+
+    creatingANewUser,
+    getAllUsers,
+    athenticateUser
+
+} from './controllers/authController'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
 import {  userCreateValidation } from './middlewares/userCreateValidation'
