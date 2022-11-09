@@ -18,7 +18,8 @@ import {
 
     creatingANewUser,
     getAllUsers,
-    athenticateUser
+    athenticateUser,
+    renderLoginPage
 
 } from './controllers/authController'
 
@@ -42,3 +43,4 @@ export default router
     .get('/task-completed', gettingAllTasksCompleted)
     .get('/task-uncompleted', gettingAllUncompletedTasks)
     .get('/completed-tasks', renderPageCompletedTasks)
+    .get('/login', renderLoginPage)
