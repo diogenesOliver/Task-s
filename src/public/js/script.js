@@ -16,10 +16,10 @@ async function creatingCards(){
 
             <div class="informations" id=${element.updatedAt}>
 
-                <h3>${element.title}</h3>
-                <p>${element.description}</p>
+                <h3 class="title-cards">${element.title}</h3>
+                <p class="desc-cards">${element.description}</p>
 
-                <p id='difficultyId'>Dificuldade: ${element.difficulty}</p>
+                <p class="level-cards" id='difficultyId'>Dificuldade: ${element.difficulty}</p>
 
             </div>
 
@@ -44,13 +44,10 @@ async function getById(){
 
         const doneButton = document.getElementById(element._id)
         const topCardAnimation = document.getElementById(element.createdAt)
-        const titleAnimation = document.getElementById(element.title)
 
         doneButton.addEventListener('click', () => {
             topCardAnimation.classList.add('task-completed')
             doneButton.classList.add('task-completed')
-            
-            titleAnimation.classList.add('task-completed')
         })
 
     })
