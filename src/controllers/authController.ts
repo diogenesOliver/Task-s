@@ -85,3 +85,9 @@ export async function athenticateUser(req: Request, res: Response){
         return res.status(404).send({ error: 'User não encontrado!' })
     
 }
+
+/* Render pages */
+
+export async function renderLoginPage(req: Request, res: Response) {
+    res.render('loginPage.ejs')
+}
