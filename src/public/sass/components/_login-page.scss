@@ -1,0 +1,44 @@
+@use '../variables/fonts';
+@use '../variables/colors';
+
+.div-main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 13%;
+}
+
+.login-page-informations h1,
+.login-page-informations p{
+    color: colors.$card-bg-color;
+    font-family: fonts.$main-font;
+}
+
+.login-page-informations h1 span{
+    color: #29ac6f;
+}
+
+.login-page-informations h1{
+    font-size: 2rem;
+
+    line-height: 3.5rem;
+    margin-bottom: 2rem;
+}
+
+.login-page-informations p{
+    margin: 0rem;
+    line-height: 1.7rem;
+
+}
+
+.form-login{
+    height: 30rem;
+    width: 23rem;
+
+    background-color: colors.$card-bg-color;
+
+    border-radius: 1rem;
+}
