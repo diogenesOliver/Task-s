@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="./sass/style.css">
     <meta charset="UTF-8">
@@ -7,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
+
 <body>
-    
+
     <div class="div-main wrapper">
 
         <div class="login-page-informations">
 
-            <h1> Create, manage <br> and complete your tasks <br> with <span>Task-S!</span>  </h1>
+            <h1> Create, manage <br> and complete your tasks <br> with <span>Task-S!</span> </h1>
 
             <p>
                 <span>Task-S!</span> is an easy and intuitive tool <br> so you can have control over all your duties
@@ -21,13 +23,34 @@
 
         </div>
 
-        <div class="form-login">
+        <div class="login">
 
-            
+            <div class="top-form-login"></div>
+
+            <form action="/api/auth" method="post">
+
+                <input type="text" name="name" id="userName" placeholder="Your Name">
+                <input type="number" name="age" id="userAge" placeholder="Age">
+                <input type="text" name="email" id="userEmail" placeholder="E-mail">
+                <input type="password" name="password" id="userPassword" placeholder="Password">
+
+                <button id="buttonLogin"> Create User </button>
+            </form>
 
         </div>
 
     </div>
 
+    <script src="./js/login.js"></script>
+    
+    <!-- <script>
+        const buttonLogin = document.getElementById('buttonLogin')
+        
+        buttonLogin.addEventListener('click', () => {
+            console.log('OI')
+        })
+    </script> -->
+    
 </body>
+
 </html>
