@@ -8,7 +8,7 @@
 
     align-items: center;
 
-    margin-top: 13%;
+    margin-top: 5%;
 }
 
 .login-page-informations h1,
@@ -34,11 +34,59 @@
 
 }
 
-.form-login{
+/* Form login */
+
+.login{
     height: 30rem;
     width: 23rem;
 
     background-color: colors.$card-bg-color;
 
     border-radius: 1rem;
+}
+
+.top-form-login{
+    width: 100%;
+    height: 5rem;
+
+    background-color: #29ac6f;
+
+    border-radius: 1rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+
+    margin-top: 2rem;
+
+    gap: 1rem;
+}
+
+form input,
+.login button{
+    border: none;
+
+    width: 80%;
+    height: 2.3rem;
+
+    border-radius: 1rem;
+
+    padding-inline: 1rem;
+}
+
+
+.login button{
+    background-color: #36a873;
+    color: white;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.login button:hover{
+    background-color: #287a54;
 }
