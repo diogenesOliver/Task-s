@@ -51,6 +51,42 @@
     cursor: pointer;
 }
 
+textarea{
+    border: none;
+
+    border-radius: 1rem;
+
+    max-width: 83%;
+    min-width: 83%;
+
+    max-height: 10rem;
+    min-height: 10rem;
+
+    padding: .5rem;
+}
+
+form button:nth-child(4){
+    background-color: #36a873;
+    font-family: fonts.$main-font;
+
+    width: 70%;
+    height: 2rem;
+
+    border: none;
+
+    border-radius: 1rem;
+    color: white;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+form button:hover{
+    background-color: #287a54;
+}
+
 @keyframes modal-animation {
 
     0% {
