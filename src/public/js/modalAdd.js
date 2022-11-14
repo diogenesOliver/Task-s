@@ -1,5 +1,7 @@
 const buttonAdd = document.getElementById('buttonAdd')
+
 const buttonCloseModal = document.getElementById('closeModal')
+const cancelButton = document.getElementById('cancelButton')
 
 const modalAdd = document.getElementById('modalAdd')
 
@@ -14,6 +16,10 @@ function closeModal() {
 }
 
 buttonCloseModal.addEventListener('click', () => {
+    closeModal()
+})
+
+cancelButton.addEventListener('click', () => {
     closeModal()
 })
 
