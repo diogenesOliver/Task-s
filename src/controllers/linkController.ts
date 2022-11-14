@@ -10,7 +10,7 @@ export async function createTask(req: Request, res: Response) {
         const data = req.body
         const task = await TaskModel.create(data)
 
-        return res.status(200).json(task)
+        return res.status(200).render('homePage')
 
     }catch(e: any){
         Logger.error(`Error on System: ${e.message}`)
