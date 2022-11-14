@@ -14,17 +14,20 @@ async function creatingCards(){
                 
             </div>
 
-            <div class="informations" id=${element.updatedAt}>
+            <div class="informations-card" id=${element.updatedAt}>
 
-                <h3 class="title-cards">${element.title}</h3>
-                <p class="desc-cards">${element.description}</p>
+                <div class="informations">
 
-                <p class="level-cards" id='difficultyId'>Dificuldade: ${element.difficulty}</p>
+                    <h3 class="title-cards">${element.title}</h3>
+                    <p class="desc-cards">${element.description}</p>
 
-            </div>
+                    <p class="level-cards" id='difficultyId'>Dificuldade: ${element.difficulty}</p>
 
-            <button id=${element._id}> Concluir </button>
+                </div>
 
+                <button id=${element._id}> Concluir </button>
+
+            <div>
         </div>
 
         `
@@ -43,11 +46,16 @@ async function getById(){
     data.forEach(element => {
 
         const doneButton = document.getElementById(element._id)
+
         const topCardAnimation = document.getElementById(element.createdAt)
+        const informationsDisplayNone = document.getElementById(element.updatedAt)
 
         doneButton.addEventListener('click', () => {
             topCardAnimation.classList.add('task-completed')
-            doneButton.classList.add('task-completed')
+            informationsDisplayNone.classList.add('display-none-by-task-completed')
+
+            console.log(informationsDisplayNone.id)
+           
         })
 
     })
