@@ -43,7 +43,7 @@ export async function creatingANewUser(req: Request, res: Response) {
 
         const savingUserInDatabase = await UserModel.create(newUser)
 
-        res.render('homePage')
+        res.status(200).redirect('/api/home')
 
         console.log(savingUserInDatabase)
 
