@@ -13,9 +13,9 @@
 
     <%- include('../partials/nav'); %>
 
-    <div class="wrapper tasks-style-card">
+        <div class="wrapper tasks-style-card">
 
-        <!-- <div class="card-task">
+            <!-- <div class="card-task">
 
             <div class="top-card">
                 
@@ -34,20 +34,29 @@
 
         </div> -->
 
-    </div>
-
-    <div class="modal-add" id="modalAdd">
-
-        <div class="top-modal">
-            <h2> Task-s! </h2>
-            <p id="closeModal"> X </p>
         </div>
 
-    </div>
+        <div class="modal-add" id="modalAdd">
 
-    <script src="./js/script.js"></script>
-    <script src="./js/modalAdd.js"></script>
-    <script src="./js/taskFilter.js"></script>
+            <div class="top-modal">
+                <h2> Task-s! </h2>
+                <p id="closeModal"> X </p>
+            </div>
+
+            <form action="/api/create" method="post">
+
+                <input type="text" name="title" id="" placeholder="Your Name">
+                <input type="text" name="description" id="" placeholder="Age">
+                <input type="number" name="difficulty" id="" placeholder="E-mail">
+
+                <button type="submit"> Create Task </button>
+            </form>
+
+        </div>
+
+        <script src="./js/script.js"></script>
+        <script src="./js/modalAdd.js"></script>
+        <script src="./js/taskFilter.js"></script>
 </body>
 
 </html>
