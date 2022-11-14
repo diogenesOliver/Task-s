@@ -45,12 +45,14 @@
 
             <form action="/api/create" method="post">
 
-                <input type="text" name="title" id="" placeholder="Your Name">
-                <input type="text" name="description" id="" placeholder="Age">
-                <input type="number" name="difficulty" id="" placeholder="E-mail">
+                <input type="text" name="title" id="" placeholder="Title">
+                <textarea name="description" cols="30" rows="10" placeholder="Description"></textarea>
+                <input type="number" name="difficulty" id="" placeholder="Difficulty Level">
 
                 <button type="submit"> Create Task </button>
             </form>
+            
+            <button id="cancelButton"> Cancel </button>
 
         </div>
 
