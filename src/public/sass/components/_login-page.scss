@@ -78,7 +78,8 @@ form input,
 }
 
 
-.login button{
+.login button,
+#getStarted{
     background-color: #36a873;
     color: white;
 
@@ -89,4 +90,14 @@ form input,
 
 .login button:hover{
     background-color: #287a54;
+}
+
+#getStarted{
+    border-radius: .5rem;
+    border: none;
+
+    width: 50%;
+    height: 2rem;
+
+    margin-top: 2rem;
 }
