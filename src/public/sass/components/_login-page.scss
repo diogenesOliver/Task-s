@@ -6,8 +6,6 @@
     flex-direction: row;
     justify-content: space-between;
 
-    align-items: center;
-
     margin-top: 5%;
 }
 
@@ -37,12 +35,30 @@
 /* Form login */
 
 .login{
+    display: none;
+
     height: 30rem;
     width: 23rem;
 
     background-color: colors.$card-bg-color;
 
     border-radius: 1rem;
+
+    animation: form-login-animation .5s;
+}
+
+@keyframes form-login-animation {
+
+    0% {
+        opacity: 0;
+        transform: translateX(200px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
 }
 
 .top-form-login{
@@ -88,7 +104,8 @@ form input,
     transition: .3s;
 }
 
-.login button:hover{
+.login button:hover,
+#getStarted:hover{
     background-color: #287a54;
 }
 
@@ -96,7 +113,7 @@ form input,
     border-radius: .5rem;
     border: none;
 
-    width: 50%;
+    width: 45%;
     height: 2rem;
 
     margin-top: 2rem;
