@@ -93,6 +93,10 @@ form input,
     padding-inline: 1rem;
 }
 
+form input:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
 
 .login button,
 #getStarted{
