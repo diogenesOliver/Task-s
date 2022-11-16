@@ -39,19 +39,19 @@
 }
 
 .top-modal h2,
-.top-modal p{
+.top-modal p {
     color: white;
 
     font-family: fonts.$main-font;
 }
 
-.top-modal p{
+.top-modal p {
     font-size: 1.4rem;
 
     cursor: pointer;
 }
 
-textarea{
+textarea {
     border: none;
 
     border-radius: 1rem;
@@ -83,8 +83,33 @@ form button:nth-child(4){
 
 }
 
-form button:hover{
+form button:hover {
     background-color: #287a54;
+}
+
+#cancelButton {
+    background-color: transparent;
+    font-family: fonts.$main-font;
+
+    width: 70%;
+    height: 2rem;
+
+    margin-left: 15%;
+    margin-top: 1rem;
+
+    border: #36a873 1.5px solid;
+
+    border-radius: 1rem;
+    color: #36a873;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+#cancelButton:hover{
+    background-color: #36a873;
+    color: white;
 }
 
 @keyframes modal-animation {
