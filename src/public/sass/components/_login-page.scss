@@ -45,6 +45,8 @@
     border-radius: 1rem;
 
     animation: form-login-animation .5s;
+
+    text-align: left;
 }
 
 @keyframes form-login-animation {
@@ -68,6 +70,12 @@
     background-color: #29ac6f;
 
     border-radius: 1rem;
+}
+
+.login h3{
+    font-family: fonts.$main-font;
+
+    margin-top: 1rem;
 }
 
 form{

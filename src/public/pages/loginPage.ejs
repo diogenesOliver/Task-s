@@ -29,11 +29,20 @@
 
             <div class="top-form-login"></div>
 
+            <h3> Create account </h3>
+
             <form action="/api/auth" method="post">
 
+                <label for="name"> Username </label>
                 <input type="text" name="name" id="userName" placeholder="Username">
+
+                <label for="age"> Age </label>
                 <input type="number" name="age" id="userAge" placeholder="Age">
+
+                <label for="email"> E-mail </label>
                 <input type="text" name="email" id="userEmail" placeholder="E-mail">
+
+                <label for="password"> Password </label>
                 <input type="password" name="password" id="userPassword" placeholder="Password">
 
                 <button id="buttonLogin" type="submit"> Create User </button>
