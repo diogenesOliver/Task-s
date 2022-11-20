@@ -11,15 +11,10 @@ const userSchema = new Schema(
             type: String,
             require: true,
             select: false
-        },
-        name: {
-            type: String,
-            require: true
-        },
-        age: {
-            type: Number,
-            require: true,
-        },
+        }
+    },
+    {
+        timestamps: true
     }
 
 )
