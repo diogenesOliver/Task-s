@@ -1,8 +1,6 @@
 const buttonLogin = document.getElementById('buttonLogin')
 const getStartedButton = document.getElementById('getStarted')
 
-const userName = document.getElementById('userName').value
-const userAge = document.getElementById('userAge').value
 const userEmail = document.getElementById('userEmail').value
 const userPassword = document.getElementById('userPassword').value
 
