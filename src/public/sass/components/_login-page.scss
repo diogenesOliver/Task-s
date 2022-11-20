@@ -1,6 +1,8 @@
 @use '../variables/fonts';
 @use '../variables/colors';
 
+$border-radius-variable: .8rem;
+
 .div-main{
     display: flex;
     flex-direction: row;
@@ -42,7 +44,7 @@
 
     background-color: colors.$card-bg-color;
 
-    border-radius: 1rem;
+    border-radius: $border-radius-variable;
 
     animation: form-login-animation .5s;
 
@@ -69,13 +71,14 @@
 
     background-color: #29ac6f;
 
-    border-radius: 1rem;
+    border-radius: $border-radius-variable;
 }
 
 .login h3{
     font-family: fonts.$main-font;
 
     margin-top: 1rem;
+    margin-left: 2rem;
 }
 
 form{
@@ -84,7 +87,7 @@ form{
     
     align-items: center;
 
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 
     gap: 1rem;
 }
@@ -96,7 +99,7 @@ form input,
     width: 80%;
     height: 2.3rem;
 
-    border-radius: 1rem;
+    border-radius: $border-radius-variable;
 
     padding-inline: 1rem;
 }
@@ -104,6 +107,18 @@ form input,
 form input:focus{
     box-shadow: 0 0 0 0;
     outline: 0;
+}
+
+form label{
+    font-family: fonts.$main-font;
+
+    margin-left: -14rem;
+
+    color: grey;
+}
+
+form label:nth-child(1){
+    margin-left: -15rem;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
