@@ -118,7 +118,7 @@ form label{
 }
 
 form label:nth-child(1){
-    margin-left: -15rem;
+    margin-left: -15.5rem;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -129,6 +129,25 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.redirect-login{
+    margin-top: 2rem;
+    margin-left: 7rem;
+}
+
+.redirect-login small,
+.redirect-login a{
+    font-family: fonts.$main-font;
+}
+
+.redirect-login small{
+    color: gray;
+}
+
+.redirect-login a{
+    color: colors.$main-font-color;
+
 }
 
 .login button,
