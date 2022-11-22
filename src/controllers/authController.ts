@@ -86,5 +86,5 @@ export async function athenticateUser(req: Request, res: Response){
 /* Render pages */
 
 export async function renderLoginPage(req: Request, res: Response) {
-    res.render('loginPage.ejs')
+    res.render('signUpPage.ejs')
 }
