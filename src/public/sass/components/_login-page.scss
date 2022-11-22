@@ -36,7 +36,8 @@ $border-radius-variable: .8rem;
 
 /* Form login */
 
-.login{
+.login,
+.sign-up{
     display: none;
 
     height: 30rem;
@@ -49,6 +50,10 @@ $border-radius-variable: .8rem;
     animation: form-login-animation .5s;
 
     text-align: left;
+}
+
+.login{
+    display: block;
 }
 
 @keyframes form-login-animation {
@@ -74,7 +79,8 @@ $border-radius-variable: .8rem;
     border-radius: $border-radius-variable;
 }
 
-.login h3{
+.login h3,
+.sign-up h3{
     font-family: fonts.$main-font;
 
     margin-top: 1rem;
@@ -93,7 +99,8 @@ form{
 }
 
 form input,
-.login button{
+.login button,
+.sign-up button{
     border: none;
 
     width: 80%;
@@ -150,7 +157,7 @@ input[type="number"] {
 
 }
 
-.login button,
+button,
 #getStarted{
     background-color: #36a873;
     color: white;
@@ -161,6 +168,7 @@ input[type="number"] {
 }
 
 .login button:hover,
+.sign-up button:hover,
 #getStarted:hover{
     background-color: #287a54;
 }
