@@ -36,23 +36,27 @@
 
         </div>
 
-        <div class="modal-add" id="modalAdd">
+        <div id="modalWrapper" class="">
 
-            <div class="top-modal">
-                <h2> Task-s! </h2>
-                <p id="closeModal"> X </p>
+            <div class="modal-add" id="modalAdd">
+
+                <div class="top-modal">
+                    <h2> Task-s! </h2>
+                    <p id="closeModal"> X </p>
+                </div>
+
+                <form action="/api/create" method="post">
+
+                    <input type="text" name="title" id="" placeholder="Title">
+                    <textarea name="description" cols="30" rows="10" placeholder="Description"></textarea>
+                    <input type="number" name="difficulty" id="" placeholder="Difficulty Level">
+
+                    <button type="submit"> Create Task </button>
+                </form>
+
+                <button id="cancelButton"> Cancel </button>
+
             </div>
-
-            <form action="/api/create" method="post">
-
-                <input type="text" name="title" id="" placeholder="Title">
-                <textarea name="description" cols="30" rows="10" placeholder="Description"></textarea>
-                <input type="number" name="difficulty" id="" placeholder="Difficulty Level">
-
-                <button type="submit"> Create Task </button>
-            </form>
-            
-            <button id="cancelButton"> Cancel </button>
 
         </div>
 
