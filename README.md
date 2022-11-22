@@ -14,4 +14,4 @@
 
 <p> Login [Page] </p>
 
-<img src='./readme-images/login.png' style='height: 340px'>
+<img src='./readme-images/login_page_update_form.png' style='height: 340px'>
