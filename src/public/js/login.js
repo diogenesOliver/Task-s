@@ -18,11 +18,3 @@ async function createANewUser() {
 buttonLogin.addEventListener('click', () => {
     createANewUser()
 })
-
-getStartedButton.addEventListener('click', () => {
-    
-    const campForm = document.getElementById('divLogin')
-
-    campForm.style.display = 'block                                                                                                                                                                                                                                         '
-
-})

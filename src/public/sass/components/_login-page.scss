@@ -38,7 +38,7 @@ $border-radius-variable: .8rem;
 
 .login,
 .sign-up{
-    display: none;
+    display: block;
 
     height: 30rem;
     width: 23rem;
@@ -50,10 +50,6 @@ $border-radius-variable: .8rem;
     animation: form-login-animation .5s;
 
     text-align: left;
-}
-
-.login{
-    display: block;
 }
 
 @keyframes form-login-animation {
