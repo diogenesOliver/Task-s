@@ -5,15 +5,18 @@
 
         <button id="buttonAdd"> + New </button>
 
-        <div>
-            <select id="selectFilter">
+        <div class="container">
+            <input type="text" name="categoria" placeholder="Filter tasks">
 
-                <option selected disabled> Filter </option>
-                <option id="allTasks" value="all">Todas</option>
-                <option id="taskConcluded" value="concluded">Concluídas</option>
-                <option id="unconcludedTask" value="unconcluded">Não Concluídas</option>
-    
-            </select>
+            <div class="dropDown">
+                <div class="listDropDown">
+
+                    <div class="item" id="allTasks"> All tasks</div>
+                    <div class="item" id="completedTasks"> Completed </div>
+                    <div class="item" id="uncompletedTasks"> Uncompleted </div>
+
+                </div>
+            </div>
     
             <button id="buttonFilter"> Buscar </button>
         </div>

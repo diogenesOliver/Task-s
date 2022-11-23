@@ -27,7 +27,7 @@ nav h2{
 
 }
 
-.buttons button, .buttons select{
+.buttons button{
 
     height: 2rem;
     width: 5rem;
@@ -47,19 +47,68 @@ nav h2{
     font-weight: bold;
 }
 
-button:hover, select:hover{
+button:hover{
     background-color: #29ac6f;
 }
 
-/* Select */
+/* Select filter */
 
-.buttons select{
-    appearance: none;
+.container input{
+    height: 2rem;
+    width: 15rem;
 
-    width: 8rem;
-    text-align: center;
+    background-color: #181b1f;
+    color: rgb(197, 197, 197);
+
+    border: none;
+    border-radius: 1rem;
+
+    outline: none;
+
+    padding: 0rem 1rem;
+    box-sizing: border-box;
+
+    font-family: fonts.$main-font;
 }
 
-.buttons select option{
-    background: white;
+.dropDown{
+    width: 15rem;
+    height: 6.7rem;
+
+    display: none;
+
+    background-color: #181b1f;
+
+    border-radius: 1rem;
+
+    margin-top: .8rem;
+
+    position: absolute;
+    z-index: 100;
+
+    color: white;
+}
+
+.listDropDown{
+    text-align: left;
+
+    padding: 5px 5px;
+    box-sizing: border-box;
+}
+
+.listDropDown .item{
+    height: 2rem;
+
+    transition: .3s;
+    border-radius: 1rem;
+
+    padding: 5.5px 7px;
+    box-sizing: border-box;
+
+    cursor: pointer;
+}
+
+.item:hover{
+    background-color: #27292c;
+    padding-left: 12px;
 }
