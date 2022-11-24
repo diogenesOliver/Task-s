@@ -22,7 +22,7 @@ $border-radius-variable: .8rem;
 }
 
 .login-page-informations h1 span{
-    color: #29ac6f;
+    color: colors.$main-font-color
 }
 
 .login-page-informations h1{
@@ -88,7 +88,7 @@ $border-radius-variable: .8rem;
     width: 100%;
     height: 5rem;
 
-    background-color: #29ac6f;
+    background-color: colors.$main-font-color;
 
     border-radius: $border-radius-variable;
 }
@@ -143,7 +143,7 @@ form label:nth-child(1){
 }
 
 ::placeholder{
-    color: rgba(128, 128, 128, 0.774)
+    color: colors.$color-placeholder
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -167,7 +167,7 @@ input[type="number"] {
 }
 
 .redirect-login small{
-    color: gray;
+    color: colors.$color-small
 }
 
 .redirect-login a{
@@ -177,7 +177,7 @@ input[type="number"] {
 
 button,
 #getStarted{
-    background-color: #36a873;
+    background-color: colors.$main-font-color;
     color: white;
 
     cursor: pointer;
@@ -188,7 +188,7 @@ button,
 .login button:hover,
 .sign-up button:hover,
 #getStarted:hover{
-    background-color: #287a54;
+    background-color: colors.$main-font-color-hover;
 }
 
 #getStarted{

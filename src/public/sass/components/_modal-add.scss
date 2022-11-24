@@ -1,6 +1,8 @@
 @use '../mixins/mixins';
 
+
 @use '../variables/fonts';
+@use '../variables/colors';
 
 /* .modal-wrapper{
 
@@ -21,7 +23,7 @@
 /* Modal wrapper */
 
 .modal-wrapper{
-    background: rgba(0, 0, 0, .5);
+    background: colors.$color-modal-backgorund-wrapper;
 
     position: fixed;
 
@@ -94,7 +96,7 @@ textarea:focus{
 }
 
 form button:nth-child(4){
-    background-color: #36a873;
+    background-color: colors.$main-font-color;
     font-family: fonts.$main-font;
 
     width: 70%;
@@ -112,7 +114,7 @@ form button:nth-child(4){
 }
 
 form button:hover {
-    background-color: #287a54;
+    background-color: colors.$main-font-color-hover;
 }
 
 #cancelButton {
@@ -125,10 +127,10 @@ form button:hover {
     margin-left: 15%;
     margin-top: 1rem;
 
-    border: #36a873 1.5px solid;
+    border: colors.$main-font-color 1.5px solid;
 
     border-radius: 1rem;
-    color: #36a873;
+    color: colors.$main-font-color;
 
     cursor: pointer;
 
@@ -136,7 +138,7 @@ form button:hover {
 }
 
 #cancelButton:hover{
-    background-color: #36a873;
+    background-color: colors.$main-font-color;
     color: white;
 }
 

@@ -76,7 +76,7 @@ p {
 }
 
 .card-task button {
-    background-color: #36a873;
+    background-color: colors.$main-font-color;
     font-family: fonts.$main-font;
 
     width: 90%;
@@ -96,7 +96,7 @@ p {
 }
 
 .card-task button:hover{
-    background-color: #287a54;
+    background-color: colors.$main-font-color-hover
 }
 
 /* Task completed  - SCSS */
