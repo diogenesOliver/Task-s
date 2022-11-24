@@ -8,10 +8,10 @@
 
 <p> Cards [Page] </p>
 
-<img src='./readme-images/searchButton.png' style='height: 340px'>
+<img src='./readme-images/cards_page.png' style='height: 340px'>
 
 <br>
 
 <p> Login [Page] </p>
 
-<img src='./readme-images/login_page_update_form.png' style='height: 340px'>
+<img src='./readme-images/sign_up_page.png' style='height: 340px'>
