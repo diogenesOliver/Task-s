@@ -11,6 +11,10 @@ $border-radius-variable: .8rem;
     margin-top: 5%;
 }
 
+.login-page-informations{
+    animation: informations-login-animation .4s;
+}
+
 .login-page-informations h1,
 .login-page-informations p{
     color: colors.$card-bg-color;
@@ -47,7 +51,7 @@ $border-radius-variable: .8rem;
 
     border-radius: $border-radius-variable;
 
-    animation: form-login-animation .5s;
+    animation: form-login-animation .4s;
 
     text-align: left;
 }
@@ -57,6 +61,20 @@ $border-radius-variable: .8rem;
     0% {
         opacity: 0;
         transform: translateX(200px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes informations-login-animation {
+
+    0% {
+        opacity: 0;
+        transform: translateX(-200px);
     }
 
     100% {
