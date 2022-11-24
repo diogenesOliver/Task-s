@@ -87,6 +87,9 @@ button:hover{
     z-index: 100;
 
     color: white;
+
+    transform: translate(0px, -10px);
+    transition: .3s;
 }
 
 .listDropDown{
