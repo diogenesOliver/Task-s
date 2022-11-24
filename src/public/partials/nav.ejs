@@ -3,23 +3,34 @@
 
     <div class="buttons">
 
-        <button id="buttonAdd"> + New </button>
+        <!-- <form action=""> -->
 
-        <div class="container">
-            <input type="text" name="categoria" placeholder="Filter tasks">
+            <button id="buttonAdd"> + New </button>
 
-            <div class="dropDown">
-                <div class="listDropDown">
+            <div class="container">
+                <input
+                    id="inputValue"
+                    type="text"
+                    name="categoria"
+                    placeholder="Filter tasks"
+                    onfocus="dropdownFunction(0)"
+                    onblur="dropdownFunction(1)"
+                >
 
-                    <div class="item" id="allTasks"> All tasks</div>
-                    <div class="item" id="completedTasks"> Completed </div>
-                    <div class="item" id="uncompletedTasks"> Uncompleted </div>
+                <div class="dropDown">
+                    <div class="listDropDown">
 
+                        <div class="item" onmousedown="filteringTask(1)" id="item-1"> All tasks</div>
+                        <div class="item" onmousedown="filteringTask(2)" id="item-2"> Completed </div>
+                        <div class="item" onmousedown="filteringTask(3)" id="item-3"> Uncompleted </div>
+
+                    </div>
                 </div>
+
+                <button id="buttonFilter"> Buscar </button>
             </div>
-    
-            <button id="buttonFilter"> Buscar </button>
-        </div>
+
+        <!-- </form> -->
 
     </div>
 </nav>
