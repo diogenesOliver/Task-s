@@ -48,7 +48,7 @@ nav h2{
 }
 
 button:hover{
-    background-color: #29ac6f;
+    background-color: colors.$main-font-color-hover;
 }
 
 /* Select filter */
@@ -57,8 +57,8 @@ button:hover{
     height: 2rem;
     width: 15rem;
 
-    background-color: #181b1f;
-    color: rgb(197, 197, 197);
+    background-color: colors.$background-color-input;
+    color: colors.$color-text-input;
 
     border: none;
     border-radius: 1rem;
@@ -77,7 +77,7 @@ button:hover{
 
     display: none;
 
-    background-color: #181b1f;
+    background-color: colors.$background-color-input;;
 
     border-radius: 1rem;
 
@@ -112,6 +112,6 @@ button:hover{
 }
 
 .item:hover{
-    background-color: #27292c;
+    background-color: colors.$dropdown-hover;
     padding-left: 12px;
 }
