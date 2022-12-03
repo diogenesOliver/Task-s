@@ -58,6 +58,15 @@
     cursor: pointer;
 }
 
+::placeholder{
+    font-family: fonts.$main-font;
+}
+
+form input, textarea{
+    background-color: colors.$form-bg-color;
+    color: colors.$color-text-input;
+}
+
 textarea {
     border: none;
 
@@ -79,21 +88,30 @@ textarea:focus{
     outline: 0;
 }
 
-form button:nth-child(4){
-    background-color: colors.$main-font-color;
+form button:nth-child(4),
+#cancelButton{
     font-family: fonts.$main-font;
 
-    width: 70%;
+    width: 7rem;
     height: 2rem;
-
-    border: none;
-
-    border-radius: 1rem;
-    color: white;
 
     cursor: pointer;
 
     transition: .3s;
+
+    border-radius: .5rem;
+}
+
+form button:nth-child(4){
+    background-color: colors.$main-font-color;
+    color: white;
+
+    margin-top: 20.1rem;
+    margin-left: 14rem;
+
+    border: none;
+
+    position: absolute;
 
 }
 
@@ -103,22 +121,13 @@ form button:hover {
 
 #cancelButton {
     background-color: transparent;
-    font-family: fonts.$main-font;
 
-    width: 70%;
-    height: 2rem;
-
-    margin-left: 15%;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
+    margin-left: 8rem;
 
     border: colors.$main-font-color 1.5px solid;
 
-    border-radius: 1rem;
     color: colors.$main-font-color;
-
-    cursor: pointer;
-
-    transition: .3s;
 }
 
 #cancelButton:hover{

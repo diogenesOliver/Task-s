@@ -1,18 +1,18 @@
 @use '../variables/colors';
 
-$border-radius: 1rem;
+$border-radius: .5rem;
 
 @mixin style-modal(){
 
     height: 32rem;
-    width: 25rem;
+    width: 35rem;
 
     background-color: colors.$modal-bg-color;
 
     margin-left: 39.5%;
     margin-top: -10rem;
 
-    border-radius: .5rem;
+    border-radius: $border-radius;
 }
 
 @mixin style-top-modal(){
