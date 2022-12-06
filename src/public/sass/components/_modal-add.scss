@@ -92,7 +92,7 @@ form button:nth-child(4),
 #cancelButton{
     font-family: fonts.$main-font;
 
-    width: 7rem;
+    width: 9rem;
     height: 2rem;
 
     cursor: pointer;
@@ -107,7 +107,7 @@ form button:nth-child(4){
     color: white;
 
     margin-top: 20.1rem;
-    margin-left: 14rem;
+    margin-left: 20rem;
 
     border: none;
 
@@ -123,7 +123,7 @@ form button:hover {
     background-color: transparent;
 
     margin-top: 2.5rem;
-    margin-left: 8rem;
+    margin-left: 13rem;
 
     border: colors.$main-font-color 1.5px solid;
 
