@@ -68,8 +68,6 @@ form input, textarea{
 }
 
 textarea {
-    border: none;
-
     border-radius: 1rem;
 
     max-width: 83%;
@@ -81,6 +79,11 @@ textarea {
     padding: .5rem;
 
     resize: none;
+}
+
+.modal-add form input,
+textarea{
+    border: 1px solid #030316;
 }
 
 textarea:focus{
