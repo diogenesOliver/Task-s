@@ -68,8 +68,6 @@ form input, textarea{
 }
 
 textarea {
-    border: none;
-
     border-radius: 1rem;
 
     max-width: 83%;
@@ -81,6 +79,11 @@ textarea {
     padding: .5rem;
 
     resize: none;
+}
+
+.modal-add form input,
+textarea{
+    border: 1px solid #030316;
 }
 
 textarea:focus{
@@ -106,7 +109,7 @@ form button:nth-child(4){
     background-color: colors.$main-font-color;
     color: white;
 
-    margin-top: 20.1rem;
+    margin-top: 20.5rem;
     margin-left: 20rem;
 
     border: none;
