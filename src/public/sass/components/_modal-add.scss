@@ -45,15 +45,14 @@
     gap: 15rem;
 }
 
-.top-modal h2,
-.top-modal p {
-    color: white;
+.top-modal h3 {
+    color: colors.$main-font-color;
 
     font-family: fonts.$main-font;
 }
 
-.top-modal p {
-    font-size: 1.4rem;
+#closeModal svg{
+    height: 1.7rem;
 
     cursor: pointer;
 }
@@ -83,7 +82,7 @@ textarea {
 
 .modal-add form input,
 textarea{
-    border: 1px solid #030316;
+    border: none;
 }
 
 textarea:focus{
