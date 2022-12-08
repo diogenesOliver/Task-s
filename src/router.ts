@@ -6,18 +6,15 @@ import {
     getAllTasks,
     removeTask,
     updateTask,
-    renderHomePage,
     changingCardStatus,
     gettingAllTasksCompleted,
-    gettingAllUncompletedTasks,
-    renderPageCompletedTasks
+    gettingAllUncompletedTasks
 
  } from './controllers/linkController'
 
-import { renderSignUpPage, renderLoginPage } from './controllers/authController'
-
 import { createUserUseCase } from './controllers/CreateUserUseCase/userIndex'
 import { gettingAllUserUseCase } from './controllers/GetAllUsersUseCase/allUsersIndex'
+import { renderPageUseCase } from './controllers/RenderPageUseCase/renderPageIndex'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
 import { userCreateValidation } from './middlewares/userCreateValidation'
@@ -26,7 +23,7 @@ import { validate } from './middlewares/handleValidation'
 const router = Router()
 
 export default router
-    .get('/home', renderHomePage)
+    .get('/home', renderPageUseCase.renderHomePage)
     .post('/create', taskCreateValidation(), validate, createTask)
     .get('/find-task/:difficulty', filteringTask)
     .get('/all-tasks', getAllTasks)
@@ -38,6 +35,6 @@ export default router
     .patch('/update-status/:id', changingCardStatus)
     .get('/task-completed', gettingAllTasksCompleted)
     .get('/task-uncompleted', gettingAllUncompletedTasks)
-    .get('/completed-tasks', renderPageCompletedTasks)
-    .get('/sign-up', renderSignUpPage)
-    .get('/login', renderLoginPage)
+    .get('/completed-tasks', renderPageUseCase.renderPageCompletedTasks)
+    .get('/sign-up', renderPageUseCase.renderSignUpPage)
+    .get('/login', renderPageUseCase.renderLoginPage)
