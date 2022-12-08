@@ -1,7 +1,6 @@
 import { Router, Request, Response } from 'express'
 import {
-
-    getAllTasks,
+    
     removeTask,
     updateTask,
     changingCardStatus,
@@ -12,6 +11,7 @@ import {
 
 import { createTaskUseCase } from './controllers/CreateTaskUseCase/createTaskIndex'
 import { taskFilterUseCase } from './controllers/TaskFilterUseCase/taskFilterIndex'
+import { getAllTasksUseCase } from './controllers/GetAllTasksUseCase/getTaksIndex'
 
 import { createUserUseCase } from './controllers/CreateUserUseCase/userIndex'
 import { gettingAllUserUseCase } from './controllers/GetAllUsersUseCase/allUsersIndex'
@@ -28,7 +28,7 @@ export default router
     .get('/home', renderPageUseCase.renderHomePage)
     .post('/create', taskCreateValidation(), validate, createTaskUseCase.createNewTask)
     .get('/find-task/:difficulty', taskFilterUseCase.filterTheTasks)
-    .get('/all-tasks', getAllTasks)
+    .get('/all-tasks', getAllTasksUseCase.getAllTasks)
     .delete('/remove-task/:id', removeTask)
     .patch('/update-task/:id', taskCreateValidation(), validate, updateTask)
     .get('/find-task/:title')
