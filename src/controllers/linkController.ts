@@ -3,7 +3,7 @@ import { TaskModel } from '../model/Task'
 
 import Logger from '../../config/logger'
 
-export async function createTask(req: Request, res: Response) {
+/* export async function createTask(req: Request, res: Response) {
 
     try{
 
@@ -17,7 +17,7 @@ export async function createTask(req: Request, res: Response) {
         return res.status(500).json({ error: 'Houve um erro tente novamente mais tarde!' })
     }
 
-}
+} */
 
 export async function filteringTask(req: Request, res: Response){
 
