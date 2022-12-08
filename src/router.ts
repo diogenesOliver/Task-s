@@ -14,21 +14,13 @@ import {
 
  } from './controllers/linkController'
 
-import {
-
-    /* creatingANewUser, */
-    /* getAllUsers, */
-    athenticateUser,
-    renderSignUpPage,
-    renderLoginPage
-
-} from './controllers/authController'
+import { renderSignUpPage, renderLoginPage } from './controllers/authController'
 
 import { createUserUseCase } from './controllers/CreateUserUseCase/userIndex'
 import { gettingAllUserUseCase } from './controllers/GetAllUsersUseCase/allUsersIndex'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
-import {  userCreateValidation } from './middlewares/userCreateValidation'
+import { userCreateValidation } from './middlewares/userCreateValidation'
 import { validate } from './middlewares/handleValidation'
 
 const router = Router()
