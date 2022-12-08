@@ -179,17 +179,3 @@ export async function gettingAllUncompletedTasks(req: Request, res: Response){
     }
 
 }
-
-/* Render pages */
-
-export async function renderHomePage(req: Request, res: Response){
-    res.render('homePage.ejs')
-}
-
-export async function renderPageUncompletedTasks(req: Request, res: Response) {
-    res.render('uncompletedTaksPage.ejs')
-}
-
-export async function renderPageCompletedTasks(req: Request, res: Response) {
-    res.render('completedTasks.ejs')
-}

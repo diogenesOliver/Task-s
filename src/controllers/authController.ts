@@ -10,11 +10,3 @@ function generateToken(params = {}){
     })
 
 }
-
-export async function renderSignUpPage(req: Request, res: Response) {
-    res.render('signUpPage.ejs')
-}
-
-export async function renderLoginPage(req: Request, res: Response) {
-    res.render('loginPage.ejs')
-}
