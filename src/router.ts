@@ -16,13 +16,15 @@ import {
 
 import {
 
-    creatingANewUser,
+    /* creatingANewUser, */
     getAllUsers,
     athenticateUser,
     renderSignUpPage,
     renderLoginPage
 
 } from './controllers/authController'
+
+import { createUserUseCase } from './controllers/CreateUserUseCase/userIndex'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
 import {  userCreateValidation } from './middlewares/userCreateValidation'
@@ -38,7 +40,7 @@ export default router
     .delete('/remove-task/:id', removeTask)
     .patch('/update-task/:id', taskCreateValidation(), validate, updateTask)
     .get('/find-task/:title')
-    .post('/auth', userCreateValidation(), validate, creatingANewUser)
+    .post('/auth', userCreateValidation(), validate, createUserUseCase.createNewUser)
     .get('/users', getAllUsers)
     .patch('/update-status/:id', changingCardStatus)
     .get('/task-completed', gettingAllTasksCompleted)
