@@ -1,7 +1,6 @@
 import { Router, Request, Response } from 'express'
 import {
 
-    createTask,
     filteringTask,
     getAllTasks,
     removeTask,
@@ -12,8 +11,11 @@ import {
 
  } from './controllers/linkController'
 
+import { createTaskUseCase } from './controllers/CreateTaskUseCase/createTaskIndex'
+
 import { createUserUseCase } from './controllers/CreateUserUseCase/userIndex'
 import { gettingAllUserUseCase } from './controllers/GetAllUsersUseCase/allUsersIndex'
+
 import { renderPageUseCase } from './controllers/RenderPageUseCase/renderPageIndex'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
@@ -24,7 +26,7 @@ const router = Router()
 
 export default router
     .get('/home', renderPageUseCase.renderHomePage)
-    .post('/create', taskCreateValidation(), validate, createTask)
+    .post('/create', taskCreateValidation(), validate, createTaskUseCase.createNewTask)
     .get('/find-task/:difficulty', filteringTask)
     .get('/all-tasks', getAllTasks)
     .delete('/remove-task/:id', removeTask)
