@@ -3,7 +3,7 @@ import { UserModel } from "../../model/User";
 
 import Logger from '../../../config/logger'
 
-export class AutehtnticateUser {
+export class AuthenticateUser {
 
     async authenticateUser(req: Request, res: Response) {
 
