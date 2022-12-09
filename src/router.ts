@@ -1,7 +1,6 @@
 import { Router, Request, Response } from 'express'
 import {
     
-    updateTask,
     changingCardStatus,
     gettingAllTasksCompleted,
     gettingAllUncompletedTasks
@@ -12,6 +11,7 @@ import { createTaskUseCase } from './controllers/CreateTaskUseCase/createTaskInd
 import { taskFilterUseCase } from './controllers/TaskFilterUseCase/taskFilterIndex'
 import { getAllTasksUseCase } from './controllers/GetAllTasksUseCase/getTaksIndex'
 import { removeTaskUseCase } from './controllers/RemoveTaskUseCase/removeTaskIndex'
+import { updateTaskUseCase } from './controllers/UpdateTaskUseCase/updateTaskIndex'
 
 import { createUserUseCase } from './controllers/CreateUserUseCase/userIndex'
 import { gettingAllUserUseCase } from './controllers/GetAllUsersUseCase/allUsersIndex'
@@ -30,8 +30,7 @@ export default router
     .get('/find-task/:difficulty', taskFilterUseCase.filterTheTasks)
     .get('/all-tasks', getAllTasksUseCase.getAllTasks)
     .delete('/remove-task/:id', removeTaskUseCase.removeTask)
-    .patch('/update-task/:id', taskCreateValidation(), validate, updateTask)
-    .get('/find-task/:title')
+    .patch('/update-task/:id', taskCreateValidation(), validate, updateTaskUseCase.updatingTask)
     .post('/auth', userCreateValidation(), validate, createUserUseCase.createNewUser)
     .get('/users', gettingAllUserUseCase.gettingAllUsers)
     .patch('/update-status/:id', changingCardStatus)
