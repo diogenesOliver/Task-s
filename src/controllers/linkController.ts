@@ -7,8 +7,7 @@ export async function gettingAllTasksCompleted(req: Request, res: Response){
 
     try{
 
-        const statusTask = true
-        const task = await TaskModel.find({ status: statusTask })
+        const task = await TaskModel.find({ status: true })
 
         return res.status(200).send(task)
 
@@ -25,8 +24,7 @@ export async function gettingAllUncompletedTasks(req: Request, res: Response){
 
     try{
 
-        const statusTask = false
-        const task = await TaskModel.find({ status: statusTask })
+        const task = await TaskModel.find({ status: false })
 
         return res.status(200).send(task)
 
