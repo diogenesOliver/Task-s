@@ -1,22 +1,18 @@
-import { Router, Request, Response } from 'express'
-import {
-    
-    gettingAllTasksCompleted,
-    gettingAllUncompletedTasks
+import { Router } from 'express'
 
- } from './controllers/linkController'
+import { createTaskUseCase } from './UseCases/CreateTaskUseCase/createTaskIndex'
+import { taskFilterUseCase } from './UseCases/TaskFilterUseCase/taskFilterIndex'
+import { getAllTasksUseCase } from './UseCases/GetAllTasksUseCase/getTaksIndex'
+import { removeTaskUseCase } from './UseCases/RemoveTaskUseCase/removeTaskIndex'
+import { updateTaskUseCase } from './UseCases/UpdateTaskUseCase/updateTaskIndex'
+import { changeStatusTaskUseCase } from './UseCases/ChangeStatusTaskUseCase/changeStatusIndex'
+import { completedTaksUseCase } from './UseCases/CompletedTasks/completedTasksIndex'
+import { incompleteTasksUseCase } from './UseCases/IncompleteTasks/incompleteTasksIndex'
 
-import { createTaskUseCase } from './controllers/CreateTaskUseCase/createTaskIndex'
-import { taskFilterUseCase } from './controllers/TaskFilterUseCase/taskFilterIndex'
-import { getAllTasksUseCase } from './controllers/GetAllTasksUseCase/getTaksIndex'
-import { removeTaskUseCase } from './controllers/RemoveTaskUseCase/removeTaskIndex'
-import { updateTaskUseCase } from './controllers/UpdateTaskUseCase/updateTaskIndex'
-import { changeStatusTaskUseCase } from './controllers/ChangeStatusTaskUseCase/changeStatusIndex'
+import { createUserUseCase } from './UseCases/CreateUserUseCase/userIndex'
+import { gettingAllUserUseCase } from './UseCases/GetAllUsersUseCase/allUsersIndex'
 
-import { createUserUseCase } from './controllers/CreateUserUseCase/userIndex'
-import { gettingAllUserUseCase } from './controllers/GetAllUsersUseCase/allUsersIndex'
-
-import { renderPageUseCase } from './controllers/RenderPageUseCase/renderPageIndex'
+import { renderPageUseCase } from './UseCases/RenderPageUseCase/renderPageIndex'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
 import { userCreateValidation } from './middlewares/userCreateValidation'
@@ -34,8 +30,8 @@ export default router
     .post('/auth', userCreateValidation(), validate, createUserUseCase.createNewUser)
     .get('/users', gettingAllUserUseCase.gettingAllUsers)
     .patch('/update-status/:id', changeStatusTaskUseCase.changingStatusTask)
-    .get('/task-completed', gettingAllTasksCompleted)
-    .get('/task-uncompleted', gettingAllUncompletedTasks)
+    .get('/task-completed', completedTaksUseCase.gettingAllTasksCompleted)
+    .get('/task-uncompleted', incompleteTasksUseCase.gettingAllUncompletedTasks)
     .get('/completed-tasks', renderPageUseCase.renderPageCompletedTasks)
     .get('/sign-up', renderPageUseCase.renderSignUpPage)
     .get('/login', renderPageUseCase.renderLoginPage)
