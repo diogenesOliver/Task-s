@@ -1,18 +1,18 @@
 import { Router } from 'express'
 
-import { createTaskUseCase } from './UseCases/CreateTaskUseCase/createTaskIndex'
-import { taskFilterUseCase } from './UseCases/TaskFilterUseCase/taskFilterIndex'
-import { getAllTasksUseCase } from './UseCases/GetAllTasksUseCase/getTaksIndex'
-import { removeTaskUseCase } from './UseCases/RemoveTaskUseCase/removeTaskIndex'
-import { updateTaskUseCase } from './UseCases/UpdateTaskUseCase/updateTaskIndex'
-import { changeStatusTaskUseCase } from './UseCases/ChangeStatusTaskUseCase/changeStatusIndex'
+import { createTaskUseCase } from './UseCases/CreateTask/createTaskIndex'
+import { taskFilterUseCase } from './UseCases/TaskFilter/taskFilterIndex'
+import { getAllTasksUseCase } from './UseCases/GetAllTasks/getTaksIndex'
+import { removeTaskUseCase } from './UseCases/RemoveTask/removeTaskIndex'
+import { updateTaskUseCase } from './UseCases/UpdateTask/updateTaskIndex'
+import { changeStatusTaskUseCase } from './UseCases/ChangeStatusTask/changeStatusIndex'
 import { completedTaksUseCase } from './UseCases/CompletedTasks/completedTasksIndex'
 import { incompleteTasksUseCase } from './UseCases/IncompleteTasks/incompleteTasksIndex'
 
-import { createUserUseCase } from './UseCases/CreateUserUseCase/userIndex'
-import { gettingAllUserUseCase } from './UseCases/GetAllUsersUseCase/allUsersIndex'
+import { createUserUseCase } from './UseCases/CreateUser/userIndex'
+import { gettingAllUserUseCase } from './UseCases/GetAllUsers/allUsersIndex'
 
-import { renderPageUseCase } from './UseCases/RenderPageUseCase/renderPageIndex'
+import { renderPageUseCase } from './UseCases/RenderPage/renderPageIndex'
 
 import { taskCreateValidation } from './middlewares/taskCreateValidation'
 import { userCreateValidation } from './middlewares/userCreateValidation'
