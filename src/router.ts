@@ -10,6 +10,7 @@ import { completedTaksUseCase } from './UseCases/CompletedTasks/completedTasksIn
 import { incompleteTasksUseCase } from './UseCases/IncompleteTasks/incompleteTasksIndex'
 
 import { createUserUseCase } from './UseCases/CreateUser/userIndex'
+import { authenticateUserUseCase } from './UseCases/AuthenticateUser/authUserIndex'
 import { gettingAllUserUseCase } from './UseCases/GetAllUsers/allUsersIndex'
 
 import { renderPageUseCase } from './UseCases/RenderPage/renderPageIndex'
@@ -35,3 +36,4 @@ export default router
     .get('/completed-tasks', renderPageUseCase.renderPageCompletedTasks)
     .get('/sign-up', renderPageUseCase.renderSignUpPage)
     .get('/login', renderPageUseCase.renderLoginPage)
+    .post('/login', authenticateUserUseCase.authenticateUser)
