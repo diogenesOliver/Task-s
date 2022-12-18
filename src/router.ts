@@ -2,7 +2,7 @@ import { Router } from 'express'
 
 import { Response, Request } from 'express-serve-static-core'
 
-import { createTaskUseCase }        from './UseCases/CreateTask/createTaskIndex'
+import { createTaskController }        from './UseCases/CreateTask/createTaskIndex'
 import { taskFilterUseCase }        from './UseCases/TaskFilter/taskFilterIndex'
 import { getAllTasksUseCase }       from './UseCases/GetAllTasks/getTaksIndex'
 import { removeTaskUseCase }        from './UseCases/RemoveTask/removeTaskIndex'
@@ -25,7 +25,9 @@ const router = Router()
 
 export default router
     .get('/home', renderPageUseCase.renderHomePage)
-    .post('/create', taskCreateValidation(), validate, createTaskUseCase.createNewTask)
+    .post('/create', taskCreateValidation(), validate, (req: Request, res: Response) => {
+        return createTaskController.handle(req, res)
+    })
     .get('/find-task/:difficulty', taskFilterUseCase.filterTheTasks)
     .get('/all-tasks', getAllTasksUseCase.getAllTasks)
     .delete('/remove-task/:id', removeTaskUseCase.removeTask)
