@@ -1,5 +1,10 @@
-import { CreateUser } from "./CreateUser";
+import { CreateUserController } from "./CreateUserController";
+import { CreateUserUseCase } from "./CreateUserUseCase";
 
-const createUserUseCase = new CreateUser()
+const createUserUseCase = new CreateUserUseCase()
 
-export { createUserUseCase }
+const createUserController = new CreateUserController(
+    createUserUseCase
+)
+
+export { createUserController }

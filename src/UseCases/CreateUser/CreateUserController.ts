@@ -1,12 +1,42 @@
 import { Request, Response } from 'express'
-import { UserModel } from "../../model/User";
-
-import Logger from '../../../config/logger'
+import { CreateUserUseCase } from './CreateUserUseCase';
 
 import * as bcrypt from 'bcrypt';
 
+export class CreateUserController {
 
-export class CreateUser {
+    constructor(
+        private createUserUseCase: CreateUserUseCase
+    ) {}
+
+    async handle(req: Request, res: Response) {
+
+        const { email, password } = req.body
+
+        const salt = await bcrypt.genSalt(10)
+        const passwordCrypt = await bcrypt.hash(password, salt)
+
+        try {
+
+            await this.createUserUseCase.execute({
+                email,
+                password: passwordCrypt
+            })
+
+        } catch (e: any) {
+
+            return res.status(400).json({
+                message: e.message || 'Unxpected error'
+            })
+
+        }
+
+    }
+
+}
+
+
+/* export class CreateUser {
 
     async createNewUser(req: Request, res: Response) {
 
@@ -48,4 +78,4 @@ export class CreateUser {
 
     }
 
-}
+} */
