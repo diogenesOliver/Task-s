@@ -1,5 +1,7 @@
 import { Router } from 'express'
 
+import { Response, Request } from 'express-serve-static-core'
+
 import { createTaskUseCase }        from './UseCases/CreateTask/createTaskIndex'
 import { taskFilterUseCase }        from './UseCases/TaskFilter/taskFilterIndex'
 import { getAllTasksUseCase }       from './UseCases/GetAllTasks/getTaksIndex'
@@ -9,7 +11,7 @@ import { changeStatusTaskUseCase }  from './UseCases/ChangeStatusTask/changeStat
 import { completedTaksUseCase }     from './UseCases/CompletedTasks/completedTasksIndex'
 import { incompleteTasksUseCase }   from './UseCases/IncompleteTasks/incompleteTasksIndex'
 
-import { createUserUseCase }        from './UseCases/CreateUser/userIndex'
+import { createUserController }     from './UseCases/CreateUser/userIndex'
 import { authenticateUserUseCase }  from './UseCases/AuthenticateUser/authUserIndex'
 import { gettingAllUserUseCase }    from './UseCases/GetAllUsers/allUsersIndex'
 
@@ -28,7 +30,9 @@ export default router
     .get('/all-tasks', getAllTasksUseCase.getAllTasks)
     .delete('/remove-task/:id', removeTaskUseCase.removeTask)
     .patch('/update-task/:id', taskCreateValidation(), validate, updateTaskUseCase.updatingTask)
-    .post('/auth', userCreateValidation(), validate, createUserUseCase.createNewUser)
+    .post('/auth', userCreateValidation(), validate, (req: Request, res: Response) => {
+        return createUserController.handle(req, res)
+    })
     .get('/users', gettingAllUserUseCase.gettingAllUsers)
     .patch('/update-status/:id', changeStatusTaskUseCase.changingStatusTask)
     .get('/task-completed', completedTaksUseCase.gettingAllTasksCompleted)
