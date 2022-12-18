@@ -1,5 +1,10 @@
-import { CreateTask } from "./CreateTask";
+import { CreateTaskController } from "./CreateTaskController";
+import { CreateTaskUseCase } from "./CreateUserUseCase";
 
-const createTaskUseCase = new CreateTask()
+const createTaskUseCase = new CreateTaskUseCase()
 
-export { createTaskUseCase }
+const createTaskController = new CreateTaskController(
+    createTaskUseCase
+)
+
+export { createTaskController }
