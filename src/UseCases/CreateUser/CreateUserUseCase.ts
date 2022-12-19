@@ -9,7 +9,7 @@ export class CreateUserUseCase {
 
         try {
 
-            const userAlreadyExists = await UserModel.findOne({ data: data.email })
+            const userAlreadyExists = await UserModel.findOne({ email: data.email })
 
             if (userAlreadyExists)
                 throw new Error('User already exists')

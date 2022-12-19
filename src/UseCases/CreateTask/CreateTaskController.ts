@@ -1,5 +1,5 @@
 import { Response, Request } from "express"
-import { CreateTaskUseCase } from "./CreateUserUseCase"
+import { CreateTaskUseCase } from "./CreateTaskUseCase"
 
 export class CreateTaskController{
 
