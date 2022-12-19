@@ -1,5 +1,5 @@
 import { CreateTaskController } from "./CreateTaskController";
-import { CreateTaskUseCase } from "./CreateUserUseCase";
+import { CreateTaskUseCase } from "./CreateTaskUseCase";
 
 const createTaskUseCase = new CreateTaskUseCase()
 
