@@ -10,16 +10,20 @@ export class ChangeStatusTask{
         try{
 
             let { status } = req.body
+
             const taskId = req.params.id
+
             const task = await TaskModel.findById(taskId)
+
+            console.log(task)
     
-            if(!task)
+            /* if(!task)
                 return res.status(500).send('Houve um erro tente novamente mais tarde!')
     
             status = true
             await TaskModel.updateOne({ id: taskId }, status)
             
-            return res.status(200).send('Card atualizado com sucesso!')
+            return res.status(200).send('Card atualizado com sucesso!') */
     
         }catch(e: any){
     
