@@ -1,29 +1,17 @@
-import { ICreateUserDTO } from "./CreateUserDTO";
-import { UserModel } from "../../model/User";
+import { UserEntitie } from "../../entities/User";
+import { ICreateUserRepository } from "../../repositories/ICreateUserRepository";
 
-import Logger from "../../../config/logger";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 export class CreateUserUseCase {
 
-    async execute(data: ICreateUserDTO) {
+    constructor(
+        @inject("CreateUserRepository")
+        private createUserRepository: ICreateUserRepository
+    ) { }
 
-        try {
-
-            const userAlreadyExists = await UserModel.findOne({ email: data.email })
-
-            if (userAlreadyExists)
-                throw new Error('User already exists')
-
-            const newUser = new UserModel(data)
-            await UserModel.create(newUser)
-
-            console.log(newUser)
-
-        }catch(e: any){
-            Logger.error(`Error on System: ${e.message}`)
-        }
-
-
+    async execute(data: UserEntitie) {
+        this.createUserRepository.save(data)
     }
-
 }

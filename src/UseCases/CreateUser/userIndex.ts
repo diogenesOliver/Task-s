@@ -1,10 +1,10 @@
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
-const createUserUseCase = new CreateUserUseCase()
+import { container } from "tsyringe";
 
 const createUserController = new CreateUserController(
-    createUserUseCase
+    container.resolve(CreateUserUseCase)
 )
 
 export { createUserController }

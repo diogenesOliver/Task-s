@@ -7,9 +7,22 @@ export class CreateUserController {
 
     constructor(
         private createUserUseCase: CreateUserUseCase
-    ) {}
+    ) { }
 
     async handle(req: Request, res: Response) {
+
+        const userData = req.body
+
+        await bcrypt.hash(
+            userData.password,
+            await bcrypt.genSalt(10)
+        )
+
+        await this.createUserUseCase.execute(userData)
+
+    }
+
+    /* async handle(req: Request, res: Response) {
 
         const { email, password } = req.body
 
@@ -23,7 +36,7 @@ export class CreateUserController {
                 password: passwordCrypt
             })
 
-            /* res.status(200).redirect('/api/home') */
+            res.status(200).redirect('/api/home')
 
         } catch (e: any) {
 
@@ -33,6 +46,6 @@ export class CreateUserController {
 
         }
 
-    }
+    } */
 
 }
