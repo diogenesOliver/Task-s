@@ -1,15 +1,9 @@
-require('dotenv').config()
+import 'reflect-metadata'
+import './shared/container'
 
 import express from 'express'
-import config from 'config'
 import path from 'path'
-
 import router from './router'
-import Logger from '../config/logger'
-
-import { connectDB } from "../config/db";
-
-const PORT = process.env.PORT || config.get<number>('port')
 
 import * as bodyParser from 'body-parser'
 
@@ -24,9 +18,4 @@ app.use('/api', express.static(path.join(__dirname, 'public')))
 app.use(express.json())
 app.use('/api/', router)
 
-app.listen(PORT, () => {
-
-    connectDB.connect()
-    Logger.info(`Server runnning PORT ${PORT}`)
-
-})
+export { app }
