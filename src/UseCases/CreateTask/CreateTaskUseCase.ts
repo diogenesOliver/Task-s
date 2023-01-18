@@ -1,20 +1,18 @@
-import { ICreateTaskDTO } from "./CreateTaskDTO";
-import { TaskModel } from "../../model/Task";
+import { ICreateTaskRepository } from "../../repositories/ICreateTaskRepository";
+import { TaskEntitie } from "../../entities/Tasks";
 
-import Logger from "../../../config/logger";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 export class CreateTaskUseCase{
 
-    async execute(data: ICreateTaskDTO){
+    constructor(
+        @inject("CreateTaskRepository")
+        private  createTaskRepository: ICreateTaskRepository
+    ){}
 
-        try{
-
-            await TaskModel.create(data)
-
-        }catch(e: any){
-            Logger.error(`Error on system ${e}`)
-        }
-
+    async execute(data: TaskEntitie){
+        this.createTaskRepository.save(data)
     }
 
 }

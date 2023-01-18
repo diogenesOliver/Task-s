@@ -1,10 +1,10 @@
 import { CreateTaskController } from "./CreateTaskController";
 import { CreateTaskUseCase } from "./CreateTaskUseCase";
 
-const createTaskUseCase = new CreateTaskUseCase()
+import { container } from "tsyringe";
 
 const createTaskController = new CreateTaskController(
-    createTaskUseCase
+    container.resolve(CreateTaskUseCase)
 )
 
 export { createTaskController }
