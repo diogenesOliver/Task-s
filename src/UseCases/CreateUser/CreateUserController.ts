@@ -22,30 +22,4 @@ export class CreateUserController {
 
     }
 
-    /* async handle(req: Request, res: Response) {
-
-        const { email, password } = req.body
-
-        const salt = await bcrypt.genSalt(10)
-        const passwordCrypt = await bcrypt.hash(password, salt)
-
-        try {
-
-            await this.createUserUseCase.execute({
-                email,
-                password: passwordCrypt
-            })
-
-            res.status(200).redirect('/api/home')
-
-        } catch (e: any) {
-
-            return res.status(400).json({
-                message: e.message || 'Unxpected error'
-            })
-
-        }
-
-    } */
-
 }
