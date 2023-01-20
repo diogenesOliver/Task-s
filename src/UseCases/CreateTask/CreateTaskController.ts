@@ -10,6 +10,8 @@ export class CreateTaskController{
     async handle(req: Request, res: Response){
         const tasksData = req.body
         await this.createTaskUseCase.execute(tasksData)
+
+        res.redirect('/api/home')
     }
 
 }
