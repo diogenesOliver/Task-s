@@ -4,7 +4,8 @@ import { CreateUserRepository } from "../../repositories/implementations/CreateU
 import { ICreateUserRepository } from "../../repositories/ICreateUserRepository";
 
 import { CreateTaskRepository } from '../../repositories/implementations/CreateTasksRepository'
-import { ICreateTaskRepository } from '../../repositories/ICreateTaskRepository'
+import { ICreateTaskRepository, IGetAllTaskRepository } from '../../repositories/ICreateTaskRepository'
+import { GetAllTasksRepository } from "../../repositories/implementations/GetAllTasksRepository";
 
 container.registerSingleton<ICreateUserRepository>(
     "CreateUserRepository",
@@ -14,4 +15,9 @@ container.registerSingleton<ICreateUserRepository>(
 container.registerSingleton<ICreateTaskRepository>(
     "CreateTaskRepository",
     CreateTaskRepository
+)
+
+container.registerSingleton<IGetAllTaskRepository>(
+    "AllTasksRepository",
+    GetAllTasksRepository
 )
