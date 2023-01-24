@@ -29,7 +29,9 @@ router.post('/create', taskCreateValidation(), validate, (req: Request, res: Res
     return createTaskController.handle(req, res)
 })
 router.get('/find-task/:difficulty', taskFilterUseCase.filterTheTasks)
-router.get('/all-tasks', getAllTasksUseCase.getAllTasks)
+router.get('/all-tasks', (req: Request, res: Response) => {
+    return getAllTasksUseCase.getAllTasks(req, res)
+})
 router.delete('/remove-task/:id', removeTaskUseCase.removeTask)
 router.patch('/update-task/:id', taskCreateValidation(), validate, updateTaskUseCase.updatingTask)
 router.post('/auth', userCreateValidation(), validate, (req: Request, res: Response) => {
