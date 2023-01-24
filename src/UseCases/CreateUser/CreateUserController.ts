@@ -19,6 +19,7 @@ export class CreateUserController {
         )
 
         await this.createUserUseCase.execute(userData)
+        res.redirect('/api/home')
 
     }
 
