@@ -1,5 +1,5 @@
 import { TaskEntitie } from "../../entities/Tasks";
-import { ICreateTaskRepository } from "../ICreateTaskRepository";
+import { ICreateTaskRepository, IGetAllTaskRepository } from "../ICreateTaskRepository";
 import { TaskModel } from "../../model/Task";
 
 export class CreateTaskRepository implements ICreateTaskRepository{
