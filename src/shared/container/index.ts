@@ -1,11 +1,16 @@
 import { container } from "tsyringe";
 
-import { CreateUserRepository } from "../../repositories/implementations/CreateUserRepository";
 import { ICreateUserRepository } from "../../repositories/ICreateUserRepository";
+import {
+    ICreateTaskRepository,
+    IGetAllTaskRepository,
+    IUpdateTaskRepository 
+} from '../../repositories/ICreateTaskRepository'
 
+import { CreateUserRepository } from "../../repositories/implementations/CreateUserRepository";
 import { CreateTaskRepository } from '../../repositories/implementations/CreateTasksRepository'
-import { ICreateTaskRepository, IGetAllTaskRepository } from '../../repositories/ICreateTaskRepository'
 import { GetAllTasksRepository } from "../../repositories/implementations/GetAllTasksRepository";
+import { UpdateTaskRepository } from "../../repositories/implementations/UpdateTaskRepository"
 
 container.registerSingleton<ICreateUserRepository>(
     "CreateUserRepository",
@@ -20,4 +25,9 @@ container.registerSingleton<ICreateTaskRepository>(
 container.registerSingleton<IGetAllTaskRepository>(
     "AllTasksRepository",
     GetAllTasksRepository
+)
+
+container.registerSingleton<IUpdateTaskRepository>(
+    "UpdateTaskRepository",
+    UpdateTaskRepository
 )
