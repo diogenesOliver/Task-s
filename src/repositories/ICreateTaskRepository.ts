@@ -7,3 +7,8 @@ export interface ICreateTaskRepository{
 export interface IGetAllTaskRepository{
     getAllTasks(): any
 }
+
+export interface IUpdateTaskRepository{
+    findTaskById(id: string): string
+    updateTask(id: string, data: string): string
+}
