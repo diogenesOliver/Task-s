@@ -9,6 +9,6 @@ export interface IGetAllTaskRepository{
 }
 
 export interface IUpdateTaskRepository{
-    findTaskById(id: string): string
-    updateTask(id: string, data: string): string
+    findTaskById(id: string): any
+    updateTask(id: string, data: Object): any
 }
