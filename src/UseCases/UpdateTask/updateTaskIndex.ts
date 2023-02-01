@@ -1,5 +1,9 @@
-import { UpdateTask } from "./UpdateTask";
+import { container } from 'tsyringe'
+import { UpdateTaskController } from './UpdateTask'
+import { UpdateTaskUseCase } from './UpdateTaskUseCase'
 
-const updateTaskUseCase = new UpdateTask()
+const updateTaskController = new UpdateTaskController(
+    container.resolve(UpdateTaskUseCase)
+)
 
-export { updateTaskUseCase }
+export { updateTaskController }

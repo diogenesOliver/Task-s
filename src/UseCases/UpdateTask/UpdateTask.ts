@@ -1,30 +1,27 @@
-import { Response, Request } from "express"
-import { TaskModel } from "../../model/Task"
+import { Response, Request } from 'express'
+import { UpdateTaskUseCase } from './UpdateTaskUseCase'
 
-import Logger from '../../../config/logger'
+export class UpdateTaskController {
 
-export class UpdateTask{
+    constructor(
+        private updateTaskController: UpdateTaskUseCase
+    ) { }
 
-    async updatingTask(req: Request, res: Response){
+    async handle(req: Request, res: Response) {
 
-        try{
+        const id = req.params.id
+        const taskData = req.body
 
-            const id = req.params.id
-            const data = req.body
-            const task = await TaskModel.findById(id)
-    
-            if(!task){
-                return res.status(404).json({ error: 'Essa task não existe' })
-            }
-    
-            await TaskModel.updateOne({ id: id }, data)
-    
-            return res.status(200).send(data)
-    
-        }catch(e: any){
-            Logger.error(`Error on System: ${e.message}`)
-            return res.status(500).json({ e: "Houve um erro! tente novamente mais tarde!" })
+        const task = await this.updateTaskController.executeFindByID(id)
+        console.log(task)
+
+        if (!task){
+            res.status(404).json({ error: 'This task not exist' })
         }
+
+        await this.updateTaskController.executeUpdateTask(id, taskData)
+
+        res.status(200).send(taskData)
 
     }
 
