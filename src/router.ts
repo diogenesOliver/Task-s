@@ -6,7 +6,7 @@ import { createTaskController } from './UseCases/CreateTask/createTaskIndex'
 import { taskFilterUseCase } from './UseCases/TaskFilter/taskFilterIndex'
 import { getAllTasksUseCase } from './UseCases/GetAllTasks/getTaksIndex'
 import { removeTaskUseCase } from './UseCases/RemoveTask/removeTaskIndex'
-import { updateTaskUseCase } from './UseCases/UpdateTask/updateTaskIndex'
+import { updateTaskController } from './UseCases/UpdateTask/updateTaskIndex'
 import { changeStatusTaskUseCase } from './UseCases/ChangeStatusTask/changeStatusIndex'
 import { completedTaksUseCase } from './UseCases/CompletedTasks/completedTasksIndex'
 import { incompleteTasksUseCase } from './UseCases/IncompleteTasks/incompleteTasksIndex'
@@ -33,7 +33,9 @@ router.get('/all-tasks', (req: Request, res: Response) => {
     return getAllTasksUseCase.getAllTasks(req, res)
 })
 router.delete('/remove-task/:id', removeTaskUseCase.removeTask)
-router.patch('/update-task/:id', taskCreateValidation(), validate, updateTaskUseCase.updatingTask)
+router.patch('/update-task/:id', taskCreateValidation(), validate, (req: Request, res: Response) => {
+    return updateTaskController.handle(req, res)
+})
 router.post('/auth', userCreateValidation(), validate, (req: Request, res: Response) => {
     return createUserController.handle(req, res)
 })
