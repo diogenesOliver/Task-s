@@ -12,3 +12,8 @@ export interface IUpdateTaskRepository{
     findTaskById(id: string): any
     updateTask(id: string, data: Object): any
 }
+
+export interface IRemoveTaskRepository{
+    findTaskById(id: string): any
+    deleteTask(id: string): void
+}
