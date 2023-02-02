@@ -1,5 +1,10 @@
-import { RemoveTask } from "./RemoveTask";
+import { RemoveTaskController } from "./RemoveTask";
+import { RemoveTaskUseCase } from "./RemoveTaskUseCase";
 
-const removeTaskUseCase = new RemoveTask()
+import { container } from "tsyringe";
 
-export { removeTaskUseCase }
+const removeTaskController = new RemoveTaskController(
+    container.resolve(RemoveTaskUseCase)
+)
+
+export { removeTaskController }

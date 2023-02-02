@@ -1,32 +1,23 @@
 import { Response, Request } from "express"
-import { TaskModel } from "../../model/Task"
+import { RemoveTaskUseCase } from "./RemoveTaskUseCase"
 
-import Logger from '../../../config/logger'
+export class RemoveTaskController{
 
-export class RemoveTask{
+    constructor(
+        private removeTaskController: RemoveTaskUseCase
+    ){}
 
-    async removeTask(req: Request, res: Response){
+    async handle(req: Request, res: Response){
+        
+        const id = req.params.id
+        const task = await this.removeTaskController.executeFindByID(id)
 
-        try{
+        if(!task)
+            res.status(404).json({ message: 'This task not exist' })
 
-            const id = req.params.id
-            const task = await TaskModel.findById(id)
-    
-            if(!task){
-                return res.status(404).json({ error: 'Essa task não existe' })
-            }
-    
-            await task?.delete()
-    
-            return res.status(200).send('Task removida com sucesso!')
-    
-        }catch(e: any){
-    
-            Logger.error(`Error on System: ${e.message}`)
-            return res.status(500).json({ e: "Houve um erro! tente novamente mais tarde!" })
-    
-        }
+        this.removeTaskController.executeRemoveTask(task)
 
+        res.status(200).json({ message: 'Success to remove task' })
     }
 
 }
