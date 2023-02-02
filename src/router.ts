@@ -5,7 +5,7 @@ import { Response, Request } from 'express-serve-static-core'
 import { createTaskController } from './UseCases/CreateTask/createTaskIndex'
 import { taskFilterUseCase } from './UseCases/TaskFilter/taskFilterIndex'
 import { getAllTasksUseCase } from './UseCases/GetAllTasks/getTaksIndex'
-import { removeTaskUseCase } from './UseCases/RemoveTask/removeTaskIndex'
+import { removeTaskController } from './UseCases/RemoveTask/removeTaskIndex'
 import { updateTaskController } from './UseCases/UpdateTask/updateTaskIndex'
 import { changeStatusTaskUseCase } from './UseCases/ChangeStatusTask/changeStatusIndex'
 import { completedTaksUseCase } from './UseCases/CompletedTasks/completedTasksIndex'
@@ -32,7 +32,9 @@ router.get('/find-task/:difficulty', taskFilterUseCase.filterTheTasks)
 router.get('/all-tasks', (req: Request, res: Response) => {
     return getAllTasksUseCase.getAllTasks(req, res)
 })
-router.delete('/remove-task/:id', removeTaskUseCase.removeTask)
+router.delete('/remove-task/:id', (req: Request, res: Response) => {
+    return removeTaskController.handle(req, res)
+})
 router.patch('/update-task/:id', taskCreateValidation(), validate, (req: Request, res: Response) => {
     return updateTaskController.handle(req, res)
 })
