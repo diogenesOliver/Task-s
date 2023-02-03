@@ -17,15 +17,15 @@ import { gettingAllUserUseCase } from './UseCases/GetAllUsers/allUsersIndex'
 
 import { renderPageUseCase } from './UseCases/RenderPage/renderPageIndex'
 
-import { taskCreateValidation } from './middlewares/taskCreateValidation'
-import { userCreateValidation } from './middlewares/userCreateValidation'
-import { validate } from './middlewares/handleValidation'
+import { handleValidation } from './middlewares/HandleValidation/handleValidationIndex'
+import { createTaskValidate } from './middlewares/TaskValidation/taskValidationIndex'
+import { createUserValidate } from './middlewares/UserValidation/userValidationIndex'
 
 const router = Router()
 
 
 router.get('/home', renderPageUseCase.renderHomePage)
-router.post('/create', taskCreateValidation(), validate, (req: Request, res: Response) => {
+router.post('/create', createTaskValidate.dataValidations(), handleValidation.validate, (req: Request, res: Response) => {
     return createTaskController.handle(req, res)
 })
 router.get('/find-task/:difficulty', taskFilterUseCase.filterTheTasks)
@@ -35,10 +35,10 @@ router.get('/all-tasks', (req: Request, res: Response) => {
 router.delete('/remove-task/:id', (req: Request, res: Response) => {
     return removeTaskController.handle(req, res)
 })
-router.patch('/update-task/:id', taskCreateValidation(), validate, (req: Request, res: Response) => {
+router.patch('/update-task/:id', createTaskValidate.dataValidations(), handleValidation.validate, (req: Request, res: Response) => {
     return updateTaskController.handle(req, res)
 })
-router.post('/auth', userCreateValidation(), validate, (req: Request, res: Response) => {
+router.post('/auth', createUserValidate.dataValidations(), handleValidation.validate, (req: Request, res: Response) => {
     return createUserController.handle(req, res)
 })
 router.get('/users', gettingAllUserUseCase.gettingAllUsers)
