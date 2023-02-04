@@ -8,9 +8,9 @@ import Logger from "../config/logger";
 
 const PORT = process.env.PORT || config.get<number>('port')
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
 
-    connectDB.connect()
+    await connectDB.connect()
     Logger.info(`Server runnning PORT ${PORT}`)
 
 })

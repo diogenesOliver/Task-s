@@ -5,21 +5,13 @@ import Logger from './logger'
 
 export class ConectDataBase {
 
-    async connect() {
-
+    async connect(){
         const dbUri = config.get<string>('dbUri')
 
-        try {
-
-            await mongoose.connect(dbUri)
-            Logger.info('Sucesso ao conectar ao banco de dados')
-
-        } catch (e: any) {
-
-            Logger.error(`ERROR: ${e}`)
-
-        }
+        await mongoose.connect(dbUri)
+        Logger.info('Success connecting to database')
     }
+
 }
 
 const connectDB = new ConectDataBase()
