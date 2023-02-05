@@ -13,7 +13,7 @@ import { incompleteTasksUseCase } from './UseCases/IncompleteTasks/incompleteTas
 
 import { createUserController } from './UseCases/CreateUser/userIndex'
 import { authenticateUserUseCase } from './UseCases/AuthenticateUser/authUserIndex'
-import { gettingAllUserUseCase } from './UseCases/GetAllUsers/allUsersIndex'
+import { allUsersController } from './UseCases/GetAllUsers/allUsersIndex'
 
 import { renderPageUseCase } from './UseCases/RenderPage/renderPageIndex'
 
@@ -22,7 +22,6 @@ import { createTaskValidate } from './middlewares/TaskValidation/taskValidationI
 import { createUserValidate } from './middlewares/UserValidation/userValidationIndex'
 
 const router = Router()
-
 
 router.get('/home', renderPageUseCase.renderHomePage)
 router.post('/create', createTaskValidate.dataValidations(), handleValidation.validate, (req: Request, res: Response) => {
@@ -41,7 +40,9 @@ router.patch('/update-task/:id', createTaskValidate.dataValidations(), handleVal
 router.post('/auth', createUserValidate.dataValidations(), handleValidation.validate, (req: Request, res: Response) => {
     return createUserController.handle(req, res)
 })
-router.get('/users', gettingAllUserUseCase.gettingAllUsers)
+router.get('/users', (req: Request, res: Response) => {
+    return allUsersController.handle(req, res)
+})
 router.patch('/update-status/:id', changeStatusTaskUseCase.changingStatusTask)
 router.get('/task-completed', completedTaksUseCase.gettingAllTasksCompleted)
 router.get('/task-uncompleted', incompleteTasksUseCase.gettingAllUncompletedTasks)
