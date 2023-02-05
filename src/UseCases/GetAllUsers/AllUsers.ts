@@ -1,24 +1,16 @@
-import { UserModel } from "../../model/User";
 import { Request, Response } from 'express'
+import { GetAllUsersUseCase } from "./AllUsersUseCase";
 
-import Logger from '../../../config/logger'
+export class AllUsersController{
 
-export class AllUsers {
+    constructor(
+        private allUsersController: GetAllUsersUseCase
+    ){}
 
-    async gettingAllUsers(req: Request, res: Response) {
+    async handle(req: Request, res: Response){
 
-        try {
-
-            const users = await UserModel.find()
-
-            return res.status(200).json(users)
-
-        } catch (e: any) {
-
-            Logger.error(`Error on system: ${e.message}`)
-            return res.status(500).json({ e: "Houve um erro! Tente novamente mais tarde" })
-
-        }
+        const users = await this.allUsersController.execute()
+        return res.status(200).json(users)
 
     }
 

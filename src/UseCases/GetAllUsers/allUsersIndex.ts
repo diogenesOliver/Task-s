@@ -1,5 +1,10 @@
-import { AllUsers } from "./AllUsers";
+import { container } from "tsyringe";
 
-const gettingAllUserUseCase = new AllUsers
+import { AllUsersController } from "./AllUsers";
+import { GetAllUsersUseCase } from "./AllUsersUseCase";
 
-export { gettingAllUserUseCase }
+const allUsersController = new AllUsersController(
+    container.resolve(GetAllUsersUseCase)
+)
+
+export { allUsersController }
