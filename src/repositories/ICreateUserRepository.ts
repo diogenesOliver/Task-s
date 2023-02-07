@@ -7,3 +7,7 @@ export interface ICreateUserRepository{
 export interface IGetAllUsersRepository{
     getAllUsers(): any
 }
+
+export interface IAuthUser{
+    findUserEmailByAuthenticaation(userEmail: string): any
+}
