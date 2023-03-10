@@ -1,6 +1,6 @@
 import { container } from "tsyringe";
 
-import { ICreateUserRepository, IGetAllUsersRepository } from "../../repositories/ICreateUserRepository";
+import { ICreateUserRepository, IGetAllUsersRepository, IAuthUser } from "../../repositories/ICreateUserRepository";
 import {
     ICreateTaskRepository,
     IGetAllTaskRepository,
@@ -14,6 +14,7 @@ import { GetAllTasksRepository } from "../../repositories/implementations/GetAll
 import { UpdateTaskRepository } from "../../repositories/implementations/UpdateTaskRepository"
 import { RemoveTaskRepository } from "../../repositories/implementations/RemoveTaskRepository";
 import { AllUsersRepository } from '../../repositories/implementations/GetAllUsersRepository'
+import { UserAuthenticationRepository } from '../../repositories/implementations/UserAuthenticationRepository'
 
 container.registerSingleton<ICreateUserRepository>(
     "CreateUserRepository",
@@ -43,4 +44,9 @@ container.registerSingleton<IRemoveTaskRepository>(
 container.registerSingleton<IGetAllUsersRepository>(
     "AllUsersRepository",
     AllUsersRepository
+)
+
+container.registerSingleton<IAuthUser>(
+    "UserAuthenticationRepository",
+    UserAuthenticationRepository
 )
