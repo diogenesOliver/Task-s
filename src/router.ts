@@ -12,7 +12,7 @@ import { completedTaksUseCase } from './UseCases/CompletedTasks/completedTasksIn
 import { incompleteTasksUseCase } from './UseCases/IncompleteTasks/incompleteTasksIndex'
 
 import { createUserController } from './UseCases/CreateUser/userIndex'
-import { authenticateUserUseCase } from './UseCases/AuthenticateUser/authUserIndex'
+import { userAuthenticateInstance } from './UseCases/AuthenticateUser/authUserIndex'
 import { allUsersController } from './UseCases/GetAllUsers/allUsersIndex'
 
 import { renderPageUseCase } from './UseCases/RenderPage/renderPageIndex'
@@ -43,12 +43,15 @@ router.post('/auth', createUserValidate.dataValidations(), handleValidation.vali
 router.get('/users', (req: Request, res: Response) => {
     return allUsersController.handle(req, res)
 })
+router.post('/login', (req: Request, res: Response) => {
+    return userAuthenticateInstance.handle(req, res)
+})
 router.patch('/update-status/:id', changeStatusTaskUseCase.changingStatusTask)
 router.get('/task-completed', completedTaksUseCase.gettingAllTasksCompleted)
 router.get('/task-uncompleted', incompleteTasksUseCase.gettingAllUncompletedTasks)
 router.get('/completed-tasks', renderPageUseCase.renderPageCompletedTasks)
 router.get('/sign-up', renderPageUseCase.renderSignUpPage)
 router.get('/login', renderPageUseCase.renderLoginPage)
-router.post('/login', authenticateUserUseCase.authenticateUser)
+//router.post('/login', authenticateUserUseCase.authenticateUser)
 
 export default router
