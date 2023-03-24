@@ -2,6 +2,8 @@ import { Request, Response } from 'express'
 import { CreateUserUseCase } from './CreateUserUseCase';
 
 import * as bcrypt from 'bcrypt';
+import { UserEntitie } from '../../entities/User';
+import { IUserModel } from '../../model/User';
 
 export class CreateUserController {
 
@@ -11,16 +13,19 @@ export class CreateUserController {
 
     async handle(req: Request, res: Response) {
 
-        const userData = req.body
+        const { email, password } = req.body
 
-        await bcrypt.hash(
-            userData.password,
-            await bcrypt.genSalt(10)
-        )
+        const salt = await bcrypt.genSalt(14)
+        const cryptPassword = await bcrypt.hash(password, salt) 
 
-        await this.createUserUseCase.execute(userData)
+        const testCrypt = await this.createUserUseCase.execute({
+            email: email,
+            password: cryptPassword
+        })
+
+        console.log(testCrypt)
+
         res.redirect('/api/home')
-
     }
 
 }
