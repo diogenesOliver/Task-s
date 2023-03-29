@@ -10,5 +10,5 @@ export interface IGetAllUsersRepository{
 }
 
 export interface IAuthUser{
-    findUserEmailByAuthenticaation(userEmail: string): Promise<IUserModel>
+    findUserEmailByAuthenticaation(userEmail: string): Promise<any>
 }
