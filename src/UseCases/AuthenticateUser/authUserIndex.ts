@@ -1,5 +1,10 @@
+import { container } from "tsyringe";
+
 import { AuthenticateUser } from "./AuthenticateUser";
+import { UserAuthenticationUseCase } from "./AuthenticateUserUseCase";
 
-const authenticateUserUseCase = new AuthenticateUser()
+const userAuthenticateInstance = new AuthenticateUser(
+    container.resolve(UserAuthenticationUseCase)
+)
 
-export { authenticateUserUseCase }
+export { userAuthenticateInstance }
