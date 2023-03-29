@@ -1,30 +1,27 @@
 import { Request, Response } from 'express'
-import { UserModel } from "../../model/User";
+import { UserAuthenticationUseCase } from './AuthenticateUserUseCase'
 
 import * as bcrypt from 'bcrypt'
 
-import Logger from '../../../config/logger'
-
-interface IPasswordInterface{
-
-    password: string | undefined
-
-}
-
 export class AuthenticateUser {
 
-    async authenticateUser(req: Request, res: Response) {
+    constructor(
+        private authUser: UserAuthenticationUseCase
+    ) { }
+
+    async handle(req: Request, res: Response) {
 
         const { email, password } = req.body
 
-        const user = await UserModel.findOne({ email }).select('+password')
-        const verifyPassword = bcrypt.compareSync(password, user.password)
+        const findUserEmail = await this.authUser.execute(email)
+        if (findUserEmail == null)
+            return res.status(404).send({ msg: 'As senhas senha ou email incorreto' })
 
-        console.log(verifyPassword)
+        const verifyPassword = bcrypt.compareSync(password, findUserEmail.password)
+        if (verifyPassword == false)
+            return res.status(404).send({ msg: 'As senhas senha ou email incorreto' })
 
-        if (!user)
-            return res.status(404).send({ error: 'User não encontrado!' })
-
+        return res.status(200).redirect('/api/home')
     }
 
 }
