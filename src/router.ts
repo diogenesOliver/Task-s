@@ -20,10 +20,11 @@ import { renderPageUseCase } from './UseCases/RenderPage/renderPageIndex'
 import { handleValidation } from './middlewares/HandleValidation/handleValidationIndex'
 import { createTaskValidate } from './middlewares/TaskValidation/taskValidationIndex'
 import { createUserValidate } from './middlewares/UserValidation/userValidationIndex'
+import { jsonWebTokeMiddleware } from './middlewares/JWTAuthorization/JWTHandleMiddleware'
 
 const router = Router()
 
-router.get('/home', renderPageUseCase.renderHomePage)
+router.get('/home/:id', jsonWebTokeMiddleware.verifyJWT, renderPageUseCase.renderHomePage)
 router.post('/create', createTaskValidate.dataValidations(), handleValidation.validate, (req: Request, res: Response) => {
     return createTaskController.handle(req, res)
 })
