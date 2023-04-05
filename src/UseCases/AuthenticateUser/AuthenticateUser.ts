@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { UserAuthenticationUseCase } from './AuthenticateUserUseCase'
 
 import * as bcrypt from 'bcrypt'
+import { sign, verify } from 'jsonwebtoken'
 
 export class AuthenticateUser {
 
@@ -21,7 +22,11 @@ export class AuthenticateUser {
         if (verifyPassword == false)
             return res.status(404).send({ msg: 'As senhas senha ou email incorreto' })
 
-        return res.status(200).redirect('/api/home')
+        const TOKEN = sign({ unserInfo: findUserEmail }, process.env.SECRET as string, { expiresIn: 300 })
+        
+        console.log(res.set('x-access-token', TOKEN))
+        res.status(200).redirect(`/api/home/${findUserEmail.id}`)
+
     }
 
 }

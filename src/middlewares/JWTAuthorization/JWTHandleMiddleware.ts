@@ -6,7 +6,9 @@ class JsonWebTokenHandleMiddleware {
     verifyJWT(req: Request, res: Response, next: NextFunction) {
         const authHeader = req.headers['x-access-token'] as string
         const token = authHeader && authHeader.split(" ")[1]
-        
+
+        console.log(authHeader, token)
+
         /* const SECRET_KEY = process.env.SECRET as string
 
         verify(authHeader, SECRET_KEY, (err: any, decode: any) => {
@@ -20,15 +22,8 @@ class JsonWebTokenHandleMiddleware {
         if (!token)
             return res.status(401).json({ msg: "Acesso negado!" })
 
-        try {
-            const SECRET = process.env.SECRET
-            verify(token, SECRET as string)
-            next()
-        } catch (err) {
-            res.status(401).json({
-                msg: 'TOKEN invalid'
-            })
-        }
+        verify(token, process.env.SECRET as string)
+        next()
     }
 
 }
