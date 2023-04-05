@@ -23,8 +23,8 @@ export class AuthenticateUser {
             return res.status(404).send({ msg: 'As senhas senha ou email incorreto' })
 
         const TOKEN = sign({ unserInfo: findUserEmail }, process.env.SECRET as string, { expiresIn: 300 })
-        
-        console.log(res.set('x-access-token', TOKEN))
+        console.log(TOKEN)
+
         res.status(200).redirect(`/api/home/${findUserEmail.id}`)
 
     }
