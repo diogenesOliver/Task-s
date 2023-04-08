@@ -29,8 +29,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.2",
     "morgan": "^1.10.0",
+    "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
+    "typeorm": "^0.3.13",
     "winston": "^3.8.2"
   },
   "devDependencies": {
