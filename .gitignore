@@ -13,3 +13,6 @@ src/public/sass/style.css.map
 tsconfig.json
 
 /readme-images
+
+database-postgres-apiPI
+database-postgres-tasks
