@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  postgres-databse-container-tasks:
+    image: postgres:alpine
+    ports:
+      - "5035:5050"
+    container_name: "postgres-databse-container-tasks"
+    restart: always
+    volumes:
+      - ./database-postgres-tasks:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: tasksusers
+      POSTGRES_PASSWORD: taskspassword
+
+volumes:
+  postgres-databse-container-tasks:
