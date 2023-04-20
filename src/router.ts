@@ -24,7 +24,7 @@ import { jsonWebTokeMiddleware } from './middlewares/JWTAuthorization/JWTHandleM
 
 const router = Router()
 
-router.get('/home/:id', jsonWebTokeMiddleware.verifyJWT, renderPageUseCase.renderHomePage)
+router.get('/home/:id', renderPageUseCase.renderHomePage)
 router.post('/create', createTaskValidate.dataValidations(), handleValidation.validate, (req: Request, res: Response) => {
     return createTaskController.handle(req, res)
 })
