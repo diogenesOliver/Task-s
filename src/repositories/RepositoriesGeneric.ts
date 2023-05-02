@@ -1,9 +1,13 @@
+import { PrismaClient } from "@prisma/client"
+
+export const PrimsClientInstance = new PrismaClient()
+
 export interface IFunctionSaveInDataBase<T>{
     save(data: T): Promise<T>
 }
 
 export interface IFuntionGetToDataBase<T>{
-    get(data: T): Promise<T>
+    get(): Promise<T>
 }
 
 export interface IFunctionUpdate<T>{
