@@ -1,10 +1,14 @@
 import { TaskEntitie } from "../../entities/Tasks";
 import { ICreateTaskRepository, IGetAllTaskRepository } from "../ICreateTaskRepository";
-import { TaskModel } from "../../model/Task";
+import { ITaskModel } from "../../model/Task";
 
-export class CreateTaskRepository implements ICreateTaskRepository{
-    save(task: TaskEntitie): TaskEntitie {
-        TaskModel.create(task)
-        return task
+import { IFunctionSaveInDataBase } from '../RepositoriesGeneric'
+import { PrismaClientInstance } from "../RepositoriesGeneric";
+
+export class CreateTaskRepository implements IFunctionSaveInDataBase<ITaskModel>{
+    async save(data: any): Promise<ITaskModel> {
+        return await PrismaClientInstance.task.create({
+            data: data
+        })
     }
 }

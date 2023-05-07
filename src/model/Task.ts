@@ -1,5 +1,12 @@
 import { model, Schema } from "mongoose";
 
+export interface ITaskModel {
+    title: string,
+    description: string,
+    difficulty: number,
+    status: boolean,
+}
+
 const taskSchema = new Schema(
 
     {

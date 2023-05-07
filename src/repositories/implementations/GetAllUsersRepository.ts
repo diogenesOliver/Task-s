@@ -1,9 +1,7 @@
-import { IGetAllUsersRepository } from "../ICreateUserRepository";
-import { PrismaClient } from "@prisma/client";
+import { IFuntionGetToDataBase, PrismaClientInstance } from '../RepositoriesGeneric'
 
-export class AllUsersRepository implements IGetAllUsersRepository{
-    getAllUsers(): Object{
-        const prismaClient = new PrismaClient()
-        return prismaClient.user.findMany()
+export class AllUsersRepository implements IFuntionGetToDataBase<Object>{
+    get(): Promise<Object> {
+        return PrismaClientInstance.user.findMany()
     }
 }
