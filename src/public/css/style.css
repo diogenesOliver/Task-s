@@ -1,0 +1,488 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Varela Round";
+  padding: 2rem;
+  text-align: center;
+}
+
+nav h2 {
+  font-size: 2.5rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 4rem;
+}
+
+.buttons button {
+  height: 2rem;
+  width: 5rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: #29ac6f;
+  color: #0d1117;
+  font-family: "Varela Round";
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #287a54;
+}
+
+/* Select filter */
+.container input {
+  height: 2rem;
+  width: 15rem;
+  background-color: #181b1f;
+  color: rgb(197, 197, 197);
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  padding: 0rem 1rem;
+  box-sizing: border-box;
+  font-family: "Varela Round";
+}
+
+.dropDown {
+  width: 15rem;
+  height: 6.7rem;
+  display: none;
+  background-color: #181b1f;
+  border-radius: 1rem;
+  margin-top: 0.8rem;
+  position: absolute;
+  z-index: 100;
+  color: white;
+  transform: translate(0px, -10px);
+  transition: 0.3s;
+}
+
+.listDropDown {
+  text-align: left;
+  padding: 5px 5px;
+  box-sizing: border-box;
+}
+
+.listDropDown .item {
+  height: 2rem;
+  transition: 0.3s;
+  border-radius: 1rem;
+  padding: 5.5px 7px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: #27292c;
+  padding-left: 12px;
+}
+
+.card-task {
+  height: 20rem;
+  width: 15rem;
+  border-radius: 1rem;
+  background: #e9e5e5;
+  font-family: "Varela Round";
+  transition: 0.3s;
+  animation: card-animation 0.5s;
+}
+
+.card-task:hover {
+  transform: translateY(-1rem);
+}
+
+@keyframes card-animation {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 110px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+.tasks-style-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.top-card {
+  width: 100%;
+  height: 5rem;
+  background-color: #29ac6f;
+  border-radius: 1rem;
+}
+
+.informations {
+  color: #414141;
+}
+
+.informations h3,
+h4,
+p {
+  margin: 1rem;
+  line-height: 1.5rem;
+}
+
+.informations p:nth-child(3) {
+  width: 50%;
+  background-color: rgba(255, 0, 0, 0.4862745098);
+  color: #e9e5e5;
+  border-radius: 1rem;
+  padding-inline: 0.5rem;
+}
+
+.card-task button {
+  background-color: #29ac6f;
+  font-family: "Varela Round";
+  width: 90%;
+  height: 2rem;
+  margin: 5%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card-task button:hover {
+  background-color: #287a54;
+}
+
+/* Task completed  - SCSS */
+.top-card.task-completed {
+  height: 100%;
+  transition: 0.5s;
+}
+
+.informations-card.display-none-by-task-completed {
+  display: none;
+}
+
+/* Modal wrapper */
+.modal-wrapper {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+/* Modal */
+.modal-add {
+  height: 32rem;
+  width: 35rem;
+  background-color: #15151d;
+  margin-left: 39.5%;
+  margin-top: -10rem;
+  border-radius: 0.5rem;
+  margin-inline: auto;
+  margin-top: 10%;
+  animation: modal-animation 0.4s;
+  display: none;
+}
+
+.top-modal {
+  width: 100%;
+  height: 5rem;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  border-bottom: 2px solid #135335;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15rem;
+}
+
+.top-modal h3 {
+  color: #29ac6f;
+  font-family: "Varela Round";
+}
+
+#closeModal svg {
+  height: 1.7rem;
+  cursor: pointer;
+}
+
+::placeholder {
+  font-family: "Varela Round";
+}
+
+form input, textarea {
+  background-color: rgba(33, 33, 44, 0.8352941176);
+  color: rgb(197, 197, 197);
+}
+
+textarea {
+  border-radius: 1rem;
+  max-width: 83%;
+  min-width: 83%;
+  max-height: 10rem;
+  min-height: 10rem;
+  padding: 0.5rem;
+  resize: none;
+}
+
+.modal-add form input,
+textarea {
+  border: none;
+}
+
+textarea:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+form button:nth-child(4),
+#cancelButton {
+  font-family: "Varela Round";
+  width: 9rem;
+  height: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0.5rem;
+}
+
+form button:nth-child(4) {
+  background-color: #29ac6f;
+  color: white;
+  margin-top: 20.1rem;
+  margin-left: 20rem;
+  border: none;
+  position: absolute;
+}
+
+form button:hover {
+  background-color: #287a54;
+}
+
+#cancelButton {
+  background-color: transparent;
+  margin-top: 2.5rem;
+  margin-left: 13rem;
+  border: #29ac6f 1.5px solid;
+  color: #29ac6f;
+}
+
+#cancelButton:hover {
+  background-color: #29ac6f;
+  color: white;
+}
+
+@keyframes modal-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.div-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.login-page-informations {
+  animation: informations-login-animation 0.4s;
+}
+
+.login-page-informations h1,
+.login-page-informations p {
+  color: #e9e5e5;
+  font-family: "Varela Round";
+}
+
+.login-page-informations h1 span {
+  color: #29ac6f;
+}
+
+.login-page-informations h1 {
+  font-size: 2rem;
+  line-height: 3.5rem;
+  margin-bottom: 2rem;
+}
+
+.login-page-informations p {
+  margin: 0rem;
+  line-height: 1.7rem;
+}
+
+/* Form login */
+.login,
+.sign-up {
+  display: block;
+  height: 30rem;
+  width: 23rem;
+  background-color: #e9e5e5;
+  border-radius: 0.8rem;
+  animation: form-login-animation 0.4s;
+  text-align: left;
+}
+
+.login form input,
+.sign-up form input {
+  background-color: white;
+}
+
+@keyframes form-login-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes informations-login-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.top-form-login {
+  width: 100%;
+  height: 5rem;
+  background-color: #29ac6f;
+  border-radius: 0.8rem;
+}
+
+.login h3,
+.sign-up h3 {
+  font-family: "Varela Round";
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+  gap: 1rem;
+}
+
+form input,
+.login button,
+.sign-up button {
+  border: none;
+  width: 80%;
+  height: 2.3rem;
+  border-radius: 0.8rem;
+  padding-inline: 1rem;
+}
+
+form input:focus {
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+form label {
+  font-family: "Varela Round";
+  margin-left: -14rem;
+  color: grey;
+}
+
+form label:nth-child(1) {
+  margin-left: -11.5rem;
+}
+
+::placeholder {
+  color: gray;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.redirect-login {
+  margin-top: 2rem;
+  margin-left: 7rem;
+}
+
+.redirect-login small,
+.redirect-login a {
+  font-family: "Varela Round";
+}
+
+.redirect-login small {
+  color: gray;
+}
+
+.redirect-login a {
+  color: #29ac6f;
+}
+
+button,
+#getStarted {
+  background-color: #29ac6f;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login button:hover,
+.sign-up button:hover,
+#getStarted:hover {
+  background-color: #287a54;
+}
+
+#getStarted {
+  border-radius: 0.5rem;
+  border: none;
+  width: 45%;
+  height: 2rem;
+  margin-top: 2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0d1117;
+  color: #29ac6f;
+}
+
+.wrapper {
+  width: min(70rem, 100%);
+  margin-inline: auto;
+  padding-inline: 2.4rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  .buttons {
+    display: none;
+  }
+  .tasks-style-card {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
