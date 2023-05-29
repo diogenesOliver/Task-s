@@ -7,6 +7,8 @@ api-auth.http
 
 /.gitpod.yml
 
+src/public/css/
+
 src/public/sass/style.css
 src/public/sass/style.css.map
 
