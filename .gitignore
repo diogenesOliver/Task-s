@@ -16,5 +16,3 @@ tsconfig.json
 
 database-postgres-apiPI
 database-postgres-tasks
-
-/prisma/migrations
