@@ -4,7 +4,7 @@ services:
   postgres-databse-container-tasks:
     image: postgres:alpine
     ports:
-      - "5438:5432"
+      - "5439:5432"
     container_name: "postgres-databse-container-tasks"
     restart: always
     volumes:
