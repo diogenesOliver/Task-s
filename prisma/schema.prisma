@@ -21,7 +21,7 @@ model Task {
   title       String
   description String
   difficulty  Int
-  status      Boolean
+  status      Boolean @default(false)
   author      User     @relation(fields: [authorId], references: [id])
   authorId    Int
   createdAt   DateTime @default(now())
