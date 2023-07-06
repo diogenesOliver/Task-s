@@ -55,4 +55,20 @@ router.get('/sign-up', renderPageUseCase.renderSignUpPage)
 router.get('/login', renderPageUseCase.renderLoginPage)
 //router.post('/login', authenticateUserUseCase.authenticateUser)
 
+import { createUserInstance } from "./CreateUserFeature/createUserInstance"
+import { createTaskInstance } from "./CreateTaskFeature/createTaskInstance"
+import { getUserInstance } from "./GetUsersFeature/getUsersInstance"
+
+router.get('/all/users', (req: Request, res: Response) => {
+    return getUserInstance.getUserController(req, res)
+})
+
+router.post('/register', (req: Request, res: Response) => {
+    return createUserInstance.createUserController(req, res)
+})
+
+router.post('/create/task', (req: Request, res: Response) => {
+    return createTaskInstance.createTaskController(req, res)
+})
+
 export default router
