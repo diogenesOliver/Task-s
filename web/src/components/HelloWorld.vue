@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
+    <h1 class="gradient">{{ msg }}</h1>
     <h3>
       Task-s! is an easy and intuitive tool <br>
       sou you can have control over all you duties
@@ -21,8 +21,17 @@ defineProps<{
 h1 {
   font-weight: 500;
   font-size: 2.6rem;
-  position: relative;
   top: -10px;
+  
+  position: relative;
+}
+
+.gradient{
+  background-image: linear-gradient(to bottom, rgb(132, 59, 181), rgba(253,29,29,1), rgba(252,176,69,1));
+  background-clip: text;
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  color: black;
 }
 
 h3 {
