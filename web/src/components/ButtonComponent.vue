@@ -17,10 +17,6 @@ button {
     background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253,29,29,1) 65%, rgba(252,176,69,1) 100%);
     color: white;
 
-    height: 2rem;
-    width: 10rem;
-
-    margin-top: 1rem;
     border-radius: .5rem;
     transition: .3s;
 }

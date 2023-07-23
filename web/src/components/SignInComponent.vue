@@ -16,7 +16,14 @@ import ButtonComponent from './ButtonComponent.vue';
             </div>
         </form>
 
-        <ButtonComponent msg="Sign-in" class="sign-in" />
+        <ButtonComponent msg="Continue" class="sign-in-button" />
+        <small>Or Sign In Using</small>
+        <button class="login-with-google">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
+            Login with Google
+        </button>
+
+        <a href="">Already a member?</a>
 
     </div>
 </template>
@@ -24,7 +31,7 @@ import ButtonComponent from './ButtonComponent.vue';
 <style>
 .sign-in {
     height: 30rem;
-    width: 25rem;
+    width: 30rem;
 
     border-radius: .5rem;
 }
@@ -35,7 +42,7 @@ import ButtonComponent from './ButtonComponent.vue';
     font-weight: 400;
     width: 100%;
 
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 
     line-height: inherit;
 
@@ -62,5 +69,39 @@ import ButtonComponent from './ButtonComponent.vue';
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.sign-in-button, .login-with-google {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+
+    height: 2.5rem;
+    width: 100%;
+}
+
+.login-with-google{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    gap: 1rem;
+
+    margin-top: 1rem;
+
+    align-items: center;
+
+    border-radius: .5rem;
+    border: none;
+
+    cursor: pointer;
+}
+
+.login-with-google img{
+    height: 1.5rem;
+}
+
+small {
+    margin-left: 12rem;
+    margin-top: 3rem;
 }
 </style>
