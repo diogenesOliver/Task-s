@@ -21,11 +21,7 @@ button {
     width: 10rem;
 
     margin-top: 1rem;
-    border-radius: .2rem;
-    transition: .3s;
-}
-
-button:hover{
     border-radius: .5rem;
+    transition: .3s;
 }
 </style>
