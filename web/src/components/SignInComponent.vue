@@ -23,7 +23,9 @@ import ButtonComponent from './ButtonComponent.vue';
             Login with Google
         </button>
 
-        <a href="">Already a member?</a>
+        <a href="" class="link">Already a member?</a>
+        <br>
+        <a href="" class="link forgot">Forgot your password?</a>
 
     </div>
 </template>
@@ -103,5 +105,13 @@ import ButtonComponent from './ButtonComponent.vue';
 small {
     margin-left: 12rem;
     margin-top: 3rem;
+}
+
+.link{
+    color: #EBEBEBA3;
+}
+
+.link:hover{
+    background-color: transparent;
 }
 </style>
