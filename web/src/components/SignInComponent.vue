@@ -23,7 +23,7 @@ import ButtonComponent from './ButtonComponent.vue';
             Login with Google
         </button>
 
-        <a href="" class="link">Already a member?</a>
+        <a href="/login" class="link">Already a member?</a>
         <br>
         <a href="" class="link forgot">Forgot your password?</a>
 
