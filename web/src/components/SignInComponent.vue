@@ -10,6 +10,7 @@ import ButtonComponent from './ButtonComponent.vue';
         <form>
             <input type="text" class="form-input" placeholder="Name">
             <input type="email" class="form-input" placeholder="Email">
+
             <div class="passwords">
                 <input type="password" class="form-input" placeholder="Password">
                 <input type="password" class="form-input" placeholder="Confirm Password">
@@ -57,6 +58,10 @@ import ButtonComponent from './ButtonComponent.vue';
     color: white;
 
     transition: all 0.2s ease-in-out;
+}
+
+.form-input:focus {
+    outline: none;
 }
 
 .passwords input {
