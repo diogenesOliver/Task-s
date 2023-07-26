@@ -23,9 +23,9 @@ import ButtonComponent from './ButtonComponent.vue';
             Login with Google
         </button>
 
-        <a href="/login" class="link">Already a member?</a>
-        <br>
-        <a href="" class="link forgot">Forgot your password?</a>
+        <router-link to="/login" class="login-buttons">
+            <a class="link">Already a member?</a>
+        </router-link>
 
     </div>
 </template>
@@ -73,7 +73,8 @@ import ButtonComponent from './ButtonComponent.vue';
     justify-content: space-between;
 }
 
-.sign-in-button, .login-with-google {
+.sign-in-button,
+.login-with-google {
     margin-top: 2rem;
     margin-bottom: 1rem;
 
@@ -81,7 +82,7 @@ import ButtonComponent from './ButtonComponent.vue';
     width: 100%;
 }
 
-.login-with-google{
+.login-with-google {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -98,7 +99,7 @@ import ButtonComponent from './ButtonComponent.vue';
     cursor: pointer;
 }
 
-.login-with-google img{
+.login-with-google img {
     height: 1.5rem;
 }
 
@@ -107,11 +108,11 @@ small {
     margin-top: 3rem;
 }
 
-.link{
+.link {
     color: #EBEBEBA3;
 }
 
-.link:hover{
+.login-buttons:hover {
     background-color: transparent;
 }
 </style>

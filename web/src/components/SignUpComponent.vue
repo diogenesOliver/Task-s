@@ -20,7 +20,9 @@ import ButtonComponent from './ButtonComponent.vue';
       Login with Google
     </button>
 
-    <a href="" class="link forgot">Forgot your password?</a>
+    <router-link to="/sign-in" class="link">
+      <a class="link">Create a user</a>
+    </router-link>
   </div>
 </template>
 
@@ -107,6 +109,6 @@ small {
 }
 
 .link:hover {
-  background-color: transparent;
+  background: transparent;
 }
 </style>
