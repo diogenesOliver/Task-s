@@ -10,6 +10,9 @@ api-auth.http
 src/public/sass/style.css
 src/public/sass/style.css.map
 
+tsconfig.json
+
+database-postgres-apiPI
 database-postgres-tasks
 
 prisma/migrations
