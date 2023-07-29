@@ -21,7 +21,7 @@ import ButtonComponent from './ButtonComponent.vue';
     </button>
 
     <router-link to="/sign-in" class="link">
-      <a class="link">Create a user</a>
+      <p>Not a member? <a class="link">Create a user</a> </p>
     </router-link>
   </div>
 </template>
