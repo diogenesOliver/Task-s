@@ -21,7 +21,7 @@ import ButtonComponent from './ButtonComponent.vue';
         <small>Or Sign In Using</small>
         <button class="login-with-google">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
-            Login with Google
+            Sign in with Google
         </button>
 
         <router-link to="/login" class="login-buttons">
