@@ -8,12 +8,14 @@ export class GetUserController {
 
     async getUserController(req: Request, res: Response) {
         try {
-            const allUsers = await this.getUserService.get()
-            res.status(200).send(allUsers)
+            const userID = Number(req.params.id)
+
+            const user = await this.getUserService.get(userID)
+            res.status(200).send(user)
 
             return {
                 statusCode: 200,
-                body: allUsers
+                body: user
             }
         }catch(e){ console.log(e) }
     }

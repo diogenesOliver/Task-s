@@ -59,7 +59,7 @@ import { createUserInstance } from "./CreateUserFeature/createUserInstance"
 import { createTaskInstance } from "./CreateTaskFeature/createTaskInstance"
 import { getUserInstance } from "./GetUsersFeature/getUsersInstance"
 
-router.get('/all/users', (req: Request, res: Response) => {
+router.get('/all/users/:id', (req: Request, res: Response) => {
     return getUserInstance.getUserController(req, res)
 })
 

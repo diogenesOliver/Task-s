@@ -1,14 +1,12 @@
 import { User } from "@prisma/client";
 import { IGetFunctionGeneric, PrismaClientInstance } from "./GenericsInterfaces/GenericRepository"
 
-export class GetUserService implements IGetFunctionGeneric<User[]>{
-    async get(): Promise<User[]> {
-        const users: User[] = await PrismaClientInstance.user.findMany({
-            include:{
-                Task: true
+export class GetUserService implements IGetFunctionGeneric<any>{
+    async get(params: number): Promise<any> {
+        return await PrismaClientInstance.user.findUnique({
+            where: {
+                id: params
             }
         })
-    
-        return users
     }
 }

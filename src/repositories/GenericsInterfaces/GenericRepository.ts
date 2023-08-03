@@ -7,5 +7,5 @@ export interface ISaveFunctionGeneric<T>{
 }
 
 export interface IGetFunctionGeneric<T>{
-    get(): Promise<T>
+    get(params: any): Promise<T>
 }
