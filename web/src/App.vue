@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld msg="Task-s" />
-    </div>
-  </header>
-
   <RouterView />
 </template>
 

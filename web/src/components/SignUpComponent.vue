@@ -29,7 +29,7 @@ import ButtonComponent from './ButtonComponent.vue';
 <style>
 .login {
   height: 30rem;
-  width: 30rem;
+  width: 40rem;
 
   border-radius: .5rem;
 }
@@ -99,8 +99,8 @@ import ButtonComponent from './ButtonComponent.vue';
   height: 1.5rem;
 }
 
-small {
-  margin-left: 12rem;
+.login small {
+  margin-left: 17rem;
   margin-top: 3rem;
 }
 
