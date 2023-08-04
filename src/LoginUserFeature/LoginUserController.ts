@@ -13,7 +13,7 @@ export class UserLoginController {
             const findEmail = await this.userLoginService.findData(inputData.email)
 
             if (findEmail == null || inputData.password != findEmail.password)
-                res.status(404).json({ msg: "ERROR on password or Email" })
+                res.status(404).json({ msg: "ERROR on password Or Email" })
 
             res.status(404).send(findEmail)
             
