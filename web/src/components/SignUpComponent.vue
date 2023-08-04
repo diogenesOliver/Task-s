@@ -14,14 +14,14 @@ import ButtonComponent from './ButtonComponent.vue';
     </form>
 
     <ButtonComponent msg="Login" class="login-button" />
-    <small>Or Sign In Using</small>
+    <small>Or Login In Using</small>
     <button class="login-with-google">
       <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
       Login with Google
     </button>
 
     <router-link to="/sign-in" class="link">
-      <a class="link">Create a user</a>
+      <p>Not a member? <a class="link">Create a user</a> </p>
     </router-link>
   </div>
 </template>
@@ -29,7 +29,7 @@ import ButtonComponent from './ButtonComponent.vue';
 <style>
 .login {
   height: 30rem;
-  width: 30rem;
+  width: 40rem;
 
   border-radius: .5rem;
 }
@@ -99,8 +99,8 @@ import ButtonComponent from './ButtonComponent.vue';
   height: 1.5rem;
 }
 
-small {
-  margin-left: 12rem;
+.login small {
+  margin-left: 17rem;
   margin-top: 3rem;
 }
 
