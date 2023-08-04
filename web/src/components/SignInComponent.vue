@@ -21,7 +21,7 @@ import ButtonComponent from './ButtonComponent.vue';
         <small>Or Sign In Using</small>
         <button class="login-with-google">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
-            Login with Google
+            Sign in with Google
         </button>
 
         <router-link to="/login" class="login-buttons">
@@ -34,7 +34,7 @@ import ButtonComponent from './ButtonComponent.vue';
 <style>
 .sign-in {
     height: 30rem;
-    width: 30rem;
+    width: 40rem;
 
     border-radius: .5rem;
 }
@@ -108,8 +108,8 @@ import ButtonComponent from './ButtonComponent.vue';
     height: 1.5rem;
 }
 
-small {
-    margin-left: 12rem;
+.sign-in small {
+    margin-left: 17rem;
     margin-top: 3rem;
 }
 
