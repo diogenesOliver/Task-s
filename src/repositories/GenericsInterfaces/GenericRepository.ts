@@ -9,3 +9,7 @@ export interface ISaveFunctionGeneric<T>{
 export interface IGetFunctionGeneric<T>{
     get(params: any): Promise<T>
 }
+
+export interface IFindData<T>{
+    findData(data: T): Promise<T>
+}
