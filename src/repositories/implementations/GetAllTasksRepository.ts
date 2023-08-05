@@ -1,8 +1,7 @@
-import { TaskModel } from "../../model/Task";
-import { IGetAllTaskRepository } from "../ICreateTaskRepository";
+import { IFuntionGetToDataBase, PrismaClientInstance } from '../RepositoriesGeneric'
 
-export class GetAllTasksRepository implements IGetAllTaskRepository{
-    getAllTasks(): any {
-        return TaskModel.find()
+export class GetAllTasksRepository implements IFuntionGetToDataBase<Object>{
+    get(): Promise<Object> {
+        return PrismaClientInstance.task.findMany()
     }
 }

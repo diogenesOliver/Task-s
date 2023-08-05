@@ -1,15 +1,25 @@
 import { IRemoveTaskRepository } from "../ICreateTaskRepository";
 import { TaskModel } from "../../model/Task";
 
-export class RemoveTaskRepository implements IRemoveTaskRepository {
+import { IFuntionRemove, PrismaClientInstance } from '../RepositoriesGeneric'
 
-    async findTaskById(id: string): Promise<any> {
-        await TaskModel.findById(id)
+export class RemoveTaskRepository implements IFuntionRemove<number> {
+
+    async findId(id: number): Promise<number> {
+        await PrismaClientInstance.task.findUnique({
+            where: {
+                id: id
+            }
+        })
         return id
     }
 
-    async deleteTask(id: string): Promise<void> {
-        await TaskModel.deleteOne({ id: id })
+    async delete(id: number): Promise<number> {
+        await PrismaClientInstance.task.delete({
+            where: {
+                id: id
+            }
+        })
+        return id
     }
-
 }

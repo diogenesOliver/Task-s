@@ -1,12 +1,11 @@
-import { UserEntitie } from "../../entities/User";
-import { ICreateUserRepository } from "../ICreateUserRepository";
-import { IUserModel, User } from "../../model/User";
+import { IUserModel } from "../../model/User";
+import { IFunctionSaveInDataBase } from '../RepositoriesGeneric'
+import { PrismaClientInstance } from "../RepositoriesGeneric";
 
-export class CreateUserRepository implements ICreateUserRepository{
-
+export class CreateUserRepository implements IFunctionSaveInDataBase<IUserModel>{
     async save(user: IUserModel): Promise<IUserModel> {
-        await User.create(user)
-        return user
-    }
-
+        return await PrismaClientInstance.user.create({
+            data: user
+        })
+    }    
 }

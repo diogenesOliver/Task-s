@@ -24,7 +24,7 @@ import { jsonWebTokeMiddleware } from './middlewares/JWTAuthorization/JWTHandleM
 
 const router = Router()
 
-router.get('/home/:id', jsonWebTokeMiddleware.verifyJWT, renderPageUseCase.renderHomePage)
+router.get('/home/:id', renderPageUseCase.renderHomePage)
 router.post('/create', createTaskValidate.dataValidations(), handleValidation.validate, (req: Request, res: Response) => {
     return createTaskController.handle(req, res)
 })
@@ -54,5 +54,26 @@ router.get('/completed-tasks', renderPageUseCase.renderPageCompletedTasks)
 router.get('/sign-up', renderPageUseCase.renderSignUpPage)
 router.get('/login', renderPageUseCase.renderLoginPage)
 //router.post('/login', authenticateUserUseCase.authenticateUser)
+
+import { createUserInstance } from "./CreateUserFeature/createUserInstance"
+import { createTaskInstance } from "./CreateTaskFeature/createTaskInstance"
+import { getUserInstance } from "./GetUsersFeature/getUsersInstance"
+import { userLoginInstance } from './LoginUserFeature/loginUserInstance'
+
+router.get('/all/users/:id', (req: Request, res: Response) => {
+    return getUserInstance.getUserController(req, res)
+})
+
+router.post('/register', (req: Request, res: Response) => {
+    return createUserInstance.createUserController(req, res)
+})
+
+router.post('/create/task', (req: Request, res: Response) => {
+    return createTaskInstance.createTaskController(req, res)
+})
+
+router.post('/user/sign-up', (req: Request, res: Response) => {
+    return userLoginInstance.virifyEmailInDatabase(req, res)
+})
 
 export default router
