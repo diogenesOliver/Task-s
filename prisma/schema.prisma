@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
+  id               Int      @id @default(autoincrement())
+  name             String
+  email            String   @unique
+  password         String
   confirm_password String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Task      Task[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  Task             Task[]
 }
 
 model Task {
@@ -22,7 +23,7 @@ model Task {
   title       String
   description String
   difficulty  Int
-  status      Boolean @default(false)
+  status      Boolean  @default(false)
   author      User     @relation(fields: [authorId], references: [id])
   authorId    Int
   createdAt   DateTime @default(now())
