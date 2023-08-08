@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "studio": "npx prisma studio",
     "test": "jest"
   },
   "repository": {
