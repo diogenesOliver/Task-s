@@ -1,23 +1,19 @@
-<script setup lang="ts">
-import ButtonComponent from './ButtonComponent.vue';
-</script>
-
 <template>
     <h1>Sign-in on plataform</h1>
     <p>The first step to improving your productivity and <br> having better control of your activities</p>
 
     <div class="sign-in">
         <form>
-            <input type="text" class="form-input" placeholder="Name">
-            <input type="email" class="form-input" placeholder="Email">
+            <input type="text" class="form-input" placeholder="Name" v-model="userData.name">
+            <input type="email" class="form-input" placeholder="Email" v-model="userData.email">
 
             <div class="passwords">
-                <input type="password" class="form-input" placeholder="Password">
-                <input type="password" class="form-input" placeholder="Confirm Password">
+                <input type="password" class="form-input" placeholder="Password" v-model="userData.password">
+                <input type="password" class="form-input" placeholder="Confirm Password" v-model="userData.confirm_password">
             </div>
         </form>
 
-        <ButtonComponent msg="Continue" class="sign-in-button" />
+        <button class="sign-in-button" @click.prevent="createUser()">Continue</button>
         <small>Or Sign In Using</small>
         <button class="login-with-google">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
@@ -30,6 +26,34 @@ import ButtonComponent from './ButtonComponent.vue';
 
     </div>
 </template>
+
+<script lang="ts">
+import axios from 'axios'
+
+export default{
+    name: "Register",
+    data(){
+        return{
+            userData: {
+                name: "",
+                email: "",
+                password: "",
+                confirm_password: ""
+            }
+        }
+    },
+    methods: {
+        async createUser(){
+            try{
+                await axios.post("http://localhost:8080/api/register", this.userData).then(res => {
+                    const responseOfData = res.status
+                    console.log(responseOfData)
+                })
+            }catch(e){ console.log(e) }
+        } 
+    }
+}
+</script>
 
 <style>
 .sign-in {
@@ -119,5 +143,17 @@ import ButtonComponent from './ButtonComponent.vue';
 
 .login-buttons:hover {
     background-color: transparent;
+}
+
+.sign-in-button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253,29,29,1) 65%, rgba(252,176,69,1) 100%);
+    color: white;
+
+    border-radius: .5rem;
+    transition: .3s;
 }
 </style>
