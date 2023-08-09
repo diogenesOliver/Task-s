@@ -15,7 +15,7 @@ export class CreateUserController {
 
             await this.createUserService.save(userData)
 
-            res.status(200).send('Success to create user')
+            res.status(200).send(userData)
         } catch (e) { console.log(e) }
     }
 }

@@ -15,8 +15,7 @@ export class UserLoginController {
             if (findEmail == null || inputData.password != findEmail.password)
                 res.status(404).json({ msg: "ERROR on password Or Email" })
 
-            res.status(404).send(findEmail)
-            
+            res.status(200).send(findEmail)
         } catch (e: any) { console.log(e) }
     }
 }
