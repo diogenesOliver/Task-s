@@ -46,8 +46,7 @@ export default{
         async createUser(){
             try{
                 await axios.post("http://localhost:8080/api/register", this.userData).then(res => {
-                    const responseOfData = res.status
-                    console.log(responseOfData)
+                    this.$router.push(`/user/task-s/${res.data.name}`)
                 })
             }catch(e){ console.log(e) }
         } 
