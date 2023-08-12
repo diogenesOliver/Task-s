@@ -39,7 +39,8 @@ export default{
     async userLogin(){
       try{
         await axios.post("http://localhost:8080/api/user/sign-up", this.userData).then(res => {
-          this.$router.push(`/user/task-s/${res.data.id}`)
+          const getFirstName = res.data.name.split(" ")[0]
+          this.$router.push(`/user/task-s?name=${getFirstName}&id=${res.data.id}`)
         })
       }catch(e){ console.log(e) }
     }
