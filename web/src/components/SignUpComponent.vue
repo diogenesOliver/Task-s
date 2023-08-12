@@ -39,7 +39,7 @@ export default{
     async userLogin(){
       try{
         await axios.post("http://localhost:8080/api/user/sign-up", this.userData).then(res => {
-          console.log(res.data)
+          this.$router.push(`/user/task-s/${res.data.id}`)
         })
       }catch(e){ console.log(e) }
     }
