@@ -1,15 +1,32 @@
 <template>
     <div class="main">
         <nav>
-            <h1>Task-s</h1>
+            <div class="right-nav">
+                <h1>Task-s</h1>
+                <ul>
+                    <li>Feature</li>
+                    <li>About</li>
+                    <li>Resources</li>
+                </ul>
+            </div>
 
             <ul>
-                <li>Feature</li>
-                <li>About</li>
                 <li><a href="/login">Login</a></li>
-                <li><a href="/sign-in" class="get-started">Get started</a></li>
+                <li><a href="/sign-in" class="get-started">Sign in</a></li>
             </ul>
         </nav>
+
+        <div class="main-div">
+            <div class="informations">
+                <h1>Create, share and <br> control all your tasks</h1>
+                <p>Take control of all your tasks and <br>
+                    improve your day-to-day performance with better organization
+                </p>
+
+                <button class="get-started-button">Get started</button>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -30,7 +47,7 @@ nav {
 }
 
 nav {
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     gap: 25rem;
@@ -38,7 +55,7 @@ nav {
     height: 3rem;
 }
 
-h1{
+nav h1 {
     font-size: 2rem;
 
     -webkit-background-clip: text;
@@ -47,6 +64,12 @@ h1{
     background-image: linear-gradient(to bottom, rgb(132, 59, 181), rgba(253, 29, 29, 1), rgba(252, 176, 69, 1));
     background-clip: text;
     color: black;
+}
+
+.right-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 ul {
@@ -58,14 +81,19 @@ ul li {
     cursor: pointer;
 }
 
-li:nth-child(4) {
-    height: 1.8rem;
-    width: 8rem;
+.get-started-button {
+    height: 2.3rem;
+    width: 13rem;
+
     border-radius: 5px;
+    border: none;
 
     text-align: center;
     color: white;
     background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253, 29, 29, 1) 65%, rgba(252, 176, 69, 1) 100%);
+
+    border-radius: 2rem;
+    cursor: pointer;
 }
 
 li a {
@@ -78,5 +106,32 @@ li a:hover {
 
 .get-started {
     color: white;
+}
+
+.main-div {
+    width: 100%;
+    margin-top: 10rem;
+
+    text-align: center;
+}
+
+.informations{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    align-items: center;
+
+    height: 13rem;
+}
+
+.informations h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+.informations p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 </style>
