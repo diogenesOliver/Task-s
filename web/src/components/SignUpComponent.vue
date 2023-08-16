@@ -5,8 +5,8 @@
 
   <div class="login">
     <form>
-      <input type="email" class="form-input" placeholder="Email" v-model="userData.email">
-      <input type="password" class="form-input" placeholder="Password" v-model="userData.password">
+      <input type="email" class="form-input" placeholder="Email" id="inpuEmail" v-model="userData.email">
+      <input type="password" class="form-input" placeholder="Password" id="inputPassword" v-model="userData.password">
     </form>
 
     <button class="login-button" @click.prevent="userLogin()">Login</button>
@@ -25,29 +25,34 @@
 <script lang="ts">
 import axios from 'axios'
 
-export default{
+export default {
   name: "Login",
-  data(){
-    return{
-      userData: {
-        email: "",
-        password: ""
-      }
-    }
+  data() {
+    return { userData: { email: "", password: "" } }
   },
   methods: {
-    async userLogin(){
-      try{
+    async userLogin() {
+      try {
         await axios.post("http://localhost:8080/api/user/sign-up", this.userData).then(res => {
-          const getFirstName = res.data.name.split(" ")[0]
-          this.$router.push(`/user/task-s?name=${getFirstName}&id=${res.data.id}`)
+          const getFirstName: string[] = res.data.name.split(" ")[0]
 
-          axios.get(`http://localhost:8080/api/all/users/${res.data.id}`).then(res => {
-            console.log(res.data)
-          })
+          this.$router.push(`/user/task-s?name=${getFirstName}&id=${res.data.id}`)
+          this.getUserData(res.data.id)
 
         })
-      }catch(e){ console.log(e) }
+      } catch (e) {
+        const inputEmail = document.getElementById("inpuEmail") as HTMLElement
+        const inpuPassword = document.getElementById("inputPassword") as HTMLElement
+        const color: string = "#930000"
+
+        inputEmail.style.borderColor = color
+        inpuPassword.style.borderColor = color
+      }
+    },
+    async getUserData(userId: number) {
+      axios.get(`http://localhost:8080/api/all/users/${userId}`).then(res => {
+        console.log(res.data)
+      })
     }
   }
 }
@@ -123,15 +128,15 @@ export default{
 }
 
 .login-button {
-    outline: none;
-    border: none;
-    cursor: pointer;
+  outline: none;
+  border: none;
+  cursor: pointer;
 
-    background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253,29,29,1) 65%, rgba(252,176,69,1) 100%);
-    color: white;
+  background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253, 29, 29, 1) 65%, rgba(252, 176, 69, 1) 100%);
+  color: white;
 
-    border-radius: .5rem;
-    transition: .3s;
+  border-radius: .5rem;
+  transition: .3s;
 }
 
 .login-with-google img {
