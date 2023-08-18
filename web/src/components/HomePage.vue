@@ -10,10 +10,15 @@
                 </ul>
             </div>
 
-            <ul>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/sign-in" class="get-started">Sign in</a></li>
-            </ul>
+            <div class="buttons-to-logs">
+                <router-link to="/Login" class="link">
+                    <button class="button-from-login">Login</button>
+                </router-link>
+
+                <router-link to="/sign-in" class="link">
+                    <button class="button-from-signin">Sign In</button>
+                </router-link>
+            </div>
         </nav>
 
         <div class="main-div">
@@ -22,8 +27,9 @@
                 <p>Take control of all your tasks and <br>
                     improve your day-to-day performance with better organization
                 </p>
-
-                <button class="get-started-button">Get started</button>
+                <router-link to="/sign-in" class="link">
+                    <button class="get-started-button">Get started</button>
+                </router-link>
             </div>
         </div>
 
@@ -66,7 +72,7 @@ nav h1 {
     color: black;
 }
 
-.right-nav{
+.right-nav {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -81,19 +87,39 @@ ul li {
     cursor: pointer;
 }
 
-.get-started-button {
-    height: 2.3rem;
-    width: 13rem;
+.buttons-to-logs{
+    display: flex;
+    gap: 2rem;
+}
 
-    border-radius: 5px;
-    border: none;
-
+.button-from-login,
+.button-from-signin,
+.get-started-button{
     text-align: center;
     color: white;
     background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253, 29, 29, 1) 65%, rgba(252, 176, 69, 1) 100%);
+    
+    border-radius: .3rem;
+    border: none;
 
-    border-radius: 2rem;
     cursor: pointer;
+}
+
+.get-started-button {
+    height: 2.3rem;
+    width: 13rem;
+}
+
+.button-from-login,
+.button-from-signin{
+    height: 2rem;
+    width: 8rem;
+}
+
+.button-from-login{
+    background: transparent;
+    color: #EBEBEBA3;
+    border: none;
 }
 
 li a {
@@ -110,12 +136,12 @@ li a:hover {
 
 .main-div {
     width: 100%;
-    margin-top: 10rem;
+    margin-top: 15rem;
 
     text-align: center;
 }
 
-.informations{
+.informations {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
