@@ -22,17 +22,17 @@
 
                 <div class="task-input">
                     <form>
-                        <input type="email" class="form-input" placeholder="Title">
-                        <input type="email" class="form-input" placeholder="Description">
+                        <input type="email" class="form-input" placeholder="Title" v-model="tasksInfo.title">
+                        <input type="email" class="form-input" placeholder="Description" v-model="tasksInfo.description">
                         <div class="forms">
-                            <input type="email" class="form-input" placeholder="Difficulty">
+                            <input type="number" class="form-input" placeholder="Difficulty" v-model="tasksInfo.difficulty">
                             <input type="email" class="form-input" placeholder="Difficulty">
                         </div>
                     </form>
                 </div>
 
                 <div class="buttons">
-                    <button class="create-task">Create</button>
+                    <button class="create-task" @click="createTask()">Create</button>
                     <button class="cancel-task" @click="closeModal()">Cancel</button>
                 </div>
             </div>
@@ -62,6 +62,12 @@ export default {
                 password: "",
                 confirm_password: "",
                 Task: [],
+            },
+            tasksInfo: {
+                title: "",
+                description: "",
+                difficulty: "",
+                authorId: parseInt(this.$route.params.id as string)
             }
         }
     },
@@ -75,6 +81,11 @@ export default {
                     var taskCounter = document.getElementById('taskCounter') as HTMLElement
                     taskCounter.style.display = 'none'
                 }
+            })
+        },
+        async createTask(){
+            await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
+                console.log(res.data)
             })
         },
         async openModal() {
