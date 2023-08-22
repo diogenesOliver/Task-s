@@ -10,6 +10,13 @@ export class CreateUserController {
     async createUserController(req: Request, res: Response) {
         try {
             const userData: User = req.body
+
+            const userDataArray: string[] = [userData.name, userData.email, userData.password, userData.confirm_password]
+            for(let data of userDataArray){
+                if(data == '')
+                    return res.status(404).send('ERROR')
+            }
+
             if(userData.password != userData.confirm_password)
                 return res.status(404).send('Passwor not match')
 
