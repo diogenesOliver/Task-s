@@ -6,7 +6,7 @@
   <div class="login">
     <form>
       <input type="email" class="form-input" placeholder="Email" id="inpuEmail" v-model="userData.email">
-      <input type="password" class="form-input" placeholder="Password" id="inputPassword" v-model="userData.password">
+      <input type="password" class="form-input" placeholder="Password" id="inputPassword" @keyup.enter="userLogin()" v-model="userData.password">
     </form>
 
     <button class="login-button" @click.prevent="userLogin()">Login</button>

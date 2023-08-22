@@ -9,8 +9,7 @@
 
             <div class="passwords">
                 <input type="password" class="form-input" id="inputPassword" placeholder="Password" v-model="userData.password">
-                <input type="password" class="form-input" id="inputConfirmPassword" placeholder="Confirm Password"
-                    v-model="userData.confirm_password">
+                <input type="password" class="form-input" id="inputConfirmPassword" placeholder="Confirm Password" @keyup.enter="createUser()" v-model="userData.confirm_password">
             </div>
         </form>
 

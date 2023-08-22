@@ -22,10 +22,10 @@
 
                 <div class="task-input">
                     <form>
-                        <input type="email" class="form-input" placeholder="Title" v-model="tasksInfo.title">
-                        <input type="email" class="form-input" placeholder="Description" v-model="tasksInfo.description">
+                        <input type="email" class="form-input" id="taskTitle" placeholder="Title" v-model="tasksInfo.title">
+                        <input type="email" class="form-input" id="taskDescription" placeholder="Description" v-model="tasksInfo.description">
                         <div class="forms">
-                            <input type="number" class="form-input" placeholder="Difficulty" v-model="tasksInfo.difficulty">
+                            <input type="number" class="form-input" id="taskDifficulty" placeholder="Difficulty" v-model="tasksInfo.difficulty">
                             <input type="email" class="form-input" placeholder="Difficulty">
                         </div>
                     </form>
@@ -83,10 +83,21 @@ export default {
                 }
             })
         },
-        async createTask(){
-            await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
-                console.log(res.data)
-            })
+        async createTask() {
+            try {
+                await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
+                    console.log(res.data)
+                })
+            } catch (e) {
+                const taskTitle = document.getElementById('taskTitle') as HTMLElement
+                const taskDescription = document.getElementById('taskDescription') as HTMLElement
+                const taskDifficulty = document.getElementById('taskDifficulty') as HTMLElement
+
+                const inputs: HTMLElement[] = [taskTitle, taskDescription, taskDifficulty]
+                for(let input of inputs){
+                    input.style.borderColor = '#930000'
+                }
+            }
         },
         async openModal() {
             const modalDiv = document.getElementById('modalWrapper') as HTMLElement
