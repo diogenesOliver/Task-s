@@ -4,12 +4,13 @@
 
     <div class="sign-in">
         <form>
-            <input type="text" class="form-input" placeholder="Name" v-model="userData.name">
-            <input type="email" class="form-input" placeholder="Email" v-model="userData.email">
+            <input type="text" class="form-input" id="inputName" placeholder="Name" v-model="userData.name">
+            <input type="email" class="form-input" id="inputEmail" placeholder="Email" v-model="userData.email">
 
             <div class="passwords">
-                <input type="password" class="form-input" placeholder="Password" v-model="userData.password">
-                <input type="password" class="form-input" placeholder="Confirm Password" v-model="userData.confirm_password">
+                <input type="password" class="form-input" id="inputPassword" placeholder="Password" v-model="userData.password">
+                <input type="password" class="form-input" id="inputConfirmPassword" placeholder="Confirm Password"
+                    v-model="userData.confirm_password">
             </div>
         </form>
 
@@ -30,10 +31,10 @@
 <script lang="ts">
 import axios from 'axios'
 
-export default{
+export default {
     name: "Register",
-    data(){
-        return{
+    data() {
+        return {
             userData: {
                 name: "",
                 email: "",
@@ -43,13 +44,25 @@ export default{
         }
     },
     methods: {
-        async createUser(){
-            try{
+        async createUser() {
+            try {
                 await axios.post("http://localhost:8080/api/register", this.userData).then(res => {
                     this.$router.push(`/user/task-s/${res.data.id}`)
                 })
-            }catch(e){ console.log(e) }
-        } 
+            } catch (e) {
+                const inputName = document.getElementById("inputName") as HTMLElement
+                const inputEmail = document.getElementById("inputEmail") as HTMLElement
+                const inputPassword = document.getElementById("inputPassword") as HTMLElement
+                const inputConfirmPassword = document.getElementById("inputConfirmPassword") as HTMLElement
+                
+                const color: string = "#930000"
+                let inputs: Array<HTMLElement> = [inputName, inputEmail, inputPassword, inputConfirmPassword]
+
+                for(let input of inputs){
+                    input.style.borderColor = color
+                }
+            }
+        }
     }
 }
 </script>
@@ -144,12 +157,12 @@ export default{
     background-color: transparent;
 }
 
-.sign-in-button{
+.sign-in-button {
     outline: none;
     border: none;
     cursor: pointer;
 
-    background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253,29,29,1) 65%, rgba(252,176,69,1) 100%);
+    background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253, 29, 29, 1) 65%, rgba(252, 176, 69, 1) 100%);
     color: white;
 
     border-radius: .5rem;

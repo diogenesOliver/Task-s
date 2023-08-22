@@ -43,10 +43,13 @@ export default {
       } catch (e) {
         const inputEmail = document.getElementById("inpuEmail") as HTMLElement
         const inpuPassword = document.getElementById("inputPassword") as HTMLElement
+        
         const color: string = "#930000"
+        let inputs: Array<HTMLElement> = [inputEmail, inpuPassword]
 
-        inputEmail.style.borderColor = color
-        inpuPassword.style.borderColor = color
+        for(let input of inputs){
+          input.style.borderColor = color
+        }
       }
     },
     async getUserData(userId: number) {
