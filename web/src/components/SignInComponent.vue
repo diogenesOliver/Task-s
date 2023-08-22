@@ -47,7 +47,8 @@ export default {
         async createUser() {
             try {
                 await axios.post("http://localhost:8080/api/register", this.userData).then(res => {
-                    this.$router.push(`/user/task-s/${res.data.id}`)
+                    const getFirstName: string[] = res.data.name.split(" ")[0].toLowerCase()
+                    this.$router.push(`/task-s/${getFirstName}/${res.data.id}`)
                 })
             } catch (e) {
                 const inputName = document.getElementById("inputName") as HTMLElement

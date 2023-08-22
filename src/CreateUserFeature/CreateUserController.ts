@@ -20,9 +20,8 @@ export class CreateUserController {
             if(userData.password != userData.confirm_password)
                 return res.status(404).send('Passwor not match')
 
-            await this.createUserService.save(userData)
-
-            res.status(200).send(userData)
+            const createUserExec =  await this.createUserService.save(userData)
+            return res.status(200).send(createUserExec)
         } catch (e) { console.log(e) }
     }
 }

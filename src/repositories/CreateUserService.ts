@@ -9,6 +9,11 @@ export class CreateUserService implements ISaveFunctionGeneric<User>{
                 Task: true
             }
         })
-        return data
+
+        return await PrismaClientInstance.user.findUnique({
+            where: {
+                email: data.email
+            }
+        }) as User
     }
 }
