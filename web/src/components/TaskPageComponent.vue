@@ -22,11 +22,30 @@
 
                 <div class="task-input">
                     <form>
-                        <input type="email" class="form-input" id="taskTitle" placeholder="Title" v-model="tasksInfo.title">
-                        <input type="email" class="form-input" id="taskDescription" placeholder="Description" v-model="tasksInfo.description">
+                        <div class="form-control">
+                            <label for="title">Title</label>
+                            <input name="title" type="text" class="form-input" id="taskTitle" placeholder="Title"
+                                v-model="tasksInfo.title">
+                        </div>
+
+                        <div class="form-control">
+                            <label for="desc">Description</label>
+                            <input name="desc" type="text" class="form-input" id="taskDescription" placeholder="Description"
+                                v-model="tasksInfo.description">
+                        </div>
+
                         <div class="forms">
-                            <input type="number" class="form-input" id="taskDifficulty" placeholder="Difficulty" v-model="tasksInfo.difficulty">
-                            <input type="email" class="form-input" placeholder="Difficulty">
+                            <div class="form-control">
+                                <label for="diff">Difficulty</label>
+                                <input name="diff" type="number" class="form-input" id="taskDifficulty"
+                                    placeholder="Difficulty" v-model="tasksInfo.difficulty">
+                            </div>
+
+                            <div class="form-control">
+                                <label for="something">Something</label>
+                                <input name="something" type="email" class="form-input" placeholder="Difficulty">
+                            </div>
+
                         </div>
                     </form>
                 </div>
@@ -94,7 +113,7 @@ export default {
                 const taskDifficulty = document.getElementById('taskDifficulty') as HTMLElement
 
                 const inputs: HTMLElement[] = [taskTitle, taskDescription, taskDifficulty]
-                for(let input of inputs){
+                for (let input of inputs) {
                     input.style.borderColor = '#930000'
                 }
             }
@@ -152,7 +171,7 @@ h1 {
     color: white;
     background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253, 29, 29, 1) 65%, rgba(252, 176, 69, 1) 100%);
 
-    border-radius: .5rem;
+    border-radius: .3rem;
     border: none;
 
     cursor: pointer;
@@ -178,8 +197,8 @@ h1 {
     border-radius: .2rem;
     padding-inline: 2rem;
 
-    width: 50rem;
-    height: 29rem;
+    width: 35rem;
+    height: 34rem;
 
     margin-inline: auto;
     margin-top: 10%;
@@ -217,7 +236,25 @@ h1 {
 .icon-close-modal,
 .task-input,
 .buttons {
-    width: 95%;
+    width: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+
+}
+
+.task-input form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
 }
 
 .icon-close-modal {
@@ -231,6 +268,23 @@ h1 {
 svg {
     cursor: pointer;
     height: 2.3rem;
+}
+
+.form-control label {
+    position: absolute;
+}
+
+.cancel-task {
+    color: #ebebeb6c;
+}
+
+.cancel-task,
+.form-control input {
+    border-color: #ebebeb6c;
+}
+
+.form-control input {
+    margin-top: 1.8rem;
 }
 
 .task-inpput {
