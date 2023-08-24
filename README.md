@@ -1,5 +1,21 @@
-<h1> Wip: Documentation </h1>
+<h1> Task-s </h1>
 
-<h3>Sign-in page</h3>
+<h3>About</h3>
 
-<img src='./readme-images/sign-in tasks.png' style='height: 340px'>
+<p>
+    Task-s is a daily task management tool. Here you can have total control over all the tasks you have to carry out during your day, your week or even your month, in a simple, easy and fast way.
+</p>
+
+<h3>Tools</h3>
+
+- NodeJs
+- VueJs
+- Typescript
+- Docker
+- PostgreSQL
+- Pipelines CI/CD
+
+<h3>Implemented features</h3>
+
+- ✅ Change to a relational database
+- ✅ Change project UI to VueJs framework
