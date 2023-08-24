@@ -19,3 +19,7 @@
 
 - ✅ Change to a relational database
 - ✅ Change project UI to VueJs framework
+
+<h3>Project images</h3>
+
+<image src="./readme-images/homePage.png"/>
