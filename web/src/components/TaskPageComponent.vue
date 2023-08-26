@@ -4,7 +4,7 @@
 
             <div class="infoir">
                 <h3>Welcome, {{ userInfo.name }}!</h3>
-                <h1> You have {{ tasksInfo.taskLength }} pending tasks!</h1>
+                <h1> You have {{ tasksDetails.taskLength }} pending tasks!</h1>
             </div>
             <button class="new-task" @click.prevent="openModal()">New Task</button>
 
@@ -90,7 +90,8 @@ export default {
                 description: "",
                 difficulty: "",
                 authorId: parseInt(this.$route.params.id as string),
-
+            },
+            tasksDetails: {
                 taskLength: 0
             }
         }
@@ -105,7 +106,7 @@ export default {
                     var taskCounter = document.getElementById('taskCounter') as HTMLElement
                     taskCounter.style.display = 'none'
 
-                    return this.tasksInfo.taskLength = this.userInfo.Task.length
+                    return this.tasksDetails.taskLength = this.userInfo.Task.length
                 }
             })
         },
