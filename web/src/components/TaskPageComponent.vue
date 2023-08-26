@@ -3,8 +3,8 @@
         <div class="nav-div">
 
             <div class="infoir">
-                <h3>Welcome to the Task-s, {{ userInfo.name }}!</h3>
-                <h1> Pending tasks: {{ tasksInfo.taskLength }}</h1>
+                <h3>Welcome, {{ userInfo.name }}!</h3>
+                <h1> You have {{ tasksInfo.taskLength }} pending tasks!</h1>
             </div>
             <button class="new-task" @click.prevent="openModal()">New Task</button>
 
