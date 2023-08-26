@@ -1,10 +1,13 @@
 <template>
     <div class="wrapper">
         <div class="nav-div">
+
             <div class="infoir">
-                <h1>Welcome to the Task-s, {{ userInfo.name }}!</h1>
+                <h3>Welcome to the Task-s, {{ userInfo.name }}!</h3>
+                <h1> Pending tasks: {{ tasksInfo.taskLength }}</h1>
             </div>
             <button class="new-task" @click.prevent="openModal()">New Task</button>
+
         </div>
 
         <div class="modal-wrapper" id="modalWrapper">
@@ -86,7 +89,9 @@ export default {
                 title: "",
                 description: "",
                 difficulty: "",
-                authorId: parseInt(this.$route.params.id as string)
+                authorId: parseInt(this.$route.params.id as string),
+
+                taskLength: 0
             }
         }
     },
@@ -99,6 +104,8 @@ export default {
                 if (this.userInfo.Task.length > 0) {
                     var taskCounter = document.getElementById('taskCounter') as HTMLElement
                     taskCounter.style.display = 'none'
+
+                    return this.tasksInfo.taskLength = this.userInfo.Task.length
                 }
             })
         },
@@ -148,12 +155,19 @@ export default {
 .nav-div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+
+    gap: 30rem;
 
     align-items: center;
 
+    height: 10rem;
+
     width: 100%;
     margin-top: .5rem;
+    
+    background: linear-gradient(#181818, #252525, rgb(34, 34, 34));
+    border-radius: 0rem 0rem 1rem 1rem;
 }
 
 h1 {
