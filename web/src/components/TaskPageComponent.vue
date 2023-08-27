@@ -65,7 +65,10 @@
         </div>
 
         <div class="tasks-card">
-            <p>{{ userInfo.Task }}</p>
+            <div v-for="task in userInfo.Task" class="cards">
+                <h2>{{ task.title }}</h2>
+                <p>{{ task.description }}</p>
+            </div>
         </div>
 
     </div>
@@ -115,6 +118,7 @@ export default {
                 await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
                     console.log(res.data)
                 })
+                window.location.reload()
             } catch (e) {
                 const taskTitle = document.getElementById('taskTitle') as HTMLElement
                 const taskDescription = document.getElementById('taskDescription') as HTMLElement
@@ -166,7 +170,7 @@ export default {
 
     width: 100%;
     margin-top: .5rem;
-    
+
     background: linear-gradient(#181818, #252525, rgb(34, 34, 34));
     border-radius: 0rem 0rem 1rem 1rem;
 }
@@ -328,5 +332,27 @@ svg {
 .cancel-task {
     background: transparent;
     border: 1px solid grey;
+}
+
+.tasks-card {
+    display: flex;
+    flex-direction: row;
+
+    gap: 2rem;
+
+    margin-top: 3.5rem;
+}
+
+.cards {
+    gap: 1rem;
+
+    padding: .3rem;
+
+    height: 13rem;
+    width: 20rem;
+
+    background-color: #252525;
+
+    border-radius: .5rem;
 }
 </style>
