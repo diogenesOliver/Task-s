@@ -16,3 +16,4 @@ database-postgres-apiPI
 database-postgres-tasks
 
 prisma/migrations
+coverage
