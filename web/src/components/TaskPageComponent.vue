@@ -6,7 +6,10 @@
                 <h3>Welcome, {{ userInfo.name }}!</h3>
                 <h1> You have {{ tasksDetails.taskLength }} pending tasks!</h1>
             </div>
-            <button class="new-task" @click.prevent="openModal()">New Task</button>
+            <button class="new-task" @click.prevent="openModal()">
+                <h2>+</h2>
+                New Task
+            </button>
 
         </div>
 
@@ -160,7 +163,7 @@ export default {
 .nav-div {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 
     gap: 30rem;
 
@@ -170,9 +173,6 @@ export default {
 
     width: 100%;
     margin-top: .5rem;
-
-    background: linear-gradient(#181818, #252525, rgb(34, 34, 34));
-    border-radius: 0rem 0rem 1rem 1rem;
 }
 
 h1 {
@@ -182,18 +182,25 @@ h1 {
 .new-task,
 .create-task,
 .cancel-task {
-    height: 2.3rem;
-    width: 8rem;
-
+    height: 3rem;
+    width: 10rem;
 
     text-align: center;
     color: white;
-    background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253, 29, 29, 1) 65%, rgba(252, 176, 69, 1) 100%);
+    background: #8257E5;
 
     border-radius: .3rem;
     border: none;
 
     cursor: pointer;
+}
+
+.new-task{
+    padding-inline: 2rem;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .msg-from-0-tasks {

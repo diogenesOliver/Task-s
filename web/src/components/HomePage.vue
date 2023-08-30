@@ -63,13 +63,8 @@ nav {
 
 nav h1 {
     font-size: 2rem;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    background-image: linear-gradient(to bottom, rgb(132, 59, 181), rgba(253, 29, 29, 1), rgba(252, 176, 69, 1));
+    color: #8257E5;
     background-clip: text;
-    color: black;
 }
 
 .right-nav {
@@ -97,7 +92,7 @@ ul li {
 .get-started-button{
     text-align: center;
     color: white;
-    background: linear-gradient(90deg, hsl(276, 51%, 47%) 0%, rgba(253, 29, 29, 1) 65%, rgba(252, 176, 69, 1) 100%);
+    background: #8257E5;
     
     border-radius: .3rem;
     border: none;
