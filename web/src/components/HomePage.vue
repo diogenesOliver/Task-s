@@ -100,6 +100,17 @@ ul li {
     cursor: pointer;
 }
 
+.button-from-signin{
+    background-color: transparent;
+    border: solid 1px #8257E5;
+
+    transition: .3s;
+}
+
+.button-from-signin:hover{
+    background-color: #8257E5;
+}
+
 .get-started-button {
     height: 2.3rem;
     width: 13rem;
@@ -107,13 +118,12 @@ ul li {
 
 .button-from-login,
 .button-from-signin{
-    height: 2rem;
+    height: 2.5rem;
     width: 8rem;
 }
 
 .button-from-login{
     background: transparent;
-    color: #EBEBEBA3;
     border: none;
 }
 
