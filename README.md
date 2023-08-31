@@ -22,4 +22,4 @@
 
 <h3>Project images</h3>
 
-<image src="./readme-images/homePage.png"/>
+<image src="./readme-images/new_homepage.png"/>
