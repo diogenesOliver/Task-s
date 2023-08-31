@@ -6,6 +6,11 @@ export class CreateTaskService implements ISaveFunctionGeneric<Task>{
         await PrismaClientInstance.task.create({
             data: data
         })
-        return data
+
+        return await PrismaClientInstance.task.findUnique({
+            where: {
+                title: data.title
+            }
+        }) as Task
     }
 }

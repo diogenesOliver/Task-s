@@ -20,7 +20,7 @@ model User {
 
 model Task {
   id          Int      @id @default(autoincrement())
-  title       String
+  title       String   @unique
   description String
   difficulty  Int
   status      Boolean  @default(false)

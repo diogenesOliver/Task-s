@@ -10,9 +10,9 @@ export class CreateTaskController {
     async createTaskController(req: Request, res: Response) {
         try {
             const taskData: Task = req.body
-            this.createTaskService.save(taskData)
+            const execCreateTask = await this.createTaskService.save(taskData)
 
-            res.status(200).send('Success to create task')
+            return res.status(200).send(execCreateTask)
         } catch (e) { console.log(e) }
     }
 }

@@ -195,7 +195,7 @@ h1 {
     cursor: pointer;
 }
 
-.new-task{
+.new-task {
     padding-inline: 2rem;
 
     display: flex;
@@ -352,14 +352,12 @@ svg {
 
 .cards {
     gap: 1rem;
-
     padding: .3rem;
 
     height: 13rem;
-    width: 20rem;
+    width: 22rem;
 
     background-color: #252525;
-
     border-radius: .5rem;
 }
 </style>
