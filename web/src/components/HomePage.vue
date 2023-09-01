@@ -114,6 +114,12 @@ ul li {
 .get-started-button {
     height: 2.3rem;
     width: 13rem;
+
+    transition: .3s;
+}
+
+.get-started-button:hover{
+    background-color: #5d34bd;
 }
 
 .button-from-login,
