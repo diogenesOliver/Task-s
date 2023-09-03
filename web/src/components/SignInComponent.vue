@@ -88,7 +88,7 @@ export default {
     padding: 0.75rem 1.25rem;
 
     border-radius: .5rem;
-    border: 1px solid #fff;
+    border: 1px solid #ebebeb6c;
     background: transparent;
 
     color: white;
