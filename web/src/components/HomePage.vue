@@ -12,7 +12,10 @@
 
             <div class="buttons-to-logs">
                 <router-link to="/Login" class="link">
-                    <button class="button-from-login">Login</button>
+                    <button class="button-from-login">
+                        <img src="../assets/do-utilizador.png" alt="">
+                        Login
+                    </button>
                 </router-link>
 
                 <router-link to="/sign-in" class="link">
@@ -28,17 +31,16 @@
                     improve your day-to-day performance with better organization
                 </p>
                 <router-link to="/sign-in" class="link">
-                    <button class="get-started-button">Get started</button>
+                    <button class="get-started-button">
+                        Get started
+                        <img src="../assets/seta-para-a-direita.png">
+                    </button>
                 </router-link>
             </div>
         </div>
 
     </div>
 </template>
-
-<script>
-
-</script>
 
 <style>
 .main {
@@ -112,6 +114,14 @@ ul li {
 }
 
 .get-started-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding-inline: 3rem;
+
+    text-align: center;
+    
     height: 2.3rem;
     width: 13rem;
 
@@ -122,6 +132,10 @@ ul li {
     background-color: #5d34bd;
 }
 
+.get-started-button img{
+    height: 1rem;
+}
+
 .button-from-login,
 .button-from-signin{
     height: 2.5rem;
@@ -129,8 +143,18 @@ ul li {
 }
 
 .button-from-login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    padding-inline: 1.5rem;
+
     background: transparent;
     border: none;
+}
+
+.button-from-login img{
+    height: 1rem;
 }
 
 li a {

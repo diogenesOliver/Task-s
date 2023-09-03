@@ -7,7 +7,7 @@
                 <h1> You have {{ tasksDetails.taskLength }} pending tasks!</h1>
             </div>
             <button class="new-task" @click.prevent="openModal()">
-                <h2>+</h2>
+                <img src="../assets/mais.png">
                 New Task
             </button>
 
@@ -201,6 +201,10 @@ h1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.new-task img{
+    height: .9rem;
 }
 
 .msg-from-0-tasks {
