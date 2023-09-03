@@ -71,6 +71,7 @@
             <div v-for="task in userInfo.Task" class="cards">
                 <h2>{{ task.title }}</h2>
                 <p>{{ task.description }}</p>
+                <p>{{ task.difficulty }}</p>
             </div>
         </div>
 
@@ -89,7 +90,14 @@ export default {
                 email: "",
                 password: "",
                 confirm_password: "",
-                Task: [],
+                Task: [
+                    {
+                        title: "",
+                        description: "",
+                        difficulty: "",
+                        createdAt: ""
+                    }
+                ],
             },
             tasksInfo: {
                 title: "",
@@ -203,7 +211,7 @@ h1 {
     align-items: center;
 }
 
-.new-task img{
+.new-task img {
     height: .9rem;
 }
 
