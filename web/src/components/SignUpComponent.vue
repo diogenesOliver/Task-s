@@ -1,4 +1,8 @@
 <template>
+  <router-link to="/">
+    <img class="button-back" src="../assets/angulo-esquerdo.png"/>
+  </router-link>
+
   <h1>Login on plataform</h1>
   <p>Keep managing and organizing your tasks in the best possible way.<br> Enter the platform and see how your tasks are
     progressing</p>
@@ -6,7 +10,8 @@
   <div class="login">
     <form>
       <input type="email" class="form-input" placeholder="Email" id="inpuEmail" v-model="userData.email">
-      <input type="password" class="form-input" placeholder="Password" id="inputPassword" @keyup.enter="userLogin()" v-model="userData.password">
+      <input type="password" class="form-input" placeholder="Password" id="inputPassword" @keyup.enter="userLogin()"
+        v-model="userData.password">
     </form>
 
     <button class="login-button" @click.prevent="userLogin()">Login</button>
@@ -43,11 +48,11 @@ export default {
       } catch (e) {
         const inputEmail = document.getElementById("inpuEmail") as HTMLElement
         const inpuPassword = document.getElementById("inputPassword") as HTMLElement
-        
+
         const color: string = "#930000"
         let inputs: Array<HTMLElement> = [inputEmail, inpuPassword]
 
-        for(let input of inputs){
+        for (let input of inputs) {
           input.style.borderColor = color
         }
       }
@@ -157,5 +162,13 @@ export default {
 
 .link:hover {
   background: transparent;
+}
+
+.button-back{
+  height: 1.8rem;
+
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
 }
 </style>

@@ -1,4 +1,8 @@
 <template>
+    <router-link to="/">
+        <img class="button-back" src="../assets/angulo-esquerdo.png" />
+    </router-link>
+
     <h1>Sign-in on plataform</h1>
     <p>The first step to improving your productivity and <br> having better control of your activities</p>
 
@@ -8,8 +12,10 @@
             <input type="email" class="form-input" id="inputEmail" placeholder="Email" v-model="userData.email">
 
             <div class="passwords">
-                <input type="password" class="form-input" id="inputPassword" placeholder="Password" v-model="userData.password">
-                <input type="password" class="form-input" id="inputConfirmPassword" placeholder="Confirm Password" @keyup.enter="createUser()" v-model="userData.confirm_password">
+                <input type="password" class="form-input" id="inputPassword" placeholder="Password"
+                    v-model="userData.password">
+                <input type="password" class="form-input" id="inputConfirmPassword" placeholder="Confirm Password"
+                    @keyup.enter="createUser()" v-model="userData.confirm_password">
             </div>
         </form>
 
@@ -54,11 +60,11 @@ export default {
                 const inputEmail = document.getElementById("inputEmail") as HTMLElement
                 const inputPassword = document.getElementById("inputPassword") as HTMLElement
                 const inputConfirmPassword = document.getElementById("inputConfirmPassword") as HTMLElement
-                
+
                 const color: string = "#930000"
                 let inputs: Array<HTMLElement> = [inputName, inputEmail, inputPassword, inputConfirmPassword]
 
-                for(let input of inputs){
+                for (let input of inputs) {
                     input.style.borderColor = color
                 }
             }
@@ -167,5 +173,13 @@ export default {
 
     border-radius: .5rem;
     transition: .3s;
+}
+
+.button-back{
+  height: 1.8rem;
+
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
 }
 </style>
