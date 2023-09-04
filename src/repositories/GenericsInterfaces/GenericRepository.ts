@@ -13,3 +13,7 @@ export interface IGetFunctionGeneric<T>{
 export interface IFindData<T>{
     findData(data: T): Promise<T>
 }
+
+export interface IGetAll<T>{
+    returninAll(): Promise<T>
+}
