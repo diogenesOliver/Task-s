@@ -61,7 +61,7 @@ export default {
                 const inputPassword = document.getElementById("inputPassword") as HTMLElement
                 const inputConfirmPassword = document.getElementById("inputConfirmPassword") as HTMLElement
 
-                const color: string = "#930000"
+                const color: string = "#D34242"
                 let inputs: Array<HTMLElement> = [inputName, inputEmail, inputPassword, inputConfirmPassword]
 
                 for (let input of inputs) {

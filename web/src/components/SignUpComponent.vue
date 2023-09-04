@@ -1,6 +1,6 @@
 <template>
   <router-link to="/">
-    <img class="button-back" src="../assets/angulo-esquerdo.png"/>
+    <img class="button-back" src="../assets/angulo-esquerdo.png" />
   </router-link>
 
   <h1>Login on plataform</h1>
@@ -25,10 +25,21 @@
       <p>Not a member? <a class="link">Create a user</a> </p>
     </router-link>
   </div>
+
+  <div class="loader">
+    <div class="race-by" id="loader_race_by"></div>
+  </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios'
+import { RaceBy } from '@uiball/loaders'
+RaceBy({
+  size: 80,
+  lineWeight: 5,
+  speed: 1.4,
+  color: 'black'
+})
 
 export default {
   name: "Login",
@@ -38,6 +49,9 @@ export default {
   methods: {
     async userLogin() {
       try {
+        const loader = document.getElementById("loader_race_by") as HTMLElement
+        loader.style.display = "flex"
+
         await axios.post("http://localhost:8080/api/user/sign-up", this.userData).then(res => {
           const getFirstName: string[] = res.data.name.split(" ")[0].toLowerCase()
 
@@ -49,7 +63,7 @@ export default {
         const inputEmail = document.getElementById("inpuEmail") as HTMLElement
         const inpuPassword = document.getElementById("inputPassword") as HTMLElement
 
-        const color: string = "#930000"
+        const color: string = "#D34242"
         let inputs: Array<HTMLElement> = [inputEmail, inpuPassword]
 
         for (let input of inputs) {
@@ -164,11 +178,62 @@ export default {
   background: transparent;
 }
 
-.button-back{
+.button-back {
   height: 1.8rem;
 
   position: absolute;
   left: 2rem;
   top: 2rem;
+}
+
+.loader{
+  padding-inline: 16rem;
+  width: 100%;
+}
+
+.race-by {
+  --uib-size: 100px;
+  --uib-speed: 1.4s;
+  --uib-color: #8257E5;
+  --uib-line-weight: 5px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-line-weight);
+  width: var(--uib-size);
+  border-radius: calc(var(--uib-line-weight) / 2);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.race-by::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--uib-color);
+  opacity: 0.1;
+}
+
+.race-by::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--uib-line-weight) / 2);
+  animation: raceBy var(--uib-speed) ease-in-out infinite;
+  transform: translateX(-100%);
+  background-color: var(--uib-color);
+}
+
+@keyframes raceBy {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 </style>
