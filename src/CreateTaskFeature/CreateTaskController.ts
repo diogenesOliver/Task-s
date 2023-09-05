@@ -10,6 +10,15 @@ export class CreateTaskController {
     async createTaskController(req: Request, res: Response) {
         try {
             const taskData: Task = req.body
+            
+            type taskDataComponents = [string, string, number]
+            const taskDataArray: taskDataComponents = [taskData.title, taskData.description, taskData.difficulty]
+
+            for(let task of taskDataArray){
+                if(task == '')
+                    return res.status(404).send('ERROR')
+            }
+
             const execCreateTask = await this.createTaskService.save(taskData)
 
             return res.status(200).send(execCreateTask)
