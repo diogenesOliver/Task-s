@@ -209,6 +209,13 @@ h1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
+    transition: .3s;
+}
+
+.new-task:hover,
+.create-task:hover{
+    background-color: #5d34bd;
 }
 
 .new-task img {
@@ -346,6 +353,8 @@ svg {
 .cancel-task,
 .create-task {
     width: 10rem;
+
+    transition: .3s;
 }
 
 .cancel-task {
