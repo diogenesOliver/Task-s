@@ -76,7 +76,7 @@ nav h1 {
 }
 
 ul {
-    gap: 5rem;
+    gap: 3rem;
 }
 
 ul li {
@@ -100,13 +100,24 @@ ul li {
     border: none;
 
     cursor: pointer;
+    transition: .3s;
 }
 
 .button-from-signin{
     background-color: transparent;
     border: solid 1px #8257E5;
+}
 
+.right-nav ul li{
     transition: .3s;
+}
+
+.right-nav ul li:hover{
+    color: #8257e5c7;
+}
+
+.button-from-login:hover{
+    background-color: #8257e53d;
 }
 
 .button-from-signin:hover{
