@@ -24,10 +24,10 @@
     <router-link to="/sign-in" class="link">
       <p>Not a member? <a class="link">Create a user</a> </p>
     </router-link>
-  </div>
 
-  <div class="loader">
-    <div class="race-by" id="loader_race_by"></div>
+    <div class="loader">
+      <div class="race-by" id="loader_race_by"></div>
+    </div>
   </div>
 </template>
 
@@ -186,9 +186,11 @@ export default {
   top: 2rem;
 }
 
-.loader{
+.loader {
   padding-inline: 16rem;
   width: 100%;
+
+  margin-top: 3rem;
 }
 
 .race-by {
@@ -232,6 +234,7 @@ export default {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }

@@ -30,11 +30,22 @@
             <a class="link">Already a member?</a>
         </router-link>
 
+        <div class="loader">
+            <div class="race-by" id="loader_race_by"></div>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios'
+import { RaceBy } from '@uiball/loaders'
+RaceBy({
+    size: 80,
+    lineWeight: 5,
+    speed: 1.4,
+    color: 'black'
+})
+
 
 export default {
     name: "Register",
@@ -51,6 +62,9 @@ export default {
     methods: {
         async createUser() {
             try {
+                const loader = document.getElementById("loader_race_by") as HTMLElement
+                loader.style.display = "flex"
+
                 await axios.post("http://localhost:8080/api/register", this.userData).then(res => {
                     const getFirstName: string[] = res.data.name.split(" ")[0].toLowerCase()
                     this.$router.push(`/task-s/${getFirstName}/${res.data.id}`)
@@ -175,11 +189,58 @@ export default {
     transition: .3s;
 }
 
-.button-back{
-  height: 1.8rem;
+.button-back {
+    height: 1.8rem;
 
-  position: absolute;
-  left: 2rem;
-  top: 2rem;
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+}
+
+.race-by {
+    --uib-size: 100px;
+    --uib-speed: 1.4s;
+    --uib-color: #8257E5;
+    --uib-line-weight: 5px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: var(--uib-line-weight);
+    width: var(--uib-size);
+    border-radius: calc(var(--uib-line-weight) / 2);
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.race-by::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--uib-color);
+    opacity: 0.1;
+}
+
+.race-by::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: calc(var(--uib-line-weight) / 2);
+    animation: raceBy var(--uib-speed) ease-in-out infinite;
+    transform: translateX(-100%);
+    background-color: var(--uib-color);
+}
+
+@keyframes raceBy {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 </style>
