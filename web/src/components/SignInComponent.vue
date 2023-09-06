@@ -31,21 +31,22 @@
         </router-link>
 
         <div class="loader">
-            <div class="race-by" id="loader_race_by"></div>
+            <div class="dot-pulse" id="loader_race_by">
+        <div class="dot-pulse__dot"></div>
+      </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios'
-import { RaceBy } from '@uiball/loaders'
-RaceBy({
+import { DotPulse } from '@uiball/loaders'
+
+DotPulse({
     size: 80,
-    lineWeight: 5,
     speed: 1.4,
     color: 'black'
 })
-
 
 export default {
     name: "Register",
@@ -91,8 +92,6 @@ export default {
 .sign-in {
     height: 30rem;
     width: 40rem;
-
-    border-radius: .5rem;
 }
 
 .form-input {
@@ -197,50 +196,53 @@ export default {
     top: 2rem;
 }
 
-.race-by {
-    --uib-size: 100px;
-    --uib-speed: 1.4s;
-    --uib-color: #8257E5;
-    --uib-line-weight: 5px;
+.dot-pulse {
+  --uib-size: 40px;
+  --uib-speed: 1.3s;
+  --uib-color: #8257E5;
 
-    display: none;
-    align-items: center;
-    justify-content: center;
-    height: var(--uib-line-weight);
-    width: var(--uib-size);
-    border-radius: calc(var(--uib-line-weight) / 2);
-    overflow: hidden;
-    transform: translate3d(0, 0, 0);
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--uib-size);
+  height: calc(var(--uib-size) * 0.27);
 }
 
-.race-by::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: var(--uib-color);
-    opacity: 0.1;
+.dot-pulse__dot,
+.dot-pulse::before,
+.dot-pulse::after {
+  content: '';
+  display: block;
+  height: calc(var(--uib-size) * 0.18);
+  width: calc(var(--uib-size) * 0.18);
+  border-radius: 50%;
+  background-color: var(--uib-color);
+  transform: scale(0);
 }
 
-.race-by::after {
-    content: '';
-    height: 100%;
-    width: 100%;
-    border-radius: calc(var(--uib-line-weight) / 2);
-    animation: raceBy var(--uib-speed) ease-in-out infinite;
-    transform: translateX(-100%);
-    background-color: var(--uib-color);
+.dot-pulse::before {
+  animation: pulse var(--uib-speed) ease-in-out infinite;
 }
 
-@keyframes raceBy {
-    0% {
-        transform: translateX(-100%);
-    }
+.dot-pulse__dot {
+  animation: pulse var(--uib-speed) ease-in-out
+    calc(var(--uib-speed) * 0.125) infinite both;
+}
 
-    100% {
-        transform: translateX(100%);
-    }
+.dot-pulse::after {
+  animation: pulse var(--uib-speed) ease-in-out
+    calc(var(--uib-speed) * 0.25) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
 }
 </style>
