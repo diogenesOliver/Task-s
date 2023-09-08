@@ -4,9 +4,9 @@ import { CreateUserService } from '../../repositories/CreateUserService'
 import { User } from '@prisma/client'
 
 const EMAIL_RANDOM: string = Math.random().toString(36).slice(2)
-const ID_RANDOM: number = Math.floor(Math.random() * 100)
+const ID_RANDOM: number = Math.floor(Math.random() * 1000)
 
-const dataFromTest: User = {
+let dataFromTest: User = {
     id: ID_RANDOM,
     name: "Diógenes Ribeiro de Oliveira",
     email: `${EMAIL_RANDOM}.oliveira@gmail.com`,
@@ -25,5 +25,16 @@ describe('This is a unity test from controller function', () => {
         keysArray.forEach(element => {
             expect(createUserExec).toHaveProperty(element)
         });
+    })
+})
+
+describe('CALM', () => {
+    it('Verify if password match confirm_password', async () => {
+        dataFromTest.password = "SENHA123"
+        dataFromTest.id = Math.floor(Math.random() * 1000)
+        dataFromTest.email = `${Math.random().toString(36).slice(2)}.ribeiro@gmail.com`
+
+        const createUserExec = await createUserInstance.save(dataFromTest)
+        expect(createUserExec.password).not.toEqual(createUserExec.confirm_password)
     })
 })
