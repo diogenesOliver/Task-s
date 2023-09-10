@@ -6,7 +6,7 @@ import { User } from '@prisma/client'
 const EMAIL_RANDOM: string = Math.random().toString(36).slice(2)
 const ID_RANDOM: number = Math.floor(Math.random() * 1000)
 
-let dataFromTest: User = {
+export let dataFromTest: User = {
     id: ID_RANDOM,
     name: "Diógenes Ribeiro de Oliveira",
     email: `${EMAIL_RANDOM}.oliveira@gmail.com`,
@@ -18,7 +18,7 @@ let dataFromTest: User = {
 
 const createUserInstance = new CreateUserService()
 
-describe('This is a unity test from controller function', () => {
+describe('This is a unity test from createUserService controller function', () => {
     it('Testing that there are all elements in the response', async () => {
         const createUserExec = await createUserInstance.save(dataFromTest)
         const keysArray: string[] = ['id', 'name', 'password', 'confirm_password', 'createdAt', 'updatedAt']
