@@ -28,13 +28,15 @@ describe('This is a unity test from controller function', () => {
     })
 })
 
-describe('CALM', () => {
-    it('Verify if password match confirm_password', async () => {
+describe('Password compatibility', () => {
+    it('Check if the password matches confirm_password', async () => {
         dataFromTest.password = "SENHA123"
         dataFromTest.id = Math.floor(Math.random() * 1000)
         dataFromTest.email = `${Math.random().toString(36).slice(2)}.ribeiro@gmail.com`
 
         const createUserExec = await createUserInstance.save(dataFromTest)
-        expect(createUserExec.password).not.toEqual(createUserExec.confirm_password)
+        expect(createUserExec.password)
+            .not
+            .toEqual(createUserExec.confirm_password)
     })
 })
