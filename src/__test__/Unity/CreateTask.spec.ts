@@ -1,22 +1,7 @@
 import 'reflect-metadata'
 
 import { CreateTaskService } from '../../repositories/CreateTaskService'
-import { Task } from '@prisma/client'
-import { dataFromTest } from './CreateUser.spec'
-
-const ID_RANDOM: number = Math.floor(Math.random() * 1000)
-const STRING_RANDOM: string = Math.random().toString(36).slice(2)
-
-let tasksFromTests: Task = {
-    authorId: dataFromTest.id,
-    id: ID_RANDOM,
-    title: `Title from test: ${STRING_RANDOM}`,
-    description: "Description from test",
-    status: false,
-    difficulty: 9,
-    createdAt: new Date(),
-    updatedAt: new Date()
-}
+import { tasksFromTests } from '../mocks/TasksDataMock'
 
 const createTaskServiceInstance = new CreateTaskService()
 
