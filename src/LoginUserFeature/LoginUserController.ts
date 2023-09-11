@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { UserLoginService } from "../repositories/LoginUserService";
+import { compare } from "bcrypt";
 import { User } from "@prisma/client";
 
 export class UserLoginController {
@@ -7,15 +8,20 @@ export class UserLoginController {
         private userLoginService: UserLoginService
     ) { }
 
+    private async verifyPasswordWithCryptPassword(password: string, cryptPassword: string): Promise<boolean> {
+        return await compare(password, cryptPassword)
+    }
+
     async virifyEmailInDatabase(req: Request, res: Response) {
         try {
             const inputData: User = req.body
             const findEmail = await this.userLoginService.findData(inputData.email)
 
-            if (findEmail == null || inputData.password != findEmail.password)
-                res.status(404).json({ msg: "ERROR on password Or Email" })
+            const user = await this.verifyPasswordWithCryptPassword(inputData.password, findEmail.password)
+            if (user == false)
+                return res.status(404).json({ msg: "Some Error" })
 
-            res.status(200).send(findEmail)
+            return res.status(200).send(findEmail)
         } catch (e: any) { console.log(e) }
     }
 }
