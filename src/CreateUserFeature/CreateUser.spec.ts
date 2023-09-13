@@ -1,7 +1,6 @@
-import 'reflect-metadata'
-
-import { CreateUserService } from '../../repositories/CreateUserService'
-import { dataFromTest } from '../mocks/UserDataMock'
+import { expect, describe, it } from 'vitest'
+import { CreateUserService } from '../repositories/CreateUserService'
+import { dataFromTest } from '../__test__/mocks/UserDataMock'
 
 const createUserInstance = new CreateUserService()
 
