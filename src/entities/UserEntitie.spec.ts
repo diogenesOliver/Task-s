@@ -1,28 +1,23 @@
 import { expect, test } from "vitest";
 import { User } from './UserEntitie'
 
-test('Create an User', () => {
-    const user = new User({
-        name: "Jhon Doe",
-        email: "jhon.doe@gmail.com",
-        password: "SENHA123",
-        confirm_password: "SENHA123",
-        createdAt: new Date(),
-        updatedAt: new Date()
-    })
+let dataFromTests = {
+    name: "Jhon Doe",
+    email: "jhon.doe@gmail.com",
+    password: "SENHA123",
+    confirm_password: "SENHA123",
+    createdAt: new Date(),
+    updatedAt: new Date()
+}
 
+test('Create an User', () => {
+    const user = new User(dataFromTests)
     expect(user).toBeInstanceOf(User)
 })
 
-test('Cannot create an user if password and confirm_password not match', () => {
+test('Cannot create a user if password and confirm_password do not match', () => {
     expect(() => {
-        return new User({
-            name: "Jhon Doe",
-            email: "jhon.doe@gmail.com",
-            password: "SENHA12",
-            confirm_password: "SENHA123",
-            createdAt: new Date(),
-            updatedAt: new Date()
-        })
+        dataFromTests.password = 'SENHA12'
+        return new User(dataFromTests)
     }).throw()
 })
