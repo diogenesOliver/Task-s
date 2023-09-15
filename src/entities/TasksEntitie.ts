@@ -36,13 +36,16 @@ export class Tasks {
     }
 
     constructor(props: TasksProps) {
-        const { title, description, dificulty, status, createdAt, updatedAt, endsAt } = props
+        const { title, description, dificulty, createdAt, endsAt } = props
 
         if (title == ' ' || description == ' ' || dificulty == 0)
             throw new Error('Invalid input')
 
         if(endsAt == createdAt)
             throw new Error('Invalida date')
+
+        if(dificulty < 1 || dificulty >= 10)
+            throw new Error('Invalid value from dificulty level')
 
         this.props = props
     }
