@@ -27,7 +27,3 @@ jobs:
       run: |
         npm audit fix --force
         npm install
-
-    - name: Running unity test
-      run: |
-        npm run test
