@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateTaskService } from "../repositories/CreateTaskService"
+import { CreateTaskService } from "../../repositories/CreateTaskService"
 import { Task } from "@prisma/client";
 
 export class CreateTaskController {

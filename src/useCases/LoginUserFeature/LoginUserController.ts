@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserLoginService } from "../repositories/LoginUserService";
+import { UserLoginService } from "../../repositories/LoginUserService";
 import { compare } from "bcrypt";
 import { User } from "@prisma/client";
 

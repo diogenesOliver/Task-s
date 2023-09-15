@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { genSalt, hash } from 'bcrypt'
 
-import { CreateUserService } from '../repositories/CreateUserService'
+import { CreateUserService } from '../../repositories/CreateUserService'
 import { User } from "@prisma/client";
 
 export class CreateUserController {

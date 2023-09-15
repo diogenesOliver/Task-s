@@ -3,11 +3,11 @@ import { Response, Request } from 'express-serve-static-core'
 
 const router = Router()
 
-import { getUserInstance } from "./GetUsersFeature/getUsersInstance"
-import { createUserInstance } from "./CreateUserFeature/createUserInstance"
-import { createTaskInstance } from "./CreateTaskFeature/createTaskInstance"
-import { userLoginInstance } from './LoginUserFeature/loginUserInstance'
-import { getTaskInstance } from './GetTasksFeature/getTaskInstance'
+import { getUserInstance } from "./useCases/GetUsersFeature/getUsersInstance"
+import { createUserInstance } from "./useCases/CreateUserFeature/createUserInstance"
+import { createTaskInstance } from "./useCases/CreateTaskFeature/createTaskInstance"
+import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance'
+import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
 
 const urlArrays: string[] = ['/all/users/:id', '/register', '/create/task', '/user/sign-up', '/all/tasks']
 
