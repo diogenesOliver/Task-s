@@ -19,6 +19,9 @@ export class CreateTaskController {
                     return res.status(404).send('ERROR')
             }
 
+            if(taskData.difficulty <= 0 || taskData.difficulty > 9)
+                return res.status(404).send('ERROR')            
+
             const execCreateTask = await this.createTaskService.save(taskData)
 
             return res.status(200).send(execCreateTask)
