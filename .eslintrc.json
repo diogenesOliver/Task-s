@@ -32,6 +32,7 @@
             "error",
             "never"
         ],
-        "no-mixed-spaces-and-tabs": 0
+        "no-mixed-spaces-and-tabs": 0,
+        "@typescript-eslint/no-explicit-any": "off"
     }
 }
