@@ -1,4 +1,3 @@
-import { expect, test } from 'vitest'
 interface UserProps{
     name: string,
     email: string,
@@ -28,7 +27,7 @@ export class User{
 	}
 
 	constructor(props: UserProps){
-		const { name, email, confirm_password, password } = props
+		const { confirm_password, password } = props
 
 		if(password != confirm_password)
 			throw new Error('Invalid password')
