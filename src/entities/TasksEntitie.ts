@@ -9,44 +9,44 @@ interface TasksProps {
 }
 
 export class Tasks {
-    private props: TasksProps
+	private props: TasksProps
 
-    get title() {
-        return this.props.title
-    }
+	get title() {
+		return this.props.title
+	}
 
-    get description() {
-        return this.props.description
-    }
+	get description() {
+		return this.props.description
+	}
 
-    get dificulty() {
-        return this.props.dificulty
-    }
+	get dificulty() {
+		return this.props.dificulty
+	}
 
-    get status() {
-        return this.props.status
-    }
+	get status() {
+		return this.props.status
+	}
 
-    get createdAt() {
-        return this.props.createdAt
-    }
+	get createdAt() {
+		return this.props.createdAt
+	}
 
-    get updatedAt() {
-        return this.props.updatedAt
-    }
+	get updatedAt() {
+		return this.props.updatedAt
+	}
 
-    constructor(props: TasksProps) {
-        const { title, description, dificulty, createdAt, endsAt } = props
+	constructor(props: TasksProps) {
+		const { title, description, dificulty, createdAt, endsAt } = props
 
-        if (title == ' ' || description == ' ' || dificulty == 0)
-            throw new Error('Invalid input')
+		if (title == ' ' || description == ' ' || dificulty == 0)
+			throw new Error('Invalid input')
 
-        if(endsAt == createdAt)
-            throw new Error('Invalida date')
+		if(endsAt == createdAt)
+			throw new Error('Invalida date')
 
-        if(dificulty < 1 || dificulty >= 10)
-            throw new Error('Invalid value from dificulty level')
+		if(dificulty < 1 || dificulty >= 10)
+			throw new Error('Invalid value from dificulty level')
 
-        this.props = props
-    }
+		this.props = props
+	}
 }

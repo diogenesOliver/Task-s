@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from 'vitest'
 interface UserProps{
     name: string,
     email: string,
@@ -9,30 +9,30 @@ interface UserProps{
 }
 
 export class User{
-    private props: UserProps
+	private props: UserProps
 
-    get name(){
-        return this.props.name
-    }
+	get name(){
+		return this.props.name
+	}
 
-    get email(){
-        return this.props.name
-    }
+	get email(){
+		return this.props.name
+	}
 
-    get password(){
-        return this.props.name
-    }
+	get password(){
+		return this.props.name
+	}
 
-    get confirm_password(){
-        return this.props.name
-    }
+	get confirm_password(){
+		return this.props.name
+	}
 
-    constructor(props: UserProps){
-        const { name, email, confirm_password, password } = props
+	constructor(props: UserProps){
+		const { name, email, confirm_password, password } = props
 
-        if(password != confirm_password)
-            throw new Error('Invalid password')
+		if(password != confirm_password)
+			throw new Error('Invalid password')
 
-        this.props = props
-    }
+		this.props = props
+	}
 }

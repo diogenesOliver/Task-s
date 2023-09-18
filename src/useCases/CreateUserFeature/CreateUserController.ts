@@ -1,32 +1,32 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express'
 import { genSalt, hash } from 'bcrypt'
 
 import { CreateUserService } from '../../repositories/CreateUserService'
-import { User } from "@prisma/client";
+import { User } from '@prisma/client'
 
 export class CreateUserController {
-    constructor(
+	constructor(
         private createUserService: CreateUserService
-    ) { }
+	) { }
 
-    async createUserController(req: Request, res: Response) {
-        try {
-            const userData: User = req.body
+	async createUserController(req: Request, res: Response) {
+		try {
+			const userData: User = req.body
 
             type userDataComponents = [string, string, string, string]
             const userDataArray: userDataComponents = [userData.name, userData.email, userData.password, userData.confirm_password]
 
-            for (let data of userDataArray) {
-                if (data == '')
-                    return res.status(404).send('ERROR')
+            for (const data of userDataArray) {
+            	if (data == '')
+            		return res.status(404).send('ERROR')
             }
 
             if (userData.password != userData.confirm_password)
-                return res.status(404).send('Passwor not match')
+            	return res.status(404).send('Passwor not match')
 
             const SALT: string = await genSalt(14)
             const CRYPTO_PASSWORD: string = await hash(
-                userData.password, SALT
+            	userData.password, SALT
             )
 
             userData.password = CRYPTO_PASSWORD
@@ -34,6 +34,6 @@ export class CreateUserController {
 
             const createUserExec = await this.createUserService.save(userData)
             return res.status(200).send(createUserExec)
-        } catch (e) { console.log(e) }
-    }
+		} catch (e) { console.log(e) }
+	}
 }

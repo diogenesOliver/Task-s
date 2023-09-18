@@ -1,7 +1,7 @@
-import { IGetAll, PrismaClientInstance } from "./GenericsInterfaces/GenericRepository";
+import { IGetAll, PrismaClientInstance } from './GenericsInterfaces/GenericRepository'
 
 export class GetTasksService implements IGetAll<any>{
-    returninAll(): Promise<any> {
-        return PrismaClientInstance.task.findMany()
-    }
+	returninAll(): Promise<any> {
+		return PrismaClientInstance.task.findMany()
+	}
 }
