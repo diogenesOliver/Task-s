@@ -3,7 +3,7 @@ import { GetUserService } from '../../repositories/GetUsersService'
 
 export class GetUserController {
 	constructor(
-        private getUserService: GetUserService
+		private getUserService: GetUserService
 	) { }
 
 	async getUserController(req: Request, res: Response) {
@@ -17,6 +17,6 @@ export class GetUserController {
 				statusCode: 200,
 				body: user
 			}
-		}catch(e){ console.log(e) }
+		} catch (e) { console.log(e) }
 	}
 }

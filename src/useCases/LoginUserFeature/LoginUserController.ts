@@ -5,7 +5,7 @@ import { User } from '@prisma/client'
 
 export class UserLoginController {
 	constructor(
-        private userLoginService: UserLoginService
+		private userLoginService: UserLoginService
 	) { }
 
 	private async verifyPasswordWithCryptPassword(password: string, cryptPassword: string): Promise<boolean> {
