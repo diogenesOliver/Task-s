@@ -12,7 +12,7 @@ export class UserLoginController {
 		return await compare(password, cryptPassword)
 	}
 
-	async virifyEmailInDatabase(req: Request, res: Response) {
+	async verifyEmailInDatabase(req: Request, res: Response) {
 		try {
 			const inputData: User = req.body
 			const findEmail = await this.userLoginService.findData(inputData.email)
