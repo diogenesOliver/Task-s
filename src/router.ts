@@ -24,7 +24,7 @@ router.post(urlArrays[2], (req: Request, res: Response) => {
 })
 
 router.post(urlArrays[3], (req: Request, res: Response) => {
-	return userLoginInstance.virifyEmailInDatabase(req, res)
+	return userLoginInstance.verifyEmailInDatabase(req, res)
 })
 
 router.get(urlArrays[4], (req: Request, res: Response) => {
