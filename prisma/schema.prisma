@@ -26,6 +26,7 @@ model Task {
   status      Boolean  @default(false)
   author      User     @relation(fields: [authorId], references: [id])
   authorId    Int
+  endsDate    DateTime?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
