@@ -1,0 +1,11 @@
+@baseUrl = http://localhost:8080/api
+
+POST  {{baseUrl}}/register
+content-type: application/json
+
+{
+   "name": "Usuário de teste",
+   "email": "user.test@gmail.com", 
+   "password": "senhaDeTeste", 
+   "confirm_password": "senhaDeTeste" 
+}
