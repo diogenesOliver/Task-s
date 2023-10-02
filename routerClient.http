@@ -9,3 +9,16 @@ content-type: application/json
    "password": "senhaDeTeste", 
    "confirm_password": "senhaDeTeste" 
 }
+
+###
+
+POST {{baseUrl}}/create/task
+Content-Type: application/json
+
+{
+   "title": "Titulo de teste",
+   "description": "Descrição para teste",
+   "difficulty": 6,
+   "status": false,
+   "authorId": 1,
+}
