@@ -48,8 +48,8 @@
                             </div>
 
                             <div class="form-control">
-                                <label for="something">Something</label>
-                                <input name="something" type="email" class="form-input" placeholder="Difficulty">
+                                <label for="something">Ends Date</label>
+                                <input type="date" class="form-input" />
                             </div>
 
                         </div>
