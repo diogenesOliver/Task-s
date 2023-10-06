@@ -7,17 +7,21 @@ export class CreateTaskController {
 		private createTaskService: CreateTaskService
 	) { }
 
+	private verifyingEmptyInputs(inputs: Array<any>, res?: Response){
+		for(const input of inputs){
+			if(input == '')
+				return res?.status(404).send('ERROR')
+		}
+
+		return inputs
+	}
+
 	async createTaskController(req: Request, res: Response) {
 		try {
 			const taskData: Task = req.body
+			const taskDataArray = [taskData.title, taskData.description, taskData.difficulty]
 
-			type taskDataComponents = [string, string, number]
-			const taskDataArray: taskDataComponents = [taskData.title, taskData.description, taskData.difficulty]
-
-			for (const task of taskDataArray) {
-				if (task == '')
-					return res.status(404).send('ERROR')
-			}
+			this.verifyingEmptyInputs(taskDataArray)
 
 			if (taskData.difficulty <= 0 || taskData.difficulty > 9)
 				return res.status(404).send('ERROR')
