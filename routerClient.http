@@ -20,5 +20,5 @@ Content-Type: application/json
    "description": "Descrição para teste",
    "difficulty": 6,
    "status": false,
-   "authorId": 1,
+   "authorId": 3,
 }
