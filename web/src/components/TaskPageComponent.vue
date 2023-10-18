@@ -21,7 +21,7 @@
 
                     <svg @click.prevent="closeModal()" width="40" height="40" viewBox="0 0 40 40" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M30 10L10 30M10 10L30 30" stroke="grey" stroke-width="2" stroke-linecap="round"
+                        <path d="M30 10L10 30M10 10L30 30" stroke="white" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </div>
@@ -49,7 +49,7 @@
 
                             <div class="form-control">
                                 <label for="something">Ends Date</label>
-                                <input type="date" class="form-input" />
+                                <input type="date" class="form-input form-date" />
                             </div>
 
                         </div>
@@ -243,7 +243,7 @@ h1 {
     padding-inline: 2rem;
 
     width: 35rem;
-    height: 34rem;
+    height: 33.5rem;
 
     margin-inline: auto;
     margin-top: 10%;
@@ -312,7 +312,11 @@ input[type=number] {
 
 svg {
     cursor: pointer;
-    height: 2.3rem;
+    height: 2rem;
+}
+
+.form-date{
+    width: 18rem;
 }
 
 .form-control label {
