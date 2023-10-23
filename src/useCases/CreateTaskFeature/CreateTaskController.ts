@@ -7,13 +7,23 @@ export class CreateTaskController {
 		private createTaskService: CreateTaskService
 	) { }
 
-	private verifyingEmptyInputs(inputs: Array<any>, res?: Response){
-		for(const input of inputs){
-			if(input == '')
+	private verifyingEmptyInputs(inputs: Array<any>, res?: Response) {
+		for (const input of inputs) {
+			if (input == '')
 				return res?.status(404).send('ERROR')
 		}
 
 		return inputs
+	}
+
+	private setEndsDate(endsDate: string | null) {
+		const newDate = new Date().toISOString().split('T')[0]
+
+		if (endsDate == null) return null
+		if (endsDate < newDate)
+			throw new Error('ERROR')
+
+		return new Date(endsDate)
 	}
 
 	async createTaskController(req: Request, res: Response) {
@@ -22,6 +32,7 @@ export class CreateTaskController {
 			const taskDataArray = [taskData.title, taskData.description, taskData.difficulty]
 
 			this.verifyingEmptyInputs(taskDataArray)
+			this.setEndsDate(taskData.endsDate)
 
 			if (taskData.difficulty <= 0 || taskData.difficulty > 9)
 				return res.status(404).send('ERROR')
