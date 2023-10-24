@@ -49,7 +49,7 @@
 
                             <div class="form-control">
                                 <label for="something">Ends Date</label>
-                                <input type="date" class="form-input form-date" />
+                                <input type="date" class="form-input form-date" v-model="tasksInfo.endsDate" />
                             </div>
 
                         </div>
@@ -103,6 +103,7 @@ export default {
                 title: "",
                 description: "",
                 difficulty: "",
+                endsDate: "",
                 authorId: parseInt(this.$route.params.id as string),
             },
             tasksDetails: {
@@ -129,7 +130,7 @@ export default {
                 await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
                     console.log(res.data)
                 })
-                window.location.reload()
+                //window.location.reload()
             } catch (e) {
                 const taskTitle = document.getElementById('taskTitle') as HTMLElement
                 const taskDescription = document.getElementById('taskDescription') as HTMLElement
@@ -214,7 +215,7 @@ h1 {
 }
 
 .new-task:hover,
-.create-task:hover{
+.create-task:hover {
     background-color: #5d34bd;
 }
 
@@ -315,7 +316,7 @@ svg {
     height: 2rem;
 }
 
-.form-date{
+.form-date {
     width: 18rem;
 }
 

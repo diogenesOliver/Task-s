@@ -20,10 +20,11 @@ export class CreateTaskController {
 		const newDate = new Date().toISOString().split('T')[0]
 
 		if (endsDate == null) return null
+		if (endsDate == '')
+			return new Date(endsDate)
+
 		if (endsDate < newDate)
 			throw new Error('ERROR')
-
-		return new Date(endsDate)
 	}
 
 	async createTaskController(req: Request, res: Response) {

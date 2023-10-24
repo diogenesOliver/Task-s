@@ -20,5 +20,6 @@ Content-Type: application/json
    "description": "Descrição para teste",
    "difficulty": 6,
    "status": false,
-   "authorId": 3,
+   "authorId": 4,
+   "endsDate": "2023-10-21"
 }
