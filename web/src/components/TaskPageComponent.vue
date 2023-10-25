@@ -198,7 +198,7 @@ h1 {
     color: white;
     background: #8257E5;
 
-    border-radius: .3rem;
+    border-radius: .5rem;
     border: none;
 
     cursor: pointer;
@@ -240,7 +240,7 @@ h1 {
 
     background-color: #181818;
 
-    border-radius: .2rem;
+    border-radius: 1rem;
     padding-inline: 2rem;
 
     width: 35rem;
