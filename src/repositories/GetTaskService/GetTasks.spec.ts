@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'
-import { GetTasksService } from '../repositories/GetTasksService'
+import { GetTasksService } from './GetTasksService'
 
 test('Get all tasks', async () => {
 	const getTasks = await new GetTasksService().returninAll()

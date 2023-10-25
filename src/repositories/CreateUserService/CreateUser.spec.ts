@@ -1,6 +1,6 @@
 import { expect, describe, it } from 'vitest'
 import { CreateUserService } from './CreateUserService'
-import { dataFromTest } from '../__test__/mocks/UserDataMock'
+import { dataFromTest } from '../../__test__/mocks/UserDataMock'
 
 const createUserInstance = new CreateUserService()
 

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { GetTasksService } from '../../repositories/GetTasksService'
+import { GetTasksService } from '../../repositories/GetTaskService/GetTasksService'
 
 export class GetTaskController {
 	constructor(

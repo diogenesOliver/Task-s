@@ -1,5 +1,5 @@
 import { User } from '@prisma/client'
-import { ISaveFunctionGeneric, PrismaClientInstance } from './GenericsInterfaces/GenericRepository'
+import { ISaveFunctionGeneric, PrismaClientInstance } from '../GenericsInterfaces/GenericRepository'
 
 export class CreateUserService implements ISaveFunctionGeneric<User>{
 	async save(data: User): Promise<User> {

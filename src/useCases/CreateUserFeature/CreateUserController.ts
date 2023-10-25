@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { genSalt, hash } from 'bcrypt'
 
-import { CreateUserService } from '../../repositories/CreateUserService'
+import { CreateUserService } from '../../repositories/CreateUserService/CreateUserService'
 import { User } from '@prisma/client'
 
 export class CreateUserController {
@@ -9,7 +9,7 @@ export class CreateUserController {
 		private createUserService: CreateUserService
 	) { }
 
-	private async cryptingPassword(password: string, confirmPassword: string) {
+	private async cryptingPassword(password: string, confirmPassword: string){
 		const SALT: string = await genSalt(14)
 		const CRYPTO_PASSWORD: string = await hash(
 			password, SALT
