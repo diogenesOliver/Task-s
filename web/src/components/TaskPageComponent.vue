@@ -30,13 +30,13 @@
                     <form>
                         <div class="form-control">
                             <label for="title">Title</label>
-                            <input name="title" type="text" class="form-input" id="taskTitle" placeholder="Title"
+                            <input name="title" type="text" class="form-input" id="taskTitle" placeholder="Enter a title..."
                                 v-model="tasksInfo.title">
                         </div>
 
                         <div class="form-control">
                             <label for="desc">Description</label>
-                            <input name="desc" type="text" class="form-input" id="taskDescription" placeholder="Description"
+                            <input name="desc" type="text" class="form-input" id="taskDescription" placeholder="Enter a description..."
                                 v-model="tasksInfo.description">
                         </div>
 
@@ -44,7 +44,7 @@
                             <div class="form-control">
                                 <label for="diff">Difficulty</label>
                                 <input name="diff" type="number" class="form-input" id="taskDifficulty"
-                                    placeholder="Difficulty" v-model="tasksInfo.difficulty">
+                                    placeholder="Add difficulty..." v-model="tasksInfo.difficulty">
                             </div>
 
                             <div class="form-control">
@@ -358,7 +358,7 @@ svg {
 
 .cancel-task,
 .create-task {
-    width: 10rem;
+    width: 20rem;
 
     transition: .3s;
 }
