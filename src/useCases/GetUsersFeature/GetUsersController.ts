@@ -9,14 +9,9 @@ export class GetUserController {
 	async getUserController(req: Request, res: Response) {
 		try {
 			const userID = Number(req.params.id)
-
 			const user = await this.getUserService.get(userID)
-			res.status(200).send(user)
 
-			return {
-				statusCode: 200,
-				body: user
-			}
+			return res.status(200).send(user)
 		} catch (e) { console.log(e) }
 	}
 }
