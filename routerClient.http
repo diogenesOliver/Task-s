@@ -4,10 +4,10 @@ POST  {{baseUrl}}/register
 content-type: application/json
 
 {
-   "name": "Usuário de teste",
-   "email": "user.test@gmail.com", 
-   "password": "senhaDeTeste", 
-   "confirm_password": "senhaDeTeste" 
+   "name": "Diógenes Ribeiro de Oliveira",
+   "email": "io.riboliveira@gmail.com", 
+   "password": "S@@", 
+   "confirm_password": "S@@laada390390" 
 }
 
 ###
