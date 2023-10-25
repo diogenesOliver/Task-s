@@ -130,7 +130,7 @@ export default {
                 await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
                     console.log(res.data)
                 })
-                //window.location.reload()
+                window.location.reload()
             } catch (e) {
                 const taskTitle = document.getElementById('taskTitle') as HTMLElement
                 const taskDescription = document.getElementById('taskDescription') as HTMLElement
