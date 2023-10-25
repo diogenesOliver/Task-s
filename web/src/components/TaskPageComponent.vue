@@ -49,7 +49,7 @@
 
                             <div class="form-control">
                                 <label for="something">Ends Date</label>
-                                <input type="date" class="form-input form-date" v-model="tasksInfo.endsDate" />
+                                <input type="date" class="form-input form-date" id="inputDate" v-model="tasksInfo.endsDate" />
                             </div>
 
                         </div>
@@ -135,8 +135,9 @@ export default {
                 const taskTitle = document.getElementById('taskTitle') as HTMLElement
                 const taskDescription = document.getElementById('taskDescription') as HTMLElement
                 const taskDifficulty = document.getElementById('taskDifficulty') as HTMLElement
+                const inputDate = document.getElementById('inputDate') as HTMLElement
 
-                const inputs: HTMLElement[] = [taskTitle, taskDescription, taskDifficulty]
+                const inputs: HTMLElement[] = [taskTitle, taskDescription, taskDifficulty, inputDate]
                 for (let input of inputs) {
                     input.style.borderColor = '#930000'
                 }
