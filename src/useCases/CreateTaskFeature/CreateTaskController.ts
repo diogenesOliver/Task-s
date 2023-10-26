@@ -17,14 +17,14 @@ export class CreateTaskController {
 	}
 
 	private setEndsDate(endsDate: string | null) {
-		const newDate = new Date().toISOString().split('T')[0]
+		if (!endsDate)
+			return null
 
-		if (endsDate == null) return null
-		if (endsDate == '')
-			return new Date(endsDate)
-
+		const newDate: string = new Date().toISOString().split('T')[0]
 		if (endsDate < newDate)
 			throw new Error('ERROR')
+
+		return new Date(endsDate)
 	}
 
 	async createTaskController(req: Request, res: Response) {
