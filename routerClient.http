@@ -23,3 +23,7 @@ Content-Type: application/json
    "authorId": 4,
    "endsDate": "2023-10-21"
 }
+
+###
+
+GET {{baseUrl}}/all/tasks
