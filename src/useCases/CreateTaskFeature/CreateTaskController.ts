@@ -35,12 +35,12 @@ export class CreateTaskController {
 			this.verifyingEmptyInputs(taskDataArray)
 			this.setEndsDate(taskData.endsDate)
 
-			if (taskData.difficulty <= 0 || taskData.difficulty > 9)
+			if(!(taskData.difficulty > 0 && taskData.difficulty <= 9))
 				return res.status(404).send('ERROR')
 
-			const execCreateTask = await this.createTaskService.save(taskData)
-
-			return res.status(200).send(execCreateTask)
+			return res.status(200).send(
+				await this.createTaskService.save(taskData)
+			)
 		} catch (e) { console.log(e) }
 	}
 }
