@@ -16,6 +16,8 @@ model User {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   Task             Task[]
+
+  @@map("users")
 }
 
 model Task {
@@ -29,4 +31,6 @@ model Task {
   endsDate    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  @@map("tasks")
 }
