@@ -36,8 +36,8 @@
 
                         <div class="form-control">
                             <label for="desc">Description</label>
-                            <input name="desc" type="text" class="form-input" id="taskDescription" placeholder="Enter a description..."
-                                v-model="tasksInfo.description">
+                            <input name="desc" type="text" class="form-input" id="taskDescription"
+                                placeholder="Enter a description..." v-model="tasksInfo.description">
                         </div>
 
                         <div class="forms">
@@ -49,7 +49,8 @@
 
                             <div class="form-control">
                                 <label for="something">Ends Date</label>
-                                <input type="date" class="form-input form-date" id="inputDate" v-model="tasksInfo.endsDate" />
+                                <input type="date" class="form-input form-date" id="inputDate"
+                                    v-model="tasksInfo.endsDate" />
                             </div>
 
                         </div>
@@ -64,7 +65,16 @@
         </div>
 
         <div class="msg-from-0-tasks" id="taskCounter">
-            <h1>You don't have any tasks created. <br> Create a new task and view it on this screen</h1>
+            <div class="message">
+                <img src="../assets/chart-simple-horizontal.png" alt="">
+                <h2>No task created</h2>
+                <p>You don´t have any task created yet. Startby creating one</p>
+
+                <button class="new-task button-msg-from-0-task" @click.prevent="openModal()">
+                    <img src="../assets/mais.png">
+                    New Task
+                </button>
+            </div>
         </div>
 
         <div class="tasks-card">
@@ -224,11 +234,53 @@ h1 {
     height: .9rem;
 }
 
-.msg-from-0-tasks {
-    text-align: center;
-    margin-top: 20rem;
+.msg-from-0-tasks,
+.message {
+    display: flex;
+    flex-direction: column;
 
-    color: #80808096;
+    align-items: center;
+}
+
+.msg-from-0-tasks {
+    border: 1px solid #ebebeb6c;
+    border-style: dashed;
+    border-radius: 1rem;
+
+    height: 33rem;
+    margin-top: 5rem;
+}
+
+.message {
+    margin-top: 11rem;
+    gap: .7rem;
+}
+
+.message h2{
+    color: #a0a0a0;
+}
+
+.message p{
+    color: #ebebeb6c;
+}
+
+.button-msg-from-0-task{
+    background-color: transparent;
+    border: solid 1px #FFFFFF;
+
+    height: 2.5rem;
+}
+
+.button-msg-from-0-task:hover{
+    background-color: transparent;
+}
+
+.message button img{
+    height: .9rem;
+}
+
+.msg-from-0-tasks img {
+    height: 2.5rem;
 }
 
 .modal {
