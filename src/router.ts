@@ -1,6 +1,8 @@
 import { Router } from 'express'
 import { Response, Request } from 'express-serve-static-core'
 
+import { ensureAuthenticated } from './middlewares/ensureAuthenticated'
+
 const router = Router()
 
 import { getUserInstance } from './useCases/GetUsersFeature/getUsersInstance'
@@ -9,25 +11,23 @@ import { createTaskInstance } from './useCases/CreateTaskFeature/createTaskInsta
 import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance'
 import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
 
-const urlArrays: string[] = ['/all/users/:id', '/register', '/create/task', '/user/sign-up', '/all/tasks']
-
-router.get(urlArrays[0], (req: Request, res: Response) => {
+router.get('/all/users/:id', (req: Request, res: Response) => {
 	return getUserInstance.getUserController(req, res)
 })
 
-router.post(urlArrays[1], (req: Request, res: Response) => {
+router.post('/register', (req: Request, res: Response) => {
 	return createUserInstance.createUserController(req, res)
 })
 
-router.post(urlArrays[2], (req: Request, res: Response) => {
+router.post('/create/task', (req: Request, res: Response) => {
 	return createTaskInstance.createTaskController(req, res)
 })
 
-router.post(urlArrays[3], (req: Request, res: Response) => {
+router.post('/user/sign-up', ensureAuthenticated, (req: Request, res: Response) => {
 	return userLoginInstance.verifyEmailInDatabase(req, res)
 })
 
-router.get(urlArrays[4], (req: Request, res: Response) => {
+router.get('/all/tasks', (req: Request, res: Response) => {
 	return getTaskInstance.getTaskController(req, res)
 })
 
