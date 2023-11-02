@@ -23,7 +23,7 @@ router.post('/create/task', (req: Request, res: Response) => {
 	return createTaskInstance.createTaskController(req, res)
 })
 
-router.post('/user/sign-up', ensureAuthenticated, (req: Request, res: Response) => {
+router.post('/user/sign-up', (req: Request, res: Response) => {
 	return userLoginInstance.verifyEmailInDatabase(req, res)
 })
 

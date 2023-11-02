@@ -32,9 +32,9 @@ export class UserLoginController {
 			if (user == false)
 				return res.status(404).json({ msg: 'Some Error' })
 
-			const token = this.generateAToken(findEmail.id.toString())
+			this.generateAToken(findEmail.id.toString())
 
-			return res.status(200).json(token)
+			return res.status(200).json(findEmail)
 		} catch (e) { console.log(e) }
 	}
 }
