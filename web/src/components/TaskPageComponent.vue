@@ -8,7 +8,7 @@
             </div>
             <button class="new-task" @click.prevent="openModal()">
                 <img src="../assets/mais.png">
-                New Task
+                <p>New Task</p>
             </button>
 
         </div>
@@ -256,26 +256,26 @@ h1 {
     gap: .7rem;
 }
 
-.message h2{
+.message h2 {
     color: #a0a0a0;
 }
 
-.message p{
+.message p {
     color: #ebebeb6c;
 }
 
-.button-msg-from-0-task{
+.button-msg-from-0-task {
     background-color: transparent;
     border: solid 1px #FFFFFF;
 
     height: 2.5rem;
 }
 
-.button-msg-from-0-task:hover{
+.button-msg-from-0-task:hover {
     background-color: transparent;
 }
 
-.message button img{
+.message button img {
     height: .9rem;
 }
 
@@ -438,5 +438,50 @@ svg {
 
     background-color: #252525;
     border-radius: .5rem;
+}
+
+@media (max-width: 1100px) {
+    .wrapper{
+        width: 22rem;;
+    }
+
+    .nav-div{
+        gap: 10rem;
+        padding-inline: 1rem;
+    }
+
+    .infoir{
+        text-align: center;
+    }
+
+    .msg-from-0-tasks{
+        margin-top: 3.5rem;
+    }
+
+    .message{
+        text-align: center;
+        gap: 1rem;
+
+        margin-top: 9rem;
+    }
+
+    .nav-div .new-task{
+        position: absolute;
+        border-radius: 50%;
+
+        width: 4rem;
+        height: 4rem;
+
+        margin-top: 85rem;
+        margin-left: 18rem;
+    }
+
+    .nav-div .new-task p{
+        display: none;
+    }
+
+    .nav-div .new-task img{
+        height: 1rem;
+    }
 }
 </style>
