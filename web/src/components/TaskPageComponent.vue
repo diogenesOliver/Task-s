@@ -68,7 +68,7 @@
             <div class="message">
                 <img src="../assets/chart-simple-horizontal.png" alt="">
                 <h2>No task created</h2>
-                <p>You don´t have any task created yet. Startby creating one</p>
+                <p>You don´t have any task created yet. Start by creating one</p>
 
                 <button class="new-task button-msg-from-0-task" @click.prevent="openModal()">
                     <img src="../assets/mais.png">
