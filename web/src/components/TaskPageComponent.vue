@@ -441,31 +441,32 @@ svg {
 }
 
 @media (max-width: 1100px) {
-    .wrapper{
-        width: 22rem;;
+    .wrapper {
+        width: 22rem;
+        ;
     }
 
-    .nav-div{
+    .nav-div {
         gap: 10rem;
         padding-inline: 1rem;
     }
 
-    .infoir{
+    .infoir {
         text-align: center;
     }
 
-    .msg-from-0-tasks{
+    .msg-from-0-tasks {
         margin-top: 3.5rem;
     }
 
-    .message{
+    .message {
         text-align: center;
         gap: 1rem;
 
         margin-top: 9rem;
     }
 
-    .nav-div .new-task{
+    .nav-div .new-task {
         position: absolute;
         border-radius: 50%;
 
@@ -476,12 +477,21 @@ svg {
         margin-left: 18rem;
     }
 
-    .nav-div .new-task p{
+    .nav-div .new-task p {
         display: none;
     }
 
-    .nav-div .new-task img{
+    .nav-div .new-task img {
         height: 1rem;
+    }
+
+    .modal {
+        width: 25rem;
+        margin-top: 10rem;
+    }
+
+    .form-date {
+        width: 10rem;
     }
 }
 </style>
