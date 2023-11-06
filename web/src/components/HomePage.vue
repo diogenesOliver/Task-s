@@ -84,18 +84,18 @@ ul li {
     cursor: pointer;
 }
 
-.buttons-to-logs{
+.buttons-to-logs {
     display: flex;
     gap: 2rem;
 }
 
 .button-from-login,
 .button-from-signin,
-.get-started-button{
+.get-started-button {
     text-align: center;
     color: white;
     background: #8257E5;
-    
+
     border-radius: .3rem;
     border: none;
 
@@ -103,24 +103,24 @@ ul li {
     transition: .3s;
 }
 
-.button-from-signin{
+.button-from-signin {
     background-color: transparent;
     border: solid 1px #8257E5;
 }
 
-.right-nav ul li{
+.right-nav ul li {
     transition: .3s;
 }
 
-.right-nav ul li:hover{
+.right-nav ul li:hover {
     color: #8257e5c7;
 }
 
-.button-from-login:hover{
+.button-from-login:hover {
     background-color: #8257e53d;
 }
 
-.button-from-signin:hover{
+.button-from-signin:hover {
     background-color: #8257E5;
 }
 
@@ -132,28 +132,28 @@ ul li {
     padding-inline: 3rem;
 
     text-align: center;
-    
+
     height: 2.3rem;
     width: 13rem;
 
     transition: .3s;
 }
 
-.get-started-button:hover{
+.get-started-button:hover {
     background-color: #5d34bd;
 }
 
-.get-started-button img{
+.get-started-button img {
     height: 1rem;
 }
 
 .button-from-login,
-.button-from-signin{
+.button-from-signin {
     height: 2.5rem;
     width: 8rem;
 }
 
-.button-from-login{
+.button-from-login {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -164,7 +164,7 @@ ul li {
     border: none;
 }
 
-.button-from-login img{
+.button-from-login img {
     height: 1rem;
 }
 
