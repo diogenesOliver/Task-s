@@ -32,7 +32,7 @@ export class UserLoginController {
 			if (user == false)
 				return res.status(404).json({ msg: 'Some Error' })
 
-			this.generateAToken(findEmail.id.toString())
+			req.headers.authorization = this.generateAToken(findEmail.id.toString())
 
 			return res.status(200).json(findEmail)
 		} catch (e) { console.log(e) }
