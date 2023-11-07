@@ -12,6 +12,15 @@ content-type: application/json
 
 ###
 
+POST {{baseUrl}}/user/sign-up
+content-type: application/json
+
+{
+	"email": "diogenes.riboliveira@gmail.com",
+	"password": "S@@alada390390"
+}
+
+###
 POST {{baseUrl}}/create/task
 Content-Type: application/json
 
