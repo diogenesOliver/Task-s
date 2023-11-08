@@ -24,15 +24,21 @@ export class CreateUserController {
 		}
 	}
 
-	async createUserController(req: Request, res: Response) {
+	private async verifyngInputsValues(userDataArray: string[], res?: Response): Promise<string[] | Response<any, Record<string, any>> | undefined>{
+		for(const data of userDataArray){
+			if(!data)
+				return res?.status(404).send('Invalid input')
+		}
+	
+		return userDataArray
+	}
+
+	async createUserController(req: Request, res: Response){
 		try {
 			const userData: User = req.body
 			const userDataArray: string[] = [userData.name, userData.email, userData.password, userData.confirm_password]
 
-			for (const data of userDataArray) {
-				if (data == '')
-					return res.status(404).send('ERROR')
-			}
+			await this.verifyngInputsValues(userDataArray)
 
 			if (userData.password != userData.confirm_password)
 				return res?.status(404).send('Password not match')
