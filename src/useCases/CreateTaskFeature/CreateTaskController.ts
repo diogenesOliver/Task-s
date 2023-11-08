@@ -9,7 +9,7 @@ export class CreateTaskController {
 
 	private verifyingEmptyInputs(inputs: Array<any>, res?: Response) {
 		for (const input of inputs) {
-			if (input == '')
+			if (!input)
 				return res?.status(404).send('ERROR')
 		}
 
