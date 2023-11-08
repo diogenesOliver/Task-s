@@ -41,7 +41,6 @@ export class UserLoginController {
 
 			try {
 				verify(authToken, process.env.SECRET_KEY as string)
-				console.log(req)
 				return res.status(200).json(findEmail)
 			} catch (e: any) {
 				return res.status(400).send('Invalid Token')
