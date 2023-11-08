@@ -27,7 +27,7 @@ export class CreateUserController {
 	async createUserController(req: Request, res: Response) {
 		try {
 			const userData: User = req.body
-			const userDataArray = [userData.name, userData.email, userData.password, userData.confirm_password]
+			const userDataArray: string[] = [userData.name, userData.email, userData.password, userData.confirm_password]
 
 			for (const data of userDataArray) {
 				if (data == '')
