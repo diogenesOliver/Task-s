@@ -3,7 +3,7 @@ config()
 
 import { Request, Response } from 'express'
 import { compare } from 'bcrypt'
-import { sign } from 'jsonwebtoken'
+import { sign, verify } from 'jsonwebtoken'
 
 import { UserLoginService } from '../../repositories/LoginUserService/LoginUserService'
 import { User } from '@prisma/client'
@@ -32,9 +32,21 @@ export class UserLoginController {
 			if (user == false)
 				return res.status(404).json({ msg: 'Some Error' })
 
-			req.headers.authorization = this.generateAToken(findEmail.id.toString())
+			const token = this.generateAToken(findEmail.id.toString())
+			req.headers.authorization = token
 
-			return res.status(200).json(findEmail)
+			const authToken = req.headers.authorization
+			if (!authToken)
+				return res.status(401).send('Toke is missing')
+
+			try {
+				verify(authToken, process.env.SECRET_KEY as string)
+				console.log(req)
+				return res.status(200).json(findEmail)
+			} catch (e: any) {
+				return res.status(400).send('Invalid Token')
+			}
+
 		} catch (e) { console.log(e) }
 	}
 }
