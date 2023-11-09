@@ -36,3 +36,7 @@ Content-Type: application/json
 ###
 
 GET {{baseUrl}}/all/tasks
+
+###
+
+DELETE {{baseUrl}}/delete/task/7

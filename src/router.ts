@@ -10,6 +10,7 @@ import { createUserInstance } from './useCases/CreateUserFeature/createUserInsta
 import { createTaskInstance } from './useCases/CreateTaskFeature/createTaskInstance'
 import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance'
 import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
+import { deleteTaskInstance } from './useCases/DeleteTaskFeature/deleteTaskInstance'
 
 router.get('/all/users/:id', (req: Request, res: Response) => {
 	return getUserInstance.getUserController(req, res)
@@ -29,6 +30,10 @@ router.post('/user/sign-up', (req: Request, res: Response) => {
 
 router.get('/all/tasks', (req: Request, res: Response) => {
 	return getTaskInstance.getTaskController(req, res)
+})
+
+router.delete('/delete/task/:id', (req: Request, res: Response) => {
+	return deleteTaskInstance.deleteTaskController(req, res)
 })
 
 export default router
