@@ -17,3 +17,7 @@ export interface IFindData<T>{
 export interface IGetAll<T>{
     returninAll(): Promise<T>
 }
+
+export interface IDeleteTask<T>{
+    inputsFromDeleteATask(authorId: number, taskId: number): Promise<T>
+}
