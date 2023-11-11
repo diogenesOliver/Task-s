@@ -90,8 +90,10 @@
 
 <script lang="ts">
 import axios from 'axios'
-import Notifications from '@kyvg/vue3-notification'
-//🎉
+
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
 export default {
     name: "Tasks",
     data() {
@@ -141,7 +143,12 @@ export default {
                 await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
                     console.log(res.data)
                 })
-                window.location.reload()
+                toast.success('Welcome to Task-s 🎉', {
+                    autoClose: 3000,
+                    theme: 'dark'
+                })
+
+                this.closeModal()
             } catch (e) {
                 const taskTitle = document.getElementById('taskTitle') as HTMLElement
                 const taskDescription = document.getElementById('taskDescription') as HTMLElement
