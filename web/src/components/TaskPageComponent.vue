@@ -143,7 +143,7 @@ export default {
                 await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
                     console.log(res.data)
                 })
-                toast.success('Welcome to Task-s 🎉', {
+                toast.success('Task created successfully 🎉', {
                     autoClose: 3000,
                     theme: 'dark'
                 })

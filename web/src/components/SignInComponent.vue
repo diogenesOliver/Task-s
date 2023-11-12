@@ -42,6 +42,9 @@
 import axios from 'axios'
 import { DotPulse } from '@uiball/loaders'
 
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
 DotPulse({
     size: 80,
     speed: 1.4,
@@ -71,6 +74,11 @@ export default {
                     this.$router.push(`/task-s/${getFirstName}/${res.data.id}`)
                 })
             } catch (e) {
+                toast.error('ERROR - Invalid field', {
+                    autoClose: 3000,
+                    theme: 'dark'
+                })
+
                 const inputName = document.getElementById("inputName") as HTMLElement
                 const inputEmail = document.getElementById("inputEmail") as HTMLElement
                 const inputPassword = document.getElementById("inputPassword") as HTMLElement
