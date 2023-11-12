@@ -37,6 +37,9 @@
 import axios from 'axios'
 import { DotPulse } from '@uiball/loaders'
 
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
 DotPulse({
   size: 100,
   speed: 1.4,
@@ -62,6 +65,11 @@ export default {
 
         })
       } catch (e) {
+        toast.error('ERROR - Invalid password or email', {
+          autoClose: 3000,
+          theme: 'dark'
+        })
+
         const inputEmail = document.getElementById("inpuEmail") as HTMLElement
         const inpuPassword = document.getElementById("inputPassword") as HTMLElement
 
@@ -225,16 +233,15 @@ export default {
 }
 
 .dot-pulse__dot {
-  animation: pulse var(--uib-speed) ease-in-out
-    calc(var(--uib-speed) * 0.125) infinite both;
+  animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * 0.125) infinite both;
 }
 
 .dot-pulse::after {
-  animation: pulse var(--uib-speed) ease-in-out
-    calc(var(--uib-speed) * 0.25) infinite;
+  animation: pulse var(--uib-speed) ease-in-out calc(var(--uib-speed) * 0.25) infinite;
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     transform: scale(0);
