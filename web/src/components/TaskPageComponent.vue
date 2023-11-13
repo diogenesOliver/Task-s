@@ -150,6 +150,11 @@ export default {
 
                 this.closeModal()
             } catch (e) {
+                toast.error('ERROR - Invalid field', {
+                    autoClose: 3000,
+                    theme: 'dark'
+                })
+
                 const taskTitle = document.getElementById('taskTitle') as HTMLElement
                 const taskDescription = document.getElementById('taskDescription') as HTMLElement
                 const taskDifficulty = document.getElementById('taskDifficulty') as HTMLElement
