@@ -2,6 +2,8 @@ import { Request, Response } from 'express'
 import { CreateTaskService } from '../../repositories/CreateTaskService/CreateTaskService'
 import { Task } from '@prisma/client'
 
+import { countOfDaysToCompleteATask } from './countDayTaskDay'
+
 export class CreateTaskController {
 	constructor(
 		private createTaskService: CreateTaskService
@@ -16,7 +18,7 @@ export class CreateTaskController {
 		return inputs
 	}
 
-	private setEndsDate(endsDate: string | null) {
+	private async setEndsDate(endsDate: string | null): Promise<Date | null> {
 		if (!endsDate)
 			return null
 
