@@ -79,9 +79,31 @@
 
         <div class="tasks-card">
             <div v-for="task in userInfo.Task" class="cards">
-                <h2>{{ task.title }}</h2>
-                <p>{{ task.description }}</p>
-                <p>{{ task.difficulty }}</p>
+                <div class="top-card">
+                    <h3>Task-s</h3>
+                    <button>
+                        <img src="../assets/icon_configuration.png">
+                    </button>
+                </div>
+
+                <div class="body_of_card">
+                    <h3>{{ task.title }}</h3>
+                    <p>{{ task.description }}</p>
+                </div>
+
+                <div class="complements_informations">
+                    <small>Difficulty level: {{ task.difficulty }}</small>
+                    <!-- <small>Created: {{ task.createdAt.split('T')[0] }}</small> -->
+                    <small>Created 2 day ago</small>
+                </div>
+
+                <div class="buttons-from-actions">
+                    <button>Finish task</button>
+                    <button>
+                        <img src="../assets/editar.png" alt=""> Edit
+                    </button>
+                </div>
+
             </div>
         </div>
 
@@ -433,10 +455,14 @@ svg {
     border: 1px solid grey;
 }
 
-.tasks-card {
+.top-card,
+.tasks-card,
+.buttons-from-actions {
     display: flex;
     flex-direction: row;
+}
 
+.tasks-card {
     gap: 2rem;
 
     margin-top: 3.5rem;
@@ -446,11 +472,126 @@ svg {
     gap: 1rem;
     padding: .3rem;
 
-    height: 13rem;
-    width: 22rem;
+    height: 21rem;
+    width: 18rem;
 
     background-color: #252525;
     border-radius: .5rem;
+}
+
+.top-card {
+    justify-content: space-around;
+    align-items: center;
+
+    gap: 11rem;
+}
+
+.top-card h3 {
+    color: #8454f3;
+}
+
+.top-card button {
+    background-color: transparent;
+
+}
+
+.top-card button,
+.top-card button img {
+    height: 1.3rem;
+    width: 1.3rem;
+
+    border: none;
+    cursor: pointer;
+}
+
+.body_of_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    gap: 2rem;
+
+    height: 10rem;
+    margin-top: 2rem;
+}
+
+.body_of_card h3 {
+    font-size: 1.2rem;
+}
+
+.body_of_card p {
+    margin-top: 1.5 rem;
+}
+
+.complements_informations {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    gap: .5rem;
+}
+
+.complements_informations small:nth-child(1) {
+    padding-inline: 1rem;
+
+    background-color: #22bb348a;
+    border: solid 1px #22bb34;
+
+    width: 50%;
+
+    border-radius: 1rem;
+}
+
+.complements_informations small:nth-child(2) {
+    margin-left: .5rem;
+    color: #a0a0a0;
+}
+
+.buttons-from-actions {
+    margin-top: 1.2rem;
+    justify-content: space-around;
+
+    margin-top: 2rem;
+
+    gap: 6rem;
+}
+
+.buttons-from-actions button {
+    cursor: pointer;
+}
+
+.buttons-from-actions button:nth-child(1) {
+    background-color: #8257E5;
+    color: white;
+
+    border: none;
+    border-radius: 2rem;
+
+    transition: .3s;
+
+    width: 10rem;
+    height: 2.3rem;
+}
+
+.buttons-from-actions button:nth-child(1):hover {
+    background-color: #5d34bd;
+}
+
+.buttons-from-actions button:nth-child(2) {
+    display: flex;
+    align-items: center;
+
+    gap: .5rem;
+
+    color: #a0a0a0;
+
+    background-color: transparent;
+    border: none;
+}
+
+.buttons-from-actions button img {
+    height: 1.5rem;
 }
 
 @media (max-width: 1100px) {
