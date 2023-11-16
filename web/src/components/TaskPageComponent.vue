@@ -512,17 +512,19 @@ svg {
 .body_of_card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
 
-    gap: 2rem;
+    padding-inline: .5rem;
+
+    gap: 1rem;
 
     height: 10rem;
+
+    margin-bottom: .5rem;
     margin-top: 2rem;
 }
 
 .body_of_card h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .body_of_card p {
