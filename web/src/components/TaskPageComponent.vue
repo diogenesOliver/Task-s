@@ -92,9 +92,8 @@
                 </div>
 
                 <div class="complements_informations">
-                    <small>Difficulty level: {{ task.difficulty }}</small>
-                    <!-- <small>Created: {{ task.createdAt.split('T')[0] }}</small> -->
-                    <small>Created 2 day ago</small>
+                    <small id="difficultyLevel">Difficulty level: {{ task.difficulty }}</small>
+                    <!-- <small>Created {{  }} day ago</small> -->
                 </div>
 
                 <div class="buttons-from-actions">
@@ -149,6 +148,12 @@ export default {
     methods: {
         async gettingUserData(userId: string) {
             await axios.get(`http://localhost:8080/api/all/users/${userId}`).then(res => {
+
+                for (let data of res.data.Task) {
+                    const initialDate: Date | string | number = new Date(data.createdAt)
+                    console.log(initialDate.getDate())
+                }
+
                 this.userInfo = res.data
                 this.userInfo.name = res.data.name.split(" ")[0]
 
