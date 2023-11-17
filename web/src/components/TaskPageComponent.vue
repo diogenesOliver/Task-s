@@ -80,7 +80,10 @@
         <div class="tasks-card">
             <div v-for="task in userInfo.Task" class="cards">
                 <div class="top-card">
-                    <h3>Task-s</h3>
+                    <div class="title-logo">
+                        <h3>Task-s</h3>
+                        <small id="difficultyLevel"> Level: {{ task.difficulty }}</small>
+                    </div>
                     <button>
                         <img src="../assets/icon_configuration.png">
                     </button>
@@ -92,8 +95,7 @@
                 </div>
 
                 <div class="complements_informations">
-                    <small id="difficultyLevel">Difficulty level: {{ task.difficulty }}</small>
-                    <!-- <small>Created {{  }} day ago</small> -->
+                    <small>Created at {{ task.createdAt.split('T')[0] }}</small>
                 </div>
 
                 <div class="buttons-from-actions">
@@ -467,6 +469,29 @@ svg {
     flex-direction: row;
 }
 
+.title-logo{
+    display: flex;
+    align-items: center;
+
+    gap: .1rem;
+}
+
+.title-logo h3{
+    width: 5rem;
+}
+
+.title-logo small {
+    padding-inline: .2rem;
+
+    text-align: center;
+
+    background-color: #22bb348a;
+    border: solid 1px #22bb34;
+
+    width: 60%;
+    border-radius: 1rem;
+}
+
 .tasks-card {
     gap: 2rem;
 
@@ -488,7 +513,7 @@ svg {
     justify-content: space-around;
     align-items: center;
 
-    gap: 11rem;
+    gap: 5rem;
 }
 
 .top-card h3 {
@@ -531,26 +556,7 @@ svg {
     margin-top: 1.5 rem;
 }
 
-.complements_informations {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-    gap: .5rem;
-}
-
-.complements_informations small:nth-child(1) {
-    padding-inline: 1rem;
-
-    background-color: #22bb348a;
-    border: solid 1px #22bb34;
-
-    width: 50%;
-
-    border-radius: 1rem;
-}
-
-.complements_informations small:nth-child(2) {
+.complements_informations small {
     margin-left: .5rem;
     color: #a0a0a0;
 }
