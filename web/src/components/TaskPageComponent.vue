@@ -485,8 +485,8 @@ svg {
 
     text-align: center;
 
-    background-color: #22bb348a;
-    border: solid 1px #22bb34;
+    background-color: #5d34bdab;
+    border: solid 1px #8150f5;
 
     width: 60%;
     border-radius: 1rem;
