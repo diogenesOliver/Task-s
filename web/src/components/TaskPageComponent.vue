@@ -170,7 +170,21 @@ export default {
         async createTask() {
             try {
                 await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
-                    console.log(res.data)
+                    const second = 1000;
+                    const minute = second * 60;
+                    const hour = minute * 60;
+                    const day = hour * 24;
+
+                    function countDays() {
+                        let date_ini = new Date(res.data.createdAt);
+                        let date_end = new Date(res.data.endsDate);
+
+                        return res.data.endsDate = Math.floor(
+                            ( date_end.getTime() - date_ini.getTime() ) / day
+                        );
+                    }
+
+                    countDays()
                 })
                 toast.success('Task created successfully 🎉', {
                     autoClose: 3000,
@@ -469,14 +483,14 @@ svg {
     flex-direction: row;
 }
 
-.title-logo{
+.title-logo {
     display: flex;
     align-items: center;
 
     gap: .1rem;
 }
 
-.title-logo h3{
+.title-logo h3 {
     width: 5rem;
 }
 
