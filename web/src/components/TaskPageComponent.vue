@@ -96,6 +96,7 @@
 
                 <div class="complements_informations">
                     <small>Created at {{ task.createdAt.split('T')[0] }}</small>
+                    <small id="showStatus">Pending</small>
                 </div>
 
                 <div class="buttons-from-actions">
@@ -132,6 +133,7 @@ export default {
                         title: "",
                         description: "",
                         difficulty: "",
+                        status: "",
                         createdAt: ""
                     }
                 ],
@@ -180,7 +182,7 @@ export default {
                         let date_end = new Date(res.data.endsDate);
 
                         return res.data.endsDate = Math.floor(
-                            ( date_end.getTime() - date_ini.getTime() ) / day
+                            (date_end.getTime() - date_ini.getTime()) / day
                         );
                     }
 
@@ -209,7 +211,7 @@ export default {
                 }
             }
         },
-        async finishTask(taskId: string){
+        async finishTask(taskId: string) {
             axios.delete(`http://localhost:8080/api/delete/task/${taskId}`).then(res => {
                 console.log(res)
             })
@@ -575,9 +577,39 @@ svg {
     margin-top: 1.5 rem;
 }
 
+.complements_informations {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 1.5rem;
+}
+
 .complements_informations small {
     margin-left: .5rem;
     color: #a0a0a0;
+}
+
+/* .complements_informations small:nth-child(2){
+    background-color: rgba(1, 158, 1, 0.486);
+    
+    border: solid 1px rgb(2, 182, 2);
+    border-radius: 1rem;
+    
+    color: white;
+
+    padding-inline:.5rem;
+} */
+
+.complements_informations small:nth-child(2){
+    background-color: rgba(255, 255, 0, 0.562);
+    
+    border: solid 1px yellow;
+    border-radius: 1rem;
+
+    color: white;
+
+    padding-inline:.5rem;
 }
 
 .buttons-from-actions {
