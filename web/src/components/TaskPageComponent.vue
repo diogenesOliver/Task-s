@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="buttons-from-actions">
-                    <button @click="finishTask(task.id)">Finish task</button>
+                    <button @click="deleteTask(task.id)">Finish task</button>
                     <button>
                         <img src="../assets/editar.png" alt=""> Edit
                     </button>
@@ -211,9 +211,12 @@ export default {
                 }
             }
         },
-        async finishTask(taskId: string) {
+        async deleteTask(taskId: string) {
             axios.delete(`http://localhost:8080/api/delete/task/${taskId}`).then(res => {
-                console.log(res)
+                toast.success('Task deleted successfully', {
+                    autoClose: 3000,
+                    theme: 'dark'
+                })
             })
         },
         async openModal() {
@@ -601,15 +604,15 @@ svg {
     padding-inline:.5rem;
 } */
 
-.complements_informations small:nth-child(2){
+.complements_informations small:nth-child(2) {
     background-color: rgba(255, 255, 0, 0.562);
-    
+
     border: solid 1px yellow;
     border-radius: 1rem;
 
     color: white;
 
-    padding-inline:.5rem;
+    padding-inline: .5rem;
 }
 
 .buttons-from-actions {
