@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="buttons-from-actions">
-                    <button>Finish task</button>
+                    <button @click="finishTask(task.id)">Finish task</button>
                     <button>
                         <img src="../assets/editar.png" alt=""> Edit
                     </button>
@@ -128,6 +128,7 @@ export default {
                 confirm_password: "",
                 Task: [
                     {
+                        id: "",
                         title: "",
                         description: "",
                         difficulty: "",
@@ -153,7 +154,6 @@ export default {
 
                 for (let data of res.data.Task) {
                     const initialDate: Date | string | number = new Date(data.createdAt)
-                    console.log(initialDate.getDate())
                 }
 
                 this.userInfo = res.data
@@ -208,6 +208,11 @@ export default {
                     input.style.borderColor = '#930000'
                 }
             }
+        },
+        async finishTask(taskId: string){
+            axios.delete(`http://localhost:8080/api/delete/task/${taskId}`).then(res => {
+                console.log(res)
+            })
         },
         async openModal() {
             const modalDiv = document.getElementById('modalWrapper') as HTMLElement
