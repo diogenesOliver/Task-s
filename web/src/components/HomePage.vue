@@ -1,28 +1,6 @@
 <template>
     <div class="main">
-        <nav>
-            <div class="right-nav">
-                <h1>Task-s</h1>
-                <ul>
-                    <li>Feature</li>
-                    <li>About</li>
-                    <li>Resources</li>
-                </ul>
-            </div>
-
-            <div class="buttons-to-logs">
-                <router-link to="/Login" class="link">
-                    <button class="button-from-login">
-                        <img src="../assets/do-utilizador.png" alt="">
-                        Login
-                    </button>
-                </router-link>
-
-                <router-link to="/sign-in" class="link">
-                    <button class="button-from-signin">Sign In</button>
-                </router-link>
-            </div>
-        </nav>
+        <NavbarComponent/>
 
         <div class="main-div">
             <div class="informations">
@@ -42,99 +20,47 @@
     </div>
 </template>
 
+<script lang="ts">
+    import NavbarComponent from './NavbarComponent.vue';
+    
+    export default{
+        name: 'Home',
+        components: {
+            NavbarComponent
+        }
+    }
+</script>
+
 <style>
 .main {
     height: 100vh;
     width: 75rem;
 }
 
-ul,
-nav {
-    display: flex;
-    flex-direction: row;
-}
-
-nav {
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 25rem;
+.main-div {
     width: 100%;
-    height: 3rem;
-}
+    margin-top: 15rem;
 
-nav h1 {
-    font-size: 2rem;
-    color: #8257E5;
-    background-clip: text;
-}
-
-.right-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-ul {
-    gap: 3rem;
-}
-
-ul li {
-    list-style: none;
-    cursor: pointer;
-}
-
-.buttons-to-logs {
-    display: flex;
-    gap: 2rem;
-}
-
-.button-from-login,
-.button-from-signin,
-.get-started-button {
     text-align: center;
-    color: white;
-    background: #8257E5;
-
-    border-radius: .3rem;
-    border: none;
-
-    cursor: pointer;
-    transition: .3s;
-}
-
-.button-from-signin {
-    background-color: transparent;
-    border: solid 1px #8257E5;
-}
-
-.right-nav ul li {
-    transition: .3s;
-}
-
-.right-nav ul li:hover {
-    color: #8257e5c7;
-}
-
-.button-from-login:hover {
-    background-color: #8257e53d;
-}
-
-.button-from-signin:hover {
-    background-color: #8257E5;
 }
 
 .get-started-button {
     display: flex;
     justify-content: space-around;
     align-items: center;
-
-    padding-inline: 3rem;
-
-    text-align: center;
-
+    
     height: 2.3rem;
     width: 13rem;
+
+    color: white;
+    background: #8257E5;
+
+    padding-inline: 3rem;
+    border-radius: .3rem;
+    border: none;
+
+    text-align: center;
+    cursor: pointer;
 
     transition: .3s;
 }
@@ -145,46 +71,6 @@ ul li {
 
 .get-started-button img {
     height: 1rem;
-}
-
-.button-from-login,
-.button-from-signin {
-    height: 2.5rem;
-    width: 8rem;
-}
-
-.button-from-login {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    padding-inline: 1.5rem;
-
-    background: transparent;
-    border: none;
-}
-
-.button-from-login img {
-    height: 1rem;
-}
-
-li a {
-    color: #EBEBEBA3;
-}
-
-li a:hover {
-    background-color: transparent;
-}
-
-.get-started {
-    color: white;
-}
-
-.main-div {
-    width: 100%;
-    margin-top: 15rem;
-
-    text-align: center;
 }
 
 .informations {
