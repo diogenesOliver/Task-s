@@ -24,4 +24,4 @@
 
 <image src="./readme-images/new_new_homepage.png"/>
 <image src="./readme-images/no_tasks.png"/>
-<image src="./readme-images/with_task.png"/>
+<image src="./readme-images/homePage_image.png"/>
