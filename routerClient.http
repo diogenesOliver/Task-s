@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:8080/api
+@baseUrl = https://nodedeploytask-api.onrender.com/api
 
 POST  {{baseUrl}}/register
 content-type: application/json
@@ -6,7 +6,7 @@ content-type: application/json
 {
    "name": "Diógenes Ribeiro de Oliveira",
    "email": "io.riboliveira@gmail.com", 
-   "password": "S@@", 
+   "password": "S@@laada390390", 
    "confirm_password": "S@@laada390390" 
 }
 
@@ -29,7 +29,7 @@ Content-Type: application/json
    "description": "Descrição para teste",
    "difficulty": 6,
    "status": false,
-   "authorId": 4,
+   "authorId": 1,
    "endsDate": "2023-10-21"
 }
 
