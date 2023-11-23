@@ -3,3 +3,5 @@
 
 database-postgres-tasks
 prisma/migrations
+
+/dist

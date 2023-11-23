@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsup src",
+    "starts": "node dist/server.js",
     "studio": "npx prisma studio",
     "test": "vitest"
   },
@@ -33,6 +35,7 @@
     "prisma": "^4.12.0",
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.3.3",
+    "tsup": "^8.0.1",
     "vitest": "^0.34.4"
   },
   "devDependencies": {
