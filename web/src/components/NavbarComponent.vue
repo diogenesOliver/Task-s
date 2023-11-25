@@ -11,7 +11,7 @@
 
         <div class="buttons-to-logs">
             <router-link to="/Login" class="link">
-                <button class="button-from-login">
+                 <button class="button-from-login">
                     <img src="../assets/do-utilizador.png" alt="">
                     Login
                 </button>
@@ -25,8 +25,22 @@
 </template>
 
 <script lang="ts">
+import ButtonComponent from './ButtonComponent.vue';
+import { computed } from 'vue'; 
+
 export default {
-    name: "navbar"
+    name: "Navbar",
+    data() {
+        return {
+            lable: "Login",
+            imageURL: computed(
+                () => new URL('../assets/do-utilizador.png', import.meta.url).href
+            )
+        }
+    },
+    components: {
+        ButtonComponent
+    }
 }
 </script>
 
@@ -53,9 +67,13 @@ nav h1 {
     background-clip: text;
 }
 
-.right-nav { align-items: center; }
+.right-nav {
+    align-items: center;
+}
 
-ul { gap: 3rem; }
+ul {
+    gap: 3rem;
+}
 
 ul li {
     list-style: none;
@@ -68,7 +86,7 @@ ul li {
 }
 
 .button-from-login,
-.button-from-signin{
+.button-from-signin {
     text-align: center;
     color: white;
     background: #8257E5;
@@ -118,6 +136,6 @@ ul li {
     border: none;
 }
 
-.button-from-login img { height: 1rem; }
-
-</style>
+.button-from-login img {
+    height: 1rem;
+}</style>
