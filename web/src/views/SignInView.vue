@@ -1,36 +1,35 @@
- <template>
+<template>
   <router-link to="/">
-      <img class="button-back" src="../assets/angulo-esquerdo.png" />
+    <img class="button-back" src="../assets/angulo-esquerdo.png" />
   </router-link>
 
   <h1>Sign-in on plataform</h1>
   <p>The first step to improving your productivity and <br> having better control of your activities</p>
 
   <div class="sign-in">
-      <form>
-          <input type="text" class="form-input" id="inputName" placeholder="Name" v-model="userData.name">
-          <input type="email" class="form-input" id="inputEmail" placeholder="Email" v-model="userData.email">
+    <form>
+      <input type="text" class="form-input" id="inputName" placeholder="Name" v-model="userData.name">
+      <input type="email" class="form-input" id="inputEmail" placeholder="Email" v-model="userData.email">
 
-          <div class="passwords">
-              <input type="password" class="form-input" id="inputPassword" placeholder="Password"
-                  v-model="userData.password">
-              <input type="password" class="form-input" id="inputConfirmPassword" placeholder="Confirm Password"
-                  @keyup.enter="createUser()" v-model="userData.confirm_password">
-          </div>
-      </form>
+      <div class="passwords">
+        <input type="password" class="form-input" id="inputPassword" placeholder="Password" v-model="userData.password">
+        <input type="password" class="form-input" id="inputConfirmPassword" placeholder="Confirm Password"
+          @keyup.enter="createUser()" v-model="userData.confirm_password">
+      </div>
+    </form>
 
-      <button class="sign-in-button" @click.prevent="createUser()">Continue</button>
-      <small>Or Sign In Using</small>
-      <button class="login-with-google">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
-          Sign in with Google
-      </button>
+    <button class="sign-in-button" @click.prevent="createUser()">Continue</button>
+    <small>Or Sign In Using</small>
+    <button class="login-with-google">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
+      Sign in with Google
+    </button>
 
-      <router-link to="/login" class="login-buttons">
-          <a class="link">Already a member?</a>
-      </router-link>
+    <router-link to="/login" class="login-buttons">
+      <a class="link">Already a member?</a>
+    </router-link>
 
-      <LoaderComponent/>
+    <LoaderComponent />
   </div>
 </template>
 
@@ -44,47 +43,45 @@ import LoaderComponent from '../components/LoaderComponent.vue';
 export default {
   name: "Register",
   components: {
-      LoaderComponent
+    LoaderComponent
   },
   data() {
-      return {
-          userData: {
-              name: "",
-              email: "",
-              password: "",
-              confirm_password: ""
-          }
+    return {
+      userData: {
+        name: "",
+        email: "",
+        password: "",
+        confirm_password: ""
       }
+    }
   },
   methods: {
-      async createUser() {
-          try {
-              const loader = document.getElementById("loader_race_by") as HTMLElement
-              loader.style.display = "flex"
+    async createUser() {
+      try {
+        const loader = document.getElementById("loader_race_by") as HTMLElement
+        loader.style.display = "flex"
 
-              await axios.post("http://localhost:8080/api/register", this.userData).then(res => {
-                  const getFirstName: string[] = res.data.name.split(" ")[0].toLowerCase()
-                  this.$router.push(`/task-s/${getFirstName}/${res.data.id}`)
-              })
-          } catch (e) {
-              toast.error('ERROR - Invalid field', {
-                  autoClose: 3000,
-                  theme: 'dark'
-              })
+        await axios.post("http://localhost:8080/api/register", this.userData).then(res => {
+          const getFirstName: string[] = res.data.name.split(" ")[0].toLowerCase()
+          this.$router.push(`/task-s/${getFirstName}/${res.data.id}`)
+        })
+      } catch (e) {
+        toast.error('ERROR - Invalid field', {
+          autoClose: 3000,
+          theme: 'dark'
+        })
 
-              const inputName = document.getElementById("inputName") as HTMLElement
-              const inputEmail = document.getElementById("inputEmail") as HTMLElement
-              const inputPassword = document.getElementById("inputPassword") as HTMLElement
-              const inputConfirmPassword = document.getElementById("inputConfirmPassword") as HTMLElement
+        const elementIds = ["inputName", "inputEmail", "inputPassword", "inputConfirmPassword"];
+        const elements = elementIds.map(
+          id => document.getElementById(id) as HTMLElement
+        );
 
-              const color: string = "#D34242"
-              let inputs: Array<HTMLElement> = [inputName, inputEmail, inputPassword, inputConfirmPassword]
-
-              for (let input of inputs) {
-                  input.style.borderColor = color
-              }
-          }
+        const color: string = "#D34242"
+        for (let input of elements) {
+          input.style.borderColor = color
+        }
       }
+    }
   }
 }
 </script>
@@ -201,11 +198,11 @@ export default {
 
   0%,
   100% {
-      transform: scale(0);
+    transform: scale(0);
   }
 
   50% {
-      transform: scale(1.5);
+    transform: scale(1.5);
   }
 }
 </style>
