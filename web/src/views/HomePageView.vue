@@ -9,10 +9,7 @@
                     improve your day-to-day performance with better organization
                 </p>
                 <router-link to="/sign-in" class="link">
-                    <button class="get-started-button">
-                        Get started
-                        <img src="../assets/seta-para-a-direita.png">
-                    </button>
+                    <ButtonComponent :lable="lable" :src="imageURL"/>
                 </router-link>
             </div>
         </div>
@@ -22,11 +19,23 @@
 
 <script lang="ts">
     import NavbarComponent from '../components/NavbarComponent.vue';
+    import ButtonComponent from '../components/ButtonComponent.vue';
     
+    import { computed } from 'vue';
+
     export default{
         name: 'Home',
+        data(){
+            return {
+                lable: 'Get Started',
+                imageURL: computed(
+                    () => new URL('../assets/seta-para-a-direita.png', import.meta.url).href
+                )
+            }
+        },
         components: {
-            NavbarComponent
+            NavbarComponent,
+            ButtonComponent
         }
     }
 </script>
@@ -42,35 +51,6 @@
     margin-top: 15rem;
 
     text-align: center;
-}
-
-.get-started-button {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-    height: 2.3rem;
-    width: 13rem;
-
-    color: white;
-    background: #8257E5;
-
-    padding-inline: 3rem;
-    border-radius: .3rem;
-    border: none;
-
-    text-align: center;
-    cursor: pointer;
-
-    transition: .3s;
-}
-
-.get-started-button:hover {
-    background-color: #5d34bd;
-}
-
-.get-started-button img {
-    height: 1rem;
 }
 
 .informations {
