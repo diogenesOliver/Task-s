@@ -71,8 +71,8 @@ export default {
           theme: 'dark'
         })
 
-        const elementIds = ["inputName", "inputEmail", "inputPassword", "inputConfirmPassword"];
-        const elements = elementIds.map(
+        const elementIds: string[] = ["inputName", "inputEmail", "inputPassword", "inputConfirmPassword"];
+        const elements: HTMLElement[] = elementIds.map(
           id => document.getElementById(id) as HTMLElement
         );
 
