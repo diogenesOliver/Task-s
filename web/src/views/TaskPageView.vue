@@ -1,113 +1,112 @@
- <template>
+<template>
   <div class="wrapper">
-      <div class="nav-div">
+    <div class="nav-div">
 
-          <div class="infoir">
-              <h3>Welcome, {{ userInfo.name }}!</h3>
-              <h1> You have {{ tasksDetails.taskLength }} pending tasks!</h1>
+      <div class="infoir">
+        <h3>Welcome, {{ userInfo.name }}!</h3>
+        <h1> You have {{ tasksDetails.taskLength }} pending tasks!</h1>
+      </div>
+      <button class="new-task" @click.prevent="openModal()">
+        <img src="../assets/mais.png">
+        <p>New Task</p>
+      </button>
+
+    </div>
+
+    <div class="modal-wrapper" id="modalWrapper">
+      <div class="modal" id="modal">
+        <div class="icon-close-modal">
+
+          <h3>New Task</h3>
+
+          <svg @click.prevent="closeModal()" width="40" height="40" viewBox="0 0 40 40" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 10L10 30M10 10L30 30" stroke="white" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="task-input">
+          <form>
+            <div class="form-control">
+              <label for="title">Title</label>
+              <input name="title" type="text" class="form-input" id="taskTitle" placeholder="Enter a title..."
+                v-model="tasksInfo.title">
+            </div>
+
+            <div class="form-control">
+              <label for="desc">Description</label>
+              <input name="desc" type="text" class="form-input" id="taskDescription" placeholder="Enter a description..."
+                v-model="tasksInfo.description">
+            </div>
+
+            <div class="forms">
+              <div class="form-control">
+                <label for="diff">Difficulty</label>
+                <input name="diff" type="number" class="form-input" id="taskDifficulty" placeholder="Add difficulty..."
+                  v-model="tasksInfo.difficulty">
+              </div>
+
+              <div class="form-control">
+                <label for="something">Ends Date</label>
+                <input type="date" class="form-input form-date" id="inputDate" v-model="tasksInfo.endsDate" />
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+        <div class="buttons">
+          <button class="create-task" @click="createTask()">Create</button>
+          <button class="cancel-task" @click="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="msg-from-0-tasks" id="taskCounter">
+      <div class="message">
+        <img src="../assets/chart-simple-horizontal.png" alt="">
+        <h2>No task created</h2>
+        <p>You don´t have any task created yet. Start by creating one</p>
+
+        <button class="new-task button-msg-from-0-task" @click.prevent="openModal()">
+          <img src="../assets/mais.png">
+          New Task
+        </button>
+      </div>
+    </div>
+
+    <div class="tasks-card">
+      <div v-for="task in userInfo.Task" class="cards">
+        <div class="top-card">
+          <div class="title-logo">
+            <h3>Task-s</h3>
+            <small id="difficultyLevel"> Level: {{ task.difficulty }}</small>
           </div>
-          <button class="new-task" @click.prevent="openModal()">
-              <img src="../assets/mais.png">
-              <p>New Task</p>
+          <button>
+            <img src="../assets/icon_configuration.png">
           </button>
+        </div>
+
+        <div class="body_of_card">
+          <h3>{{ task.title }}</h3>
+          <p>{{ task.description }}</p>
+        </div>
+
+        <div class="complements_informations">
+          <small>Created at {{ task.createdAt.split('T')[0] }}</small>
+          <small id="showStatus">Pending</small>
+        </div>
+
+        <div class="buttons-from-actions">
+          <button @click="deleteTask(task.id)">Finish task</button>
+          <button>
+            <img src="../assets/editar.png" alt=""> Edit
+          </button>
+        </div>
 
       </div>
-
-      <div class="modal-wrapper" id="modalWrapper">
-          <div class="modal" id="modal">
-              <div class="icon-close-modal">
-
-                  <h3>New Task</h3>
-
-                  <svg @click.prevent="closeModal()" width="40" height="40" viewBox="0 0 40 40" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path d="M30 10L10 30M10 10L30 30" stroke="white" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round" />
-                  </svg>
-              </div>
-
-              <div class="task-input">
-                  <form>
-                      <div class="form-control">
-                          <label for="title">Title</label>
-                          <input name="title" type="text" class="form-input" id="taskTitle" placeholder="Enter a title..."
-                              v-model="tasksInfo.title">
-                      </div>
-
-                      <div class="form-control">
-                          <label for="desc">Description</label>
-                          <input name="desc" type="text" class="form-input" id="taskDescription"
-                              placeholder="Enter a description..." v-model="tasksInfo.description">
-                      </div>
-
-                      <div class="forms">
-                          <div class="form-control">
-                              <label for="diff">Difficulty</label>
-                              <input name="diff" type="number" class="form-input" id="taskDifficulty"
-                                  placeholder="Add difficulty..." v-model="tasksInfo.difficulty">
-                          </div>
-
-                          <div class="form-control">
-                              <label for="something">Ends Date</label>
-                              <input type="date" class="form-input form-date" id="inputDate"
-                                  v-model="tasksInfo.endsDate" />
-                          </div>
-
-                      </div>
-                  </form>
-              </div>
-
-              <div class="buttons">
-                  <button class="create-task" @click="createTask()">Create</button>
-                  <button class="cancel-task" @click="closeModal()">Cancel</button>
-              </div>
-          </div>
-      </div>
-
-      <div class="msg-from-0-tasks" id="taskCounter">
-          <div class="message">
-              <img src="../assets/chart-simple-horizontal.png" alt="">
-              <h2>No task created</h2>
-              <p>You don´t have any task created yet. Start by creating one</p>
-
-              <button class="new-task button-msg-from-0-task" @click.prevent="openModal()">
-                  <img src="../assets/mais.png">
-                  New Task
-              </button>
-          </div>
-      </div>
-
-      <div class="tasks-card">
-          <div v-for="task in userInfo.Task" class="cards">
-              <div class="top-card">
-                  <div class="title-logo">
-                      <h3>Task-s</h3>
-                      <small id="difficultyLevel"> Level: {{ task.difficulty }}</small>
-                  </div>
-                  <button>
-                      <img src="../assets/icon_configuration.png">
-                  </button>
-              </div>
-
-              <div class="body_of_card">
-                  <h3>{{ task.title }}</h3>
-                  <p>{{ task.description }}</p>
-              </div>
-
-              <div class="complements_informations">
-                  <small>Created at {{ task.createdAt.split('T')[0] }}</small>
-                  <small id="showStatus">Pending</small>
-              </div>
-
-              <div class="buttons-from-actions">
-                  <button @click="deleteTask(task.id)">Finish task</button>
-                  <button>
-                      <img src="../assets/editar.png" alt=""> Edit
-                  </button>
-              </div>
-
-          </div>
-      </div>
+    </div>
 
   </div>
 </template>
@@ -121,121 +120,121 @@ import 'vue3-toastify/dist/index.css';
 export default {
   name: "Tasks",
   data() {
-      return {
-          userInfo: {
-              name: "",
-              email: "",
-              password: "",
-              confirm_password: "",
-              Task: [
-                  {
-                      id: "",
-                      title: "",
-                      description: "",
-                      difficulty: "",
-                      status: "",
-                      createdAt: ""
-                  }
-              ],
-          },
-          tasksInfo: {
-              title: "",
-              description: "",
-              difficulty: "",
-              endsDate: "",
-              authorId: parseInt(this.$route.params.id as string),
-          },
-          tasksDetails: {
-              taskLength: 0
+    return {
+      userInfo: {
+        name: "",
+        email: "",
+        password: "",
+        confirm_password: "",
+        Task: [
+          {
+            id: "",
+            title: "",
+            description: "",
+            difficulty: "",
+            status: "",
+            createdAt: ""
           }
+        ],
+      },
+      tasksInfo: {
+        title: "",
+        description: "",
+        difficulty: "",
+        endsDate: "",
+        authorId: parseInt(this.$route.params.id as string),
+      },
+      tasksDetails: {
+        taskLength: 0
       }
+    }
   },
   methods: {
-      async gettingUserData(userId: string) {
-          await axios.get(`http://localhost:8080/api/all/users/${userId}`).then(res => {
+    async gettingUserData(userId: string) {
+      await axios.get(`http://localhost:8080/api/all/users/${userId}`).then(res => {
 
-              for (let data of res.data.Task) {
-                  const initialDate: Date | string | number = new Date(data.createdAt)
-              }
+        for (let data of res.data.Task) {
+          const initialDate: Date | string | number = new Date(data.createdAt)
+        }
 
-              this.userInfo = res.data
-              this.userInfo.name = res.data.name.split(" ")[0]
+        this.userInfo = res.data
+        this.userInfo.name = res.data.name.split(" ")[0]
 
-              if (this.userInfo.Task.length > 0) {
-                  var taskCounter = document.getElementById('taskCounter') as HTMLElement
-                  taskCounter.style.display = 'none'
+        if (this.userInfo.Task.length > 0) {
+          var taskCounter = document.getElementById('taskCounter') as HTMLElement
+          taskCounter.style.display = 'none'
 
-                  return this.tasksDetails.taskLength = this.userInfo.Task.length
-              }
-          })
-      },
-      async createTask() {
-          try {
-              await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
-                  const second = 1000;
-                  const minute = second * 60;
-                  const hour = minute * 60;
-                  const day = hour * 24;
+          return this.tasksDetails.taskLength = this.userInfo.Task.length
+        }
+      })
+    },
+    async createTask() {
+      try {
+        await axios.post('http://localhost:8080/api/create/task', this.tasksInfo).then(res => {
+          const second = 1000;
+          const minute = second * 60;
+          const hour = minute * 60;
+          const day = hour * 24;
 
-                  function countDays() {
-                      let date_ini = new Date(res.data.createdAt);
-                      let date_end = new Date(res.data.endsDate);
+          function countDays() {
+            let date_ini = new Date(res.data.createdAt);
+            let date_end = new Date(res.data.endsDate);
 
-                      return res.data.endsDate = Math.floor(
-                          (date_end.getTime() - date_ini.getTime()) / day
-                      );
-                  }
-
-                  countDays()
-              })
-              toast.success('Task created successfully 🎉', {
-                  autoClose: 3000,
-                  theme: 'dark'
-              })
-
-              this.closeModal()
-          } catch (e) {
-              toast.error('ERROR - Invalid field', {
-                  autoClose: 3000,
-                  theme: 'dark'
-              })
-
-              const taskTitle = document.getElementById('taskTitle') as HTMLElement
-              const taskDescription = document.getElementById('taskDescription') as HTMLElement
-              const taskDifficulty = document.getElementById('taskDifficulty') as HTMLElement
-              const inputDate = document.getElementById('inputDate') as HTMLElement
-
-              const inputs: HTMLElement[] = [taskTitle, taskDescription, taskDifficulty, inputDate]
-              for (let input of inputs) {
-                  input.style.borderColor = '#930000'
-              }
+            return res.data.endsDate = Math.floor(
+              (date_end.getTime() - date_ini.getTime()) / day
+            );
           }
-      },
-      async deleteTask(taskId: string) {
-          axios.delete(`http://localhost:8080/api/delete/task/${taskId}`).then(res => {
-              toast.success('Task deleted successfully', {
-                  autoClose: 3000,
-                  theme: 'dark'
-              })
-          })
-      },
-      async openModal() {
-          const modalDiv = document.getElementById('modalWrapper') as HTMLElement
-          const modal = document.getElementById('modal') as HTMLElement
 
-          modalDiv.style.display = 'flex'
-          modal.style.display = 'flex'
-      },
-      async closeModal() {
-          const modalDiv = document.getElementById('modalWrapper') as HTMLElement
-          const modal = document.getElementById('modal') as HTMLElement
+          countDays()
+        })
+        toast.success('Task created successfully 🎉', {
+          autoClose: 3000,
+          theme: 'dark'
+        })
 
-          modalDiv.style.display = 'none'
-          modal.style.display = 'none'
+        this.closeModal()
+      } catch (e) {
+        toast.error('ERROR - Invalid field', {
+          autoClose: 3000,
+          theme: 'dark'
+        })
+
+        const taskTitle = document.getElementById('taskTitle') as HTMLElement
+        const taskDescription = document.getElementById('taskDescription') as HTMLElement
+        const taskDifficulty = document.getElementById('taskDifficulty') as HTMLElement
+        const inputDate = document.getElementById('inputDate') as HTMLElement
+
+        const inputs: HTMLElement[] = [taskTitle, taskDescription, taskDifficulty, inputDate]
+        for (let input of inputs) {
+          input.style.borderColor = '#930000'
+        }
       }
+    },
+    async deleteTask(taskId: string) {
+      axios.delete(`http://localhost:8080/api/delete/task/${taskId}`).then(res => {
+        toast.success('Task deleted successfully', {
+          autoClose: 3000,
+          theme: 'dark'
+        })
+      })
+    },
+    async openModal() {
+      const modalDiv = document.getElementById('modalWrapper') as HTMLElement
+      const modal = document.getElementById('modal') as HTMLElement
+
+      modalDiv.style.display = 'flex'
+      modal.style.display = 'flex'
+    },
+    async closeModal() {
+      const modalDiv = document.getElementById('modalWrapper') as HTMLElement
+      const modal = document.getElementById('modal') as HTMLElement
+
+      modalDiv.style.display = 'none'
+      modal.style.display = 'none'
+    }
   },
   mounted() {
-      this.gettingUserData(this.$route.params.id as string)
+    this.gettingUserData(this.$route.params.id as string)
   }
 }
 </script>
@@ -388,13 +387,13 @@ h1 {
 
 @keyframes modal-animation {
   0% {
-      opacity: 0;
-      transform: scale(.2);
+    opacity: 0;
+    transform: scale(.2);
   }
 
   100% {
-      opacity: 1;
-      transform: scale(1);
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -663,56 +662,56 @@ svg {
 
 @media (max-width: 1100px) {
   .wrapper {
-      width: 22rem;
-      ;
+    width: 22rem;
+    ;
   }
 
   .nav-div {
-      gap: 10rem;
-      padding-inline: 1rem;
+    gap: 10rem;
+    padding-inline: 1rem;
   }
 
   .infoir {
-      text-align: center;
+    text-align: center;
   }
 
   .msg-from-0-tasks {
-      margin-top: 3.5rem;
+    margin-top: 3.5rem;
   }
 
   .message {
-      text-align: center;
-      gap: 1rem;
+    text-align: center;
+    gap: 1rem;
 
-      margin-top: 9rem;
+    margin-top: 9rem;
   }
 
   .nav-div .new-task {
-      position: absolute;
-      border-radius: 50%;
+    position: absolute;
+    border-radius: 50%;
 
-      width: 4rem;
-      height: 4rem;
+    width: 4rem;
+    height: 4rem;
 
-      margin-top: 85rem;
-      margin-left: 18rem;
+    margin-top: 85rem;
+    margin-left: 18rem;
   }
 
   .nav-div .new-task p {
-      display: none;
+    display: none;
   }
 
   .nav-div .new-task img {
-      height: 1rem;
+    height: 1rem;
   }
 
   .modal {
-      width: 25rem;
-      margin-top: 10rem;
+    width: 25rem;
+    margin-top: 10rem;
   }
 
   .form-date {
-      width: 10rem;
+    width: 10rem;
   }
 }
 </style>
