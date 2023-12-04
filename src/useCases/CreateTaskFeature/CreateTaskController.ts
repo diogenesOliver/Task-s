@@ -2,8 +2,6 @@ import { Request, Response } from 'express'
 import { CreateTaskService } from '../../repositories/CreateTaskService/CreateTaskService'
 import { Task } from '@prisma/client'
 
-import { countOfDaysToCompleteATask } from './countDayTaskDay'
-
 export class CreateTaskController {
 	constructor(
 		private createTaskService: CreateTaskService
