@@ -8,8 +8,9 @@ export class GetTaskController {
 
 	async getTaskController(req: Request, res: Response) {
 		try {
-			const task = await this.getTaskService.returninAll()
-			return res.status(200).send(task)
+			return res.status(200).send(
+				await this.getTaskService.returninAll()
+			)
 		} catch (e) { console.log(e) }
 	}
 }
