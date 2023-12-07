@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
-import { CreateTaskService } from '../../repositories/CreateTaskService/CreateTaskService'
 import { Task } from '@prisma/client'
+
+import { CreateTaskService } from '../../repositories/CreateTaskService/CreateTaskService'
+import { countOfDaysToCompleteATask } from './countDayTaskDay'
 
 export class CreateTaskController {
 	constructor(
@@ -34,6 +36,12 @@ export class CreateTaskController {
 
 			this.verifyingEmptyInputs(taskDataArray)
 			this.setEndsDate(taskData.endsDate)
+
+			console.log(
+				await countOfDaysToCompleteATask(
+					taskData.endsDate
+				)
+			)
 
 			if(!(taskData.difficulty > 0 && taskData.difficulty <= 9))
 				return res.status(404).send('ERROR')

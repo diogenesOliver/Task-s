@@ -1,4 +1,4 @@
-export async function countOfDaysToCompleteATask(initialDate: string, endsDate?: string): Promise<number | null> {
+export async function countOfDaysToCompleteATask( endsDate?: string | null): Promise<number | any> {
 	if (!endsDate) return null
 
 	const SECONDS: number = 1000
@@ -6,7 +6,7 @@ export async function countOfDaysToCompleteATask(initialDate: string, endsDate?:
 	const HOUR: number = MINUTE * 60
 	const DAY: number = HOUR * 24
 
-	const diff = new Date(endsDate).getTime() - new Date(initialDate).getTime()
+	const diff = ( new Date(endsDate).getDate() - new Date().getDate() ) + 1
 
-	return Math.floor(diff / DAY)
+	return diff
 }
