@@ -36,6 +36,7 @@
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.3.3",
     "tsup": "^8.0.1",
+    "tsyringe": "^4.8.0",
     "vitest": "^0.34.4",
     "zod": "^3.22.4"
   },
