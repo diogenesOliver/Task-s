@@ -12,6 +12,15 @@ services:
     environment:
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASS}"
+  redis-cache-container-tasks:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    container_name: "redis-cache-container-tasks"
+    restart: always
+    volumes:
+      - ./redis-cache-tasks:/var/lib/redis/cache
 
 volumes:
   postgres-databse-container-tasks:
+  redis-cache-container-tasks:
