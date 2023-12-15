@@ -8,7 +8,7 @@ const PORT = process.env.SERVER_PORT || 3001
 const startup = async () => {
 	
 	await createClient().on('error', err => {
-		console.log('Redis Client Error', err)
+		console.log('Redi Client Error', err)
 	}).connect()
 
 	app.listen(PORT, async () => {
