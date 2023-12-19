@@ -1,3 +1,4 @@
+import { getRedis, setRedis } from '../../redisConfig'
 import { Request, Response } from 'express'
 import { GetTasksService } from '../../repositories/GetTaskService/GetTasksService'
 
@@ -8,9 +9,16 @@ export class GetTaskController {
 
 	async getTaskController(req: Request, res: Response) {
 		try {
-			return res.status(200).send(
-				await this.getTaskService.returninAll()
-			)
+			const tasksFromCache = await getRedis('tasks')
+			console.log(tasksFromCache)
+			if (tasksFromCache) {
+				return res.send(JSON.parse(tasksFromCache))
+			}
+
+			const tasks = await this.getTaskService.returninAll()
+			await setRedis('tasks', JSON.stringify(tasks))
+
+			return res.status(200).send(tasks)
 		} catch (e) { console.log(e) }
 	}
 }
