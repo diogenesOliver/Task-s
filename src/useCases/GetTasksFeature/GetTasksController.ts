@@ -10,7 +10,6 @@ export class GetTaskController {
 	async getTaskController(req: Request, res: Response) {
 		try {
 			const tasksFromCache = await getRedis('tasks')
-			console.log(tasksFromCache)
 			if (tasksFromCache) {
 				return res.send(JSON.parse(tasksFromCache))
 			}
