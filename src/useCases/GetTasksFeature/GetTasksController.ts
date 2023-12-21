@@ -1,4 +1,4 @@
-import { getRedis, setRedis } from '../../redisConfig'
+import { getRedis, setRedis, redisClient } from '../../redisConfig'
 import { Request, Response } from 'express'
 import { GetTasksService } from '../../repositories/GetTaskService/GetTasksService'
 
@@ -11,7 +11,10 @@ export class GetTaskController {
 		try {
 			const tasksFromCache = await getRedis('tasks')
 			if (tasksFromCache) {
-				return res.send(JSON.parse(tasksFromCache))
+				res.send(JSON.parse(tasksFromCache))
+				return redisClient.del('tasks', (err) => {
+					if(err) throw Error()
+				})
 			}
 
 			const tasks = await this.getTaskService.returninAll()
