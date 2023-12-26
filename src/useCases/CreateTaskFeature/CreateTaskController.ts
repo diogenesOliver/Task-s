@@ -37,13 +37,11 @@ export class CreateTaskController {
 			this.verifyingEmptyInputs(taskDataArray)
 			this.setEndsDate(taskData.endsDate)
 
-			console.log(
-				await countOfDaysToCompleteATask(
-					taskData.endsDate
-				)
+			await countOfDaysToCompleteATask(
+				taskData.endsDate
 			)
 
-			if(!(taskData.difficulty > 0 && taskData.difficulty <= 9))
+			if (!(taskData.difficulty > 0 && taskData.difficulty <= 9))
 				return res.status(404).send('ERROR')
 
 			return res.status(200).send(
