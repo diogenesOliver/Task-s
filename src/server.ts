@@ -1,3 +1,5 @@
+import './tracer'
+
 import { createClient } from 'redis'
 import { config } from 'dotenv'
 config()
