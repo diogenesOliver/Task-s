@@ -152,6 +152,7 @@ export default {
   methods: {
     async gettingUserData(userId: string) {
       await axios.get(`http://localhost:8080/api/all/users/${userId}`).then(res => {
+        res.data.Task.reverse()
 
         for (let data of res.data.Task) {
           const initialDate: Date | string | number = new Date(data.createdAt)
