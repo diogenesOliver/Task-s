@@ -46,7 +46,7 @@ export class UserLoginController {
 
 			const authToken = req.headers.authorization
 			if (!authToken)
-				return res.status(401).send('Toke is missing')
+				return res.status(401).send('Token is missing')
 
 			try {
 				verify(authToken, process.env.SECRET_KEY as string)
