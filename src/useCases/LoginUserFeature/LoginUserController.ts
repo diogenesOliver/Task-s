@@ -8,17 +8,12 @@ import { UserLoginService } from '../../repositories/LoginUserService/LoginUserS
 import { User } from '@prisma/client'
 
 import { verifyPasswordWithCryptPassword } from './verifyPasswordFunction'
+import { generateAToken } from './generateTokenFunction'
 
 export class UserLoginController {
 	constructor(
 		private userLoginService: UserLoginService
 	) { }
-
-	private generateAToken(userId: string): string {
-		return sign({}, process.env.SECRET_KEY as string, {
-			subject: userId
-		})
-	}
 
 	async verifyEmailInDatabase(req: Request, res: Response) {
 		try {
@@ -41,7 +36,7 @@ export class UserLoginController {
 			if (user == false)
 				return res.status(404).json({ msg: 'Some Error' })
 
-			const token = this.generateAToken(findEmail.id.toString())
+			const token = generateAToken(findEmail.id.toString())
 			req.headers.authorization = token
 
 			const authToken = req.headers.authorization
