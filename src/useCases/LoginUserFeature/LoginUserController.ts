@@ -58,6 +58,9 @@ export class UserLoginController {
 				return res.status(400).send('Invalid Token')
 			}
 
-		} catch (e) { console.log(e) }
+		} catch (e) {
+			console.error('An error occurred:', e)
+			res.status(500).send('Internal Server Error')
+		}
 	}
 }
