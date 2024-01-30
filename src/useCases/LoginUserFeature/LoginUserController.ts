@@ -2,20 +2,17 @@ import { config } from 'dotenv'
 config()
 
 import { Request, Response } from 'express'
-import { compare } from 'bcrypt'
 import { sign, verify } from 'jsonwebtoken'
 import { getRedis, redisClient, setRedis } from '../../redisConfig'
 import { UserLoginService } from '../../repositories/LoginUserService/LoginUserService'
 import { User } from '@prisma/client'
 
+import { verifyPasswordWithCryptPassword } from './verifyPasswordFunction'
+
 export class UserLoginController {
 	constructor(
 		private userLoginService: UserLoginService
 	) { }
-
-	private async verifyPasswordWithCryptPassword(password: string, cryptPassword: string): Promise<boolean> {
-		return await compare(password, cryptPassword)
-	}
 
 	private generateAToken(userId: string): string {
 		return sign({}, process.env.SECRET_KEY as string, {
@@ -40,7 +37,7 @@ export class UserLoginController {
 			const findEmail = await this.userLoginService.findData(inputData.email)
 			await setRedis('userLogin', JSON.stringify(findEmail))
 
-			const user = await this.verifyPasswordWithCryptPassword(inputData.password, findEmail.password)
+			const user = await verifyPasswordWithCryptPassword(inputData.password, findEmail.password)
 			if (user == false)
 				return res.status(404).json({ msg: 'Some Error' })
 
