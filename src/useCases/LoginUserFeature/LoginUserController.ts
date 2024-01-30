@@ -26,7 +26,10 @@ export class UserLoginController {
 	async verifyEmailInDatabase(req: Request, res: Response) {
 		try {
 			const inputData: User = req.body
-			const userFromCache = await getRedis('userLogin')
+			const userFromCache = await getRedis('userLogin').catch(err => {
+				console.error('Error fetching from Redis: ', err)
+			})
+			
 			if(userFromCache){
 				res.status(200).send(JSON.parse(userFromCache))
 				return redisClient.del('userLogin', err => {
