@@ -50,6 +50,9 @@ export class CreateUserController {
 
 			const createUserExec = await this.createUserService.save(userData)
 			return res.status(200).send(createUserExec)
-		} catch (e) { console.log(e) }
+		} catch (e) {
+			console.error(e)
+			res.status(500).send('Internal Error - [500]')
+		}
 	}
 }

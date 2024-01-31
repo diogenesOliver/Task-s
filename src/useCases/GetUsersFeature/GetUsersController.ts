@@ -23,6 +23,9 @@ export class GetUserController {
 			await setRedis('user', JSON.stringify(user))
 
 			return res.status(200).send(user)
-		} catch (e) { console.log(e) }
+		} catch (e) {
+			console.error(e)
+			res.status(500).send('Internal Error - [500]')
+		}
 	}
 }

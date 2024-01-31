@@ -21,6 +21,9 @@ export class GetTaskController {
 			await setRedis('tasks', JSON.stringify(tasks))
 
 			return res.status(200).send(tasks)
-		} catch (e) { console.log(e) }
+		} catch (e) {
+			console.error(e)
+			res.status(500).send('Internal Error - [500]')
+		}
 	}
 }

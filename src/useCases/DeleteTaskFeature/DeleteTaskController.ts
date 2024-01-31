@@ -13,6 +13,9 @@ export class DeleteTaskController{
 			)
 	
 			return res.status(200).send('Task deleted successfully')
-		}catch(e: any){ console.log(e) }
+		}catch(e: any){
+			console.error(e)
+			res.status(500).send('Internal Error - [500]')
+		}
 	}
 }

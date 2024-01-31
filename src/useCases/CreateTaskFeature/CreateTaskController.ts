@@ -47,6 +47,9 @@ export class CreateTaskController {
 			return res.status(200).send(
 				await this.createTaskService.save(taskData)
 			)
-		} catch (e) { console.log(e) }
+		} catch (e) {
+			console.error(e)
+			res.status(500).send('Internal Error - [500]')
+		}
 	}
 }
