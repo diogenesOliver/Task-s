@@ -2,13 +2,13 @@ import { config } from 'dotenv'
 config()
 
 import { Request, Response } from 'express'
-import { sign, verify } from 'jsonwebtoken'
+import { verify } from 'jsonwebtoken'
 import { getRedis, redisClient, setRedis } from '../../redisConfig'
 import { UserLoginService } from '../../repositories/LoginUserService/LoginUserService'
 import { User } from '@prisma/client'
 
-import { verifyPasswordWithCryptPassword } from './verifyPasswordFunction'
-import { generateAToken } from './generateTokenFunction'
+import { verifyPasswordWithCryptPassword } from './verifyPassword_Function'
+import { generateAToken } from './generateToken_Function'
 
 export class UserLoginController {
 	constructor(
@@ -32,14 +32,14 @@ export class UserLoginController {
 			const findEmail = await this.userLoginService.findData(inputData.email)
 			await setRedis('userLogin', JSON.stringify(findEmail))
 
-			const user = await verifyPasswordWithCryptPassword(inputData.password, findEmail.password)
+			const user: boolean = await verifyPasswordWithCryptPassword(inputData.password, findEmail.password)
 			if (user == false)
 				return res.status(404).json({ msg: 'Some Error' })
 
-			const token = generateAToken(findEmail.id.toString())
+			const token: string = generateAToken(findEmail.id.toString())
 			req.headers.authorization = token
 
-			const authToken = req.headers.authorization
+			const authToken: string = req.headers.authorization
 			if (!authToken)
 				return res.status(401).send('Token is missing')
 
