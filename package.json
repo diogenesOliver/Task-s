@@ -8,7 +8,8 @@
     "build": "prisma generate && npx prisma db push && npx prisma migrate deploy && tsup src && node dist/server.js",
     "starts": "node dist/server.js",
     "studio": "npx prisma studio",
-    "test": "vitest"
+    "test": "vitest",
+    "test:moca": "mocha test --exit"
   },
   "repository": {
     "type": "git",
