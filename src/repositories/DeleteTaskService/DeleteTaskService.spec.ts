@@ -1,4 +1,4 @@
-import { expect, it, describe } from 'vitest'
+import { it, describe } from 'vitest'
 import { DeleteTaskService } from './DeletTaskRepository'
 
 const deleteTaskServiceInstance = new DeleteTaskService()
