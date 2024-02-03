@@ -1,12 +1,14 @@
-import { test, expect } from 'vitest'
+import { test, expect, describe } from 'vitest'
 import { GetTasksService } from './GetTasksService'
 
-test('Get all tasks', async () => {
-	const getTasks = await new GetTasksService().returninAll()
+describe('Testing class that return all tasks on Database', () => {
+	test('Must return an empty taks array or with tasks', async () => {
+		const returnAllTasks = await new GetTasksService().returninAll()
+		
+		if(returnAllTasks.length > 0){
+			expect(returnAllTasks[0]).toHaveProperty('title')
+		}
 
-	if(getTasks.length > 0){
-		expect(getTasks[0]).toHaveProperty('title')
-	}
-
-	expect(getTasks).toBeTypeOf('object')
+		expect(returnAllTasks).toBeInstanceOf(Array<GetTasksService>)
+	})
 })
