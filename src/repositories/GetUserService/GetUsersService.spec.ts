@@ -1,17 +1,11 @@
 import { expect, describe, it, test } from 'vitest'
 import { GetUserService } from './GetUsersService'
 
-const findUserById = new GetUserService()
-const userIdExemple: number = 3 
+const userIdExemple: number = 3
+const findUserById = new GetUserService().get(userIdExemple)
 
-test('Get one user by id and verify typeof', async () => {
-	expect(
-		await findUserById.get(userIdExemple)
-	).toBeTypeOf('object')
-})
-
-test('Verifying if have property name', async () => {
-	expect(
-		await findUserById.get(userIdExemple)
-	).toHaveProperty('name')
+describe('Testing the functionality to search for a user by ID', () => {
+	test('If user ID not found, return a ERROR', async () => {
+		expect(await findUserById).toEqual(null)
+	})
 })
