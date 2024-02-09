@@ -12,7 +12,7 @@ export class CreateTaskController {
 	private verifyingEmptyInputs(inputs: Array<any>, res?: Response) {
 		for (const input of inputs) {
 			if (!input)
-				return res?.status(404).send('ERROR')
+				return res?.status(404).send({  messgae: 'Invalid input, data not provide.' })
 		}
 
 		return inputs
@@ -24,7 +24,7 @@ export class CreateTaskController {
 
 		const newDate: string = new Date().toISOString().split('T')[0]
 		if (endsDate < newDate)
-			throw new Error('ERROR')
+			throw new Error('Invalid value from ends date, try again.')
 
 		return new Date(endsDate)
 	}
@@ -42,11 +42,12 @@ export class CreateTaskController {
 			)
 
 			if (!(taskData.difficulty > 0 && taskData.difficulty <= 9))
-				return res.status(404).send('ERROR')
+				return res.status(404).send('Invalid value from difficulty level.')
 
-			return res.status(200).send(
-				await this.createTaskService.save(taskData)
-			)
+			await this.createTaskService.save(taskData)
+			return res.status(201).send({
+				message: 'Task created successfully'
+			})
 		} catch (e) {
 			console.error(e)
 			res.status(500).send('Internal Error - [500]')
