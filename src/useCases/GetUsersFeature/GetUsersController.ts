@@ -18,7 +18,7 @@ export class GetUserController {
 				})
 			}
 
-			const userID = Number(req.params.id)
+			const userID: string = req.params.id
 			const user = await this.getUserService.get(userID)
 			await setRedis('user', JSON.stringify(user))
 
