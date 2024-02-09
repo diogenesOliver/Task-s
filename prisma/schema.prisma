@@ -8,29 +8,31 @@ datasource db {
 }
 
 model User {
-  id               Int      @id @default(autoincrement())
+  id               String   @id @default(cuid())
   name             String
   email            String   @unique
   password         String
   confirm_password String
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
-  Task             Task[]
+
+  Task Task[]
 
   @@map("users")
 }
 
 model Task {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(cuid())
   title       String   @unique
   description String
   difficulty  Int
   status      Boolean  @default(false)
-  author      User     @relation(fields: [authorId], references: [id])
-  authorId    Int
   endsDate    String?
   createdAt   DateTime @default(now())
+  authorId    String
   updatedAt   DateTime @updatedAt
+
+  author User @relation(fields: [authorId], references: [id])
 
   @@map("tasks")
 }
