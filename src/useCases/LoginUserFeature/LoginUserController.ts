@@ -34,7 +34,7 @@ export class UserLoginController {
 
 			const user: boolean = await verifyPasswordWithCryptPassword(inputData.password, findEmail.password)
 			if (user == false)
-				return res.status(404).json({ msg: 'Some Error' })
+				return res.status(404).json({ msg: 'Non-descript password' })
 
 			const token: string = generateAToken(findEmail.id.toString())
 			req.headers.authorization = token
@@ -52,7 +52,7 @@ export class UserLoginController {
 
 		} catch (e) {
 			console.error('An error occurred:', e)
-			res.status(500).send('Internal Server Error')
+			res.status(500).send(`Internal Server Error: ${e}`)
 		}
 	}
 }
