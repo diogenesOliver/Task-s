@@ -1,7 +1,7 @@
 import { expect, describe, it, test } from 'vitest'
 import { GetUserService } from './GetUsersService'
 
-const userIdExemple: number = 3
+const userIdExemple: string = 'kljsdnfçkajsdnfkçjlasndlçkfnAÇLKSDNF	'
 const findUserById = new GetUserService().get(userIdExemple)
 
 describe('Testing the functionality to search for a user by ID', () => {
