@@ -19,6 +19,5 @@ describe('Testing error cases for the /user/sign-up route', () => {
 				'email': 'diogenes.riboliveira@gmail.com',
 				'password': 'S@@alada390390'
 			})
-		console.log(response)
 	})
 })
