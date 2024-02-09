@@ -8,9 +8,7 @@ export class DeleteTaskController{
 
 	async deleteTaskController(req: Request, res: Response){
 		try{
-			await this.deleteTaskService.deleteData(
-				parseInt(req.params.id)
-			)
+			await this.deleteTaskService.deleteData(req.params.id)
 	
 			return res.status(200).send('Task deleted successfully')
 		}catch(e: any){
