@@ -12,11 +12,11 @@ import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance
 import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
 import { deleteTaskInstance } from './useCases/DeleteTaskFeature/deleteTaskInstance'
 
-router.get('/all/users/:id', (req: Request, res: Response) => {
+router.get('/user/:id', (req: Request, res: Response) => {
 	return getUserInstance.getUserController(req, res)
 })
 
-router.post('/register', (req: Request, res: Response) => {
+router.post('/create/user', (req: Request, res: Response) => {
 	return createUserInstance.createUserController(req, res)
 })
 
