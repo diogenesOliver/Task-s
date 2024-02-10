@@ -9,7 +9,7 @@ export class CreateUserController {
 		private createUserService: CreateUserService
 	) { }
 
-	private async cryptingPassword(password: string, confirmPassword: string){
+	private async cryptingPassword(password: string, confirmPassword: string) {
 		const SALT: string = await genSalt(14)
 		const CRYPTO_PASSWORD: string = await hash(
 			password, SALT
@@ -24,21 +24,23 @@ export class CreateUserController {
 		}
 	}
 
-	private async verifyngInputsValues(userDataArray: string[], res?: Response): Promise<string[] | Response<any, Record<string, any>> | undefined>{
-		for(const data of userDataArray){
-			if(!data)
+	private async verifyngInputsValues(userDataArray: string[], res?: Response): Promise<string[] | Response<any, Record<string, any>> | undefined> {
+		for (const data of userDataArray) {
+			if (!data)
 				return res?.status(404).send('Invalid input')
 		}
-	
+
 		return userDataArray
 	}
 
-	async createUserController(req: Request, res: Response){
+	async createUserController(req: Request, res: Response) {
 		try {
 			const userData: User = req.body
 			const userDataArray: string[] = [userData.name, userData.email, userData.password, userData.confirm_password]
 
-			await this.verifyngInputsValues(userDataArray)
+			const verifyInputsValue: any = await this.verifyngInputsValues(userDataArray)
+			if (verifyInputsValue.length > 0)
+				return res?.status(404).send({ message: 'E-mail already registered' })
 
 			if (userData.password != userData.confirm_password)
 				return res?.status(404).send('Password not match')
