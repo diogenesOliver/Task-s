@@ -1,3 +1,5 @@
+import { StatusCodes } from '../../logs/statusCode'
+
 import { Request, Response } from 'express'
 import { GetUserService } from '../../repositories/GetUserService/GetUsersService'
 
@@ -12,7 +14,7 @@ export class GetUserController {
 		try {
 			const userFromCache = await getRedis('user')
 			if (userFromCache){
-				res.send(JSON.parse(userFromCache))
+				res.status(StatusCodes.Success).send(JSON.parse(userFromCache))
 				return redisClient.del('user', err => {
 					if(err) throw Error()
 				})
@@ -22,10 +24,10 @@ export class GetUserController {
 			const user = await this.getUserService.get(userID)
 			await setRedis('user', JSON.stringify(user))
 
-			return res.status(200).send(user)
+			return res.status(StatusCodes.Success).send(user)
 		} catch (e) {
 			console.error(e)
-			res.status(500).send('Internal Error - [500]')
+			res.status(StatusCodes.ServerError).send('Internal Error - [500]')
 		}
 	}
 }

@@ -1,3 +1,5 @@
+import { StatusCodes } from '../../logs/statusCode'
+
 import { Request, Response } from 'express'
 import { genSalt, hash } from 'bcrypt'
 
@@ -27,7 +29,7 @@ export class CreateUserController {
 	private async verifyngInputsValues(userDataArray: string[], res?: Response): Promise<string[] | Response<any, Record<string, any>> | undefined> {
 		for (const data of userDataArray) {
 			if (!data)
-				return res?.status(404).send('Invalid input')
+				return res?.status(StatusCodes.BadRequest).send('Invalid input')
 		}
 
 		return userDataArray
@@ -40,10 +42,10 @@ export class CreateUserController {
 
 			const verifyInputsValue: any = await this.verifyngInputsValues(userDataArray)
 			if (verifyInputsValue.length > 0)
-				return res?.status(404).send({ message: 'E-mail already registered' })
+				return res?.status(StatusCodes.NotFound).send({ message: 'E-mail already registered' })
 
 			if (userData.password != userData.confirm_password)
-				return res?.status(404).send('Password not match')
+				return res?.status(StatusCodes.BadRequest).send('Password not match')
 
 			const cryptingPassword = await this.cryptingPassword(userData.password, userData.confirm_password)
 
@@ -51,10 +53,10 @@ export class CreateUserController {
 			userData.confirm_password = cryptingPassword.confirmPassword
 
 			const createUserExec = await this.createUserService.save(userData)
-			return res.status(200).send(createUserExec)
+			return res.status(StatusCodes.Success).send(createUserExec)
 		} catch (e) {
 			console.error(e)
-			res.status(500).send('Internal Error - [500]')
+			res.status(StatusCodes.ServerError).send('Internal Error - [500]')
 		}
 	}
 }

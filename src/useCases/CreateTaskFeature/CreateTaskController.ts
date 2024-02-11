@@ -1,3 +1,5 @@
+import { StatusCodes } from '../../logs/statusCode'
+
 import { Request, Response } from 'express'
 import { Task } from '@prisma/client'
 
@@ -12,7 +14,7 @@ export class CreateTaskController {
 	private verifyingEmptyInputs(inputs: Array<any>, res?: Response) {
 		for (const input of inputs) {
 			if (!input)
-				return res?.status(404).send({  messgae: 'Invalid input, data not provide.' })
+				return res?.status(StatusCodes.BadRequest).send({  messgae: 'Invalid input, data not provide.' })
 		}
 
 		return inputs
@@ -42,15 +44,15 @@ export class CreateTaskController {
 			)
 
 			if (!(taskData.difficulty > 0 && taskData.difficulty <= 9))
-				return res.status(404).send('Invalid value from difficulty level.')
+				return res.status(StatusCodes.BadRequest).send('Invalid value from difficulty level.')
 
 			await this.createTaskService.save(taskData)
-			return res.status(201).send({
+			return res.status(StatusCodes.SuccessfullyCreated).send({
 				message: 'Task created successfully'
 			})
 		} catch (e) {
 			console.error(e)
-			res.status(500).send('Internal Error - [500]')
+			res.status(StatusCodes.ServerError).send('Internal Error - [500]')
 		}
 	}
 }

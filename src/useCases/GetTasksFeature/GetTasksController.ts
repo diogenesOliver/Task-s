@@ -1,3 +1,5 @@
+import { StatusCodes } from '../../logs/statusCode'
+
 import { getRedis, setRedis, redisClient } from '../../redisConfig'
 import { Request, Response } from 'express'
 import { GetTasksService } from '../../repositories/GetTaskService/GetTasksService'
@@ -20,10 +22,10 @@ export class GetTaskController {
 			const tasks = await this.getTaskService.returninAll()
 			await setRedis('tasks', JSON.stringify(tasks))
 
-			return res.status(200).send(tasks)
+			return res.status(StatusCodes.Success).send(tasks)
 		} catch (e) {
 			console.error(e)
-			res.status(500).send('Internal Error - [500]')
+			res.status(StatusCodes.ServerError).send('Internal Error - [500]')
 		}
 	}
 }
