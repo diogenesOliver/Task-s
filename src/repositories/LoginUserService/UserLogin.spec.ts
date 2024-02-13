@@ -6,7 +6,7 @@ const userData = new UserLoginService()
 
 describe('Testing the RepositoryClass for user login functionality', () => {
 	test('Validating whether the instance is of type Object and returns an object with user data', async () => {
-		const userLogginIn = await userData.findData('diogenesRibeiro.riboliveira@gmail.com')
+		const userLogginIn = await userData.findData('diogenes.riboliveira@gmail.com')
 	
 		expect(userLogginIn).toBeInstanceOf(Object)
 		expect(userLogginIn).toHaveProperty('name')
