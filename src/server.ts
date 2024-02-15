@@ -4,7 +4,8 @@ config()
 
 import pinoExec from './logs/config'
 import { app } from './main'
-const PORT = process.env.SERVER_PORT || 3001
+
+const PORT = 3000
 
 const startup = async () => {
 	
@@ -12,8 +13,8 @@ const startup = async () => {
 		pinoExec.error('Redis Client Error', err)
 	}).connect()
 
-	app.listen(PORT, async () => {
-		pinoExec.info(`Server running on port: ${PORT}`)
+	app.listen({ port: PORT }).then(() => {
+		console.log(`Server running on port: ${PORT}`)
 	})
 }
 startup()
