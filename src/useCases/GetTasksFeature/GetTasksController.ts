@@ -21,7 +21,8 @@ export class GetTaskController {
 					})
 				}
 
-				const tasks = await this.getTaskService.returninAll()
+				const tasks = await new GetTasksService().returninAll()
+				console.log(tasks)
 				await setRedis('tasks', JSON.stringify(tasks))
 
 				return reply.status(StatusCodes.Success).send(tasks)
