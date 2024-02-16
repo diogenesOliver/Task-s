@@ -10,6 +10,7 @@ import { pinoHttp } from 'pino-http'
 import { urlencoded } from 'body-parser'
 
 import { getUserInstance } from './useCases/GetUsersFeature/getUsersInstance'
+import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
 
 const app = fastify()
 
@@ -30,5 +31,6 @@ app.register(fastifyExpress)
 	})
 
 app.register(getUserInstance.getUserController)
+app.register(getTaskInstance.getTaskController)
 
 export { app }
