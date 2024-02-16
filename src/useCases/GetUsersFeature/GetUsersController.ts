@@ -1,33 +1,39 @@
-import { StatusCodes } from '../../logs/statusCode'
-
-import { Request, Response } from 'express'
+import { FastifyInstance } from 'fastify'
 import { GetUserService } from '../../repositories/GetUserService/GetUsersService'
-
 import { getRedis, redisClient, setRedis } from '../../redisConfig'
+import { StatusCodes } from '../../logs/statusCode'
+import { z } from 'zod'
 
 export class GetUserController {
 	constructor(
-		private getUserService: GetUserService
-	) { }
+		getUserService: GetUserService
+	) {}
 
-	async getUserController(req: Request, res: Response) {
-		try {
-			const userFromCache = await getRedis('user')
-			if (userFromCache){
-				res.status(StatusCodes.Success).send(JSON.parse(userFromCache))
-				return redisClient.del('user', err => {
-					if(err) throw Error()
+	async getUserController(app: FastifyInstance) {
+		app.get('/user/:id', async (request, reply) => {
+			try {
+				const userFromCache = await getRedis('user')
+				if (userFromCache) {
+					reply.status(StatusCodes.Success).send(JSON.parse(userFromCache))
+					return redisClient.del('user', err => {
+						if (err) throw Error()
+					})
+				}
+
+				const getUserParam = z.object({
+					id: z.string().cuid()
 				})
+
+				const { id } = getUserParam.parse(request.params)
+				const user = await new GetUserService().get(id)
+				console.log(user)
+				await setRedis('user', JSON.stringify(user))
+
+				return reply.status(StatusCodes.Success).send(user)
+			} catch (e) {
+				console.error(e)
+				reply.status(StatusCodes.ServerError).send('Internal Error - [500]')
 			}
-
-			const userID: string = req.params.id
-			const user = await this.getUserService.get(userID)
-			await setRedis('user', JSON.stringify(user))
-
-			return res.status(StatusCodes.Success).send(user)
-		} catch (e) {
-			console.error(e)
-			res.status(StatusCodes.ServerError).send('Internal Error - [500]')
-		}
+		})
 	}
 }
