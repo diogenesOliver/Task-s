@@ -1,4 +1,4 @@
-import { Router } from 'express'
+/* import { Router } from 'express'
 import { Response, Request } from 'express-serve-static-core'
 
 import { ensureAuthenticated } from './middlewares/ensureAuthenticated'
@@ -36,4 +36,14 @@ router.delete('/delete/task/:id', (req: Request, res: Response) => {
 	return deleteTaskInstance.deleteTaskController(req, res)
 })
 
-export default router
+export default router */
+
+import { app } from './main'
+
+import { createUserInstance } from './useCases/CreateUserFeature/createUserInstance'
+import { createTaskInstance } from './useCases/CreateTaskFeature/createTaskInstance'
+import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance'
+import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
+import { deleteTaskInstance } from './useCases/DeleteTaskFeature/deleteTaskInstance'
+
+/* app.register(getUserInstance.getUserController) */
