@@ -11,13 +11,13 @@ import { urlencoded } from 'body-parser'
 
 import { getUserInstance } from './useCases/GetUsersFeature/getUsersInstance'
 import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
+import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance'
 
 const app = fastify()
 
 app.register(fastifyExpress)
 	.after(() => {
 		app.use(urlencoded({ extended: true }))
-		app.use(express.json())
 		app.use(cors())
 
 		app.use(pinoHttp({
@@ -32,5 +32,6 @@ app.register(fastifyExpress)
 
 app.register(getUserInstance.getUserController)
 app.register(getTaskInstance.getTaskController)
+app.register(userLoginInstance.verifyEmailInDatabase)
 
 export { app }
