@@ -2,8 +2,6 @@ import 'reflect-metadata'
 
 import fastify from 'fastify'
 import fastifyExpress from '@fastify/express'
-
-import express from 'express'
 import cors from 'cors'
 
 import { pinoHttp } from 'pino-http'
@@ -12,6 +10,7 @@ import { urlencoded } from 'body-parser'
 import { getUserInstance } from './useCases/GetUsersFeature/getUsersInstance'
 import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
 import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance'
+import { createUserInstance } from './useCases/CreateUserFeature/createUserInstance'
 
 const app = fastify()
 
@@ -33,5 +32,6 @@ app.register(fastifyExpress)
 app.register(getUserInstance.getUserController)
 app.register(getTaskInstance.getTaskController)
 app.register(userLoginInstance.verifyEmailInDatabase)
+app.register(createUserInstance.createUserController)
 
 export { app }
