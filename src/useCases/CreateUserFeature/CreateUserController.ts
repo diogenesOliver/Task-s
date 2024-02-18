@@ -6,57 +6,45 @@ import { genSalt, hash } from 'bcrypt'
 import { CreateUserService } from '../../repositories/CreateUserService/CreateUserService'
 import { User } from '@prisma/client'
 
+import { verifyngInputsValues } from './inputValidation_Feature'
+import { cryptingPassword } from './cryptingPassword_Feature'
+
+import { FastifyInstance } from 'fastify'
+import { z } from 'zod'
+
 export class CreateUserController {
 	constructor(
 		private createUserService: CreateUserService
 	) { }
 
-	private async cryptingPassword(password: string, confirmPassword: string) {
-		const SALT: string = await genSalt(14)
-		const CRYPTO_PASSWORD: string = await hash(
-			password, SALT
-		)
+	async createUserController(app: FastifyInstance) {
+		app.post('/create/user', async (request, reply) => {
+			try {
+				const inputDataValidation = z.object({
+					name: z.string(),
+					email: z.string().email(),
+					password: z.string(),
+					confirm_password: z.string()
+				})
 
-		password = CRYPTO_PASSWORD
-		confirmPassword = CRYPTO_PASSWORD
+				const userData = inputDataValidation.parse(request.body)
+				const userDataArray: string[] = [userData.name, userData.email, userData.password, userData.confirm_password]
 
-		return {
-			password,
-			confirmPassword
-		}
-	}
+				await verifyngInputsValues(userDataArray)
 
-	private async verifyngInputsValues(userDataArray: string[], res?: Response): Promise<string[] | Response<any, Record<string, any>> | undefined> {
-		for (const data of userDataArray) {
-			if (!data)
-				return res?.status(StatusCodes.BadRequest).send('Invalid input')
-		}
+				if (userData.password != userData.confirm_password)
+					return reply?.status(StatusCodes.BadRequest).send('Password not match')
 
-		return userDataArray
-	}
+				const cryptingInputs = await cryptingPassword(userData.password, userData.confirm_password)
+				userData.password = cryptingInputs.password
+				userData.confirm_password = cryptingInputs.confirmPassword
 
-	async createUserController(req: Request, res: Response) {
-		try {
-			const userData: User = req.body
-			const userDataArray: string[] = [userData.name, userData.email, userData.password, userData.confirm_password]
-
-			const verifyInputsValue: any = await this.verifyngInputsValues(userDataArray)
-			if (verifyInputsValue.length > 0)
-				return res?.status(StatusCodes.NotFound).send({ message: 'E-mail already registered' })
-
-			if (userData.password != userData.confirm_password)
-				return res?.status(StatusCodes.BadRequest).send('Password not match')
-
-			const cryptingPassword = await this.cryptingPassword(userData.password, userData.confirm_password)
-
-			userData.password = cryptingPassword.password
-			userData.confirm_password = cryptingPassword.confirmPassword
-
-			const createUserExec = await this.createUserService.save(userData)
-			return res.status(StatusCodes.Success).send(createUserExec)
-		} catch (e) {
-			console.error(e)
-			res.status(StatusCodes.ServerError).send('Internal Error - [500]')
-		}
+				const createUserExec = await new CreateUserService().save(userData)
+				return reply.status(StatusCodes.Success).send(createUserExec)
+			} catch (e) {
+				console.error(e)
+				reply.status(StatusCodes.ServerError).send('Internal Error - [500]')
+			}
+		})
 	}
 }
