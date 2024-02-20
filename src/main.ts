@@ -11,6 +11,7 @@ import { getUserInstance } from './useCases/GetUsersFeature/getUsersInstance'
 import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
 import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance'
 import { createUserInstance } from './useCases/CreateUserFeature/createUserInstance'
+import { createTaskInstance } from './useCases/CreateTaskFeature/createTaskInstance'
 
 const app = fastify()
 
@@ -33,5 +34,6 @@ app.register(getUserInstance.getUserController)
 app.register(getTaskInstance.getTaskController)
 app.register(userLoginInstance.verifyEmailInDatabase)
 app.register(createUserInstance.createUserController)
+app.register(createTaskInstance.createTaskController)
 
 export { app }
