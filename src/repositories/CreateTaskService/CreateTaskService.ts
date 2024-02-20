@@ -2,7 +2,7 @@ import { Task } from '@prisma/client'
 import { ISaveFunctionGeneric, PrismaClientInstance } from '../GenericsInterfaces/GenericRepository'
 
 export class CreateTaskService implements ISaveFunctionGeneric<Task>{
-	async save(data: Task): Promise<Task> {
+	async save(data: any): Promise<Task> {
 		await PrismaClientInstance.task.create({
 			data: data
 		})

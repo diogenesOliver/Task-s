@@ -1,27 +1,41 @@
 import 'reflect-metadata'
 
-import { pinoHttp } from 'pino-http'
-
-import express from 'express'
-import router from './router'
-
-import { urlencoded } from 'body-parser'
+import fastify from 'fastify'
+import fastifyExpress from '@fastify/express'
 import cors from 'cors'
 
-const app = express()
+import { pinoHttp } from 'pino-http'
+import { urlencoded } from 'body-parser'
 
-app.use(urlencoded({ extended: true }))
+import { getUserInstance } from './useCases/GetUsersFeature/getUsersInstance'
+import { getTaskInstance } from './useCases/GetTasksFeature/getTaskInstance'
+import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance'
+import { createUserInstance } from './useCases/CreateUserFeature/createUserInstance'
+import { createTaskInstance } from './useCases/CreateTaskFeature/createTaskInstance'
+import { deleteTaskInstance } from './useCases/DeleteTaskFeature/deleteTaskInstance'
 
-app.use(pinoHttp({
-	transport: {
-		target: 'pino-pretty',
-		options: {
-			colorize: true
-		}
-	}
-}))
-app.use(cors())
-app.use(express.json())
-app.use('/v1/', router)
+const app = fastify()
+
+app.register(fastifyExpress)
+	.after(() => {
+		app.use(urlencoded({ extended: true }))
+		app.use(cors())
+
+		app.use(pinoHttp({
+			transport: {
+				target: 'pino-pretty',
+				options: {
+					colorize: true
+				}
+			}
+		}))
+	})
+
+app.register(getUserInstance.getUserController)
+app.register(getTaskInstance.getTaskController)
+app.register(userLoginInstance.verifyEmailInDatabase)
+app.register(createUserInstance.createUserController)
+app.register(createTaskInstance.createTaskController)
+app.register(deleteTaskInstance.deleteTaskController)
 
 export { app }
