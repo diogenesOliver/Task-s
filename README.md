@@ -1,27 +1,20 @@
-<h1> Task-s </h1>
-
-<h3>About</h3>
+<h1> Tasks API Rest</h1>
 
 <p>
-    Task-s is a daily task management tool. Here you can have total control over all the tasks you have to carry out during your day, your week or even your month, in a simple, easy and fast way.
+    There is a simple rest API in NodeJs where the user can manipulate their tasks dynamically, adding a level of difficulty to their tasks and determining a date for the completion of that task (optional)
 </p>
 
-<h3>Tools</h3>
+<br>
 
-- NodeJs
-- VueJs
-- Typescript
-- Docker
-- PostgreSQL
-- Pipelines CI/CD
+<p>This is a representation of the data that the user will enter during the creation of their task</p>
 
-<h3>Implemented features</h3>
-
-- ✅ Change to a relational database
-- ✅ Change project UI to VueJs framework
-
-<h3>Project images</h3>
-
-<image src="./readme-images/new_new_homepage.png"/>
-<image src="./readme-images/no_tasks.png"/>
-<image src="./readme-images/homePage_image.png"/>
+```json
+{
+   "title": "Titulo de teste",
+   "description": "Descrição para teste",
+   "difficulty": 6,
+   "status": false,
+   "authorId": 1,
+   "endsDate": "2023-10-21"
+}
+```

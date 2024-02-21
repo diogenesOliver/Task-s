@@ -1,52 +1,47 @@
-import { Request, Response } from 'express'
-import { Task } from '@prisma/client'
+import { StatusCodes } from '../../logs/statusCode'
+import { FastifyInstance } from 'fastify'
+import { z } from 'zod'
 
 import { CreateTaskService } from '../../repositories/CreateTaskService/CreateTaskService'
+
 import { countOfDaysToCompleteATask } from './countDayTaskDay'
+import { setEndsDate } from './setEndsDate_Function'
 
 export class CreateTaskController {
 	constructor(
 		private createTaskService: CreateTaskService
 	) { }
 
-	private verifyingEmptyInputs(inputs: Array<any>, res?: Response) {
-		for (const input of inputs) {
-			if (!input)
-				return res?.status(404).send('ERROR')
-		}
+	async createTaskController(app: FastifyInstance) {
+		app.post('/create/task', async (request, reply) => {
+			try {
+				const inputDataValidation = z.object({
+					title: z.string(),
+					description: z.string(),
+					difficulty: z.number(),
+					endsDate: z.string(),
+					authorId: z.string().cuid()
+				})
 
-		return inputs
-	}
+				const taskData = inputDataValidation.parse(request.body)
 
-	private async setEndsDate(endsDate: string | null): Promise<Date | null> {
-		if (!endsDate)
-			return null
+				setEndsDate(taskData.endsDate)
 
-		const newDate: string = new Date().toISOString().split('T')[0]
-		if (endsDate < newDate)
-			throw new Error('ERROR')
+				await countOfDaysToCompleteATask(
+					taskData.endsDate
+				)
 
-		return new Date(endsDate)
-	}
+				if (!(taskData.difficulty > 0 && taskData.difficulty <= 9))
+					return reply.status(StatusCodes.BadRequest).send('Invalid value from difficulty level.')
 
-	async createTaskController(req: Request, res: Response) {
-		try {
-			const taskData: Task = req.body
-			const taskDataArray = [taskData.title, taskData.description, taskData.difficulty]
-
-			this.verifyingEmptyInputs(taskDataArray)
-			this.setEndsDate(taskData.endsDate)
-
-			await countOfDaysToCompleteATask(
-				taskData.endsDate
-			)
-
-			if (!(taskData.difficulty > 0 && taskData.difficulty <= 9))
-				return res.status(404).send('ERROR')
-
-			return res.status(200).send(
-				await this.createTaskService.save(taskData)
-			)
-		} catch (e) { console.log(e) }
+				await new CreateTaskService().save(taskData)
+				return reply.status(StatusCodes.SuccessfullyCreated).send({
+					message: 'Task created successfully'
+				})
+			} catch (e) {
+				console.error(e)
+				reply.status(StatusCodes.ServerError).send('Internal Error - [500]')
+			}
+		})
 	}
 }

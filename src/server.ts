@@ -2,16 +2,18 @@ import { createClient } from 'redis'
 import { config } from 'dotenv'
 config()
 
+import pinoExec from './logs/config'
 import { app } from './main'
-const PORT = process.env.SERVER_PORT || 3001
+
+const PORT = 3000
 
 const startup = async () => {
 	
 	await createClient().on('error', err => {
-		console.log('Redi Client Error', err)
+		pinoExec.error('Redis Client Error', err)
 	}).connect()
 
-	app.listen(PORT, async () => {
+	app.listen({ port: PORT }).then(() => {
 		console.log(`Server running on port: ${PORT}`)
 	})
 }

@@ -1,60 +1,70 @@
 import { config } from 'dotenv'
 config()
 
-import { Request, Response } from 'express'
-import { compare } from 'bcrypt'
-import { sign, verify } from 'jsonwebtoken'
+import { StatusCodes } from '../../logs/statusCode'
+
+import { verifyPasswordWithCryptPassword } from './verifyPassword_Function'
+import { generateAToken } from './generateToken_Function'
+
+import { verify } from 'jsonwebtoken'
+import { FastifyInstance } from 'fastify'
+import { z } from 'zod'
+
 import { getRedis, redisClient, setRedis } from '../../redisConfig'
 import { UserLoginService } from '../../repositories/LoginUserService/LoginUserService'
-import { User } from '@prisma/client'
+
+
 
 export class UserLoginController {
 	constructor(
 		private userLoginService: UserLoginService
 	) { }
 
-	private async verifyPasswordWithCryptPassword(password: string, cryptPassword: string): Promise<boolean> {
-		return await compare(password, cryptPassword)
-	}
-
-	private generateAToken(userId: string): string {
-		return sign({}, process.env.SECRET_KEY as string, {
-			subject: userId
-		})
-	}
-
-	async verifyEmailInDatabase(req: Request, res: Response) {
-		try {
-			const inputData: User = req.body
-			const userFromCache = await getRedis('userLogin')
-			if(userFromCache){
-				res.status(200).send(JSON.parse(userFromCache))
-				return redisClient.del('userLogin', err => {
-					if(err) throw Error()
-				})
-			}
-
-			const findEmail = await this.userLoginService.findData(inputData.email)
-			await setRedis('userLogin', JSON.stringify(findEmail))
-
-			const user = await this.verifyPasswordWithCryptPassword(inputData.password, findEmail.password)
-			if (user == false)
-				return res.status(404).json({ msg: 'Some Error' })
-
-			const token = this.generateAToken(findEmail.id.toString())
-			req.headers.authorization = token
-
-			const authToken = req.headers.authorization
-			if (!authToken)
-				return res.status(401).send('Token is missing')
-
+	async verifyEmailInDatabase(app: FastifyInstance) {
+		app.post('/user/sign-up', async (request, reply) => {
 			try {
-				verify(authToken, process.env.SECRET_KEY as string)
-				return res.status(200).json(findEmail)
-			} catch (e: any) {
-				return res.status(400).send('Invalid Token')
-			}
+				const inputDataValidation = z.object({
+					email: z.string().email(),
+					password: z.string()
+				})
+				const { email, password } = inputDataValidation.parse(request.body)
 
-		} catch (e) { console.log(e) }
+				const userFromCache = await getRedis('userLogin').catch(err => {
+					console.error('Error fetching from Redis: ', err)
+				})
+
+				if (userFromCache) {
+					reply.status(StatusCodes.Success).send(JSON.parse(userFromCache))
+					return redisClient.del('userLogin', err => {
+						if (err) throw Error()
+					})
+				}
+
+				const findEmail = await new UserLoginService().findData(email)
+				await setRedis('userLogin', JSON.stringify(findEmail))
+
+				const user: boolean = await verifyPasswordWithCryptPassword(password, findEmail.password)
+				if (user == false)
+					return reply.status(StatusCodes.NotFound).send({ msg: 'Non-descript password' })
+
+				const token: string = generateAToken(findEmail.id.toString())
+				request.headers.authorization = token
+
+				const authToken: string = request.headers.authorization
+				if (!authToken)
+					return reply.status(StatusCodes.NoAtuhorized).send('Token is missing')
+
+				try {
+					verify(authToken, process.env.SECRET_KEY as string)
+					return reply.status(StatusCodes.Success).send(findEmail)
+				} catch (e: any) {
+					return reply.status(StatusCodes.NoAtuhorized).send('Invalid Token')
+				}
+
+			} catch (e) {
+				console.error('An error occurred:', e)
+				reply.status(StatusCodes.ServerError).send(`Internal Server Error: ${e}`)
+			}
+		})
 	}
 }

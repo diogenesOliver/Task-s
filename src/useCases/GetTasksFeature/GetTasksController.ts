@@ -1,5 +1,7 @@
+import { StatusCodes } from '../../logs/statusCode'
+import { FastifyInstance } from 'fastify'
+
 import { getRedis, setRedis, redisClient } from '../../redisConfig'
-import { Request, Response } from 'express'
 import { GetTasksService } from '../../repositories/GetTaskService/GetTasksService'
 
 export class GetTaskController {
@@ -7,20 +9,25 @@ export class GetTaskController {
 		private getTaskService: GetTasksService
 	) { }
 
-	async getTaskController(req: Request, res: Response) {
-		try {
-			const tasksFromCache = await getRedis('tasks')
-			if (tasksFromCache) {
-				res.send(JSON.parse(tasksFromCache))
-				return redisClient.del('tasks', (err) => {
-					if(err) throw Error()
-				})
+	async getTaskController(app: FastifyInstance) {
+		app.get('/all/tasks', async (request, reply) => {
+			try {
+				const tasksFromCache = await getRedis('tasks')
+				if (tasksFromCache) {
+					reply.send(JSON.parse(tasksFromCache))
+					return redisClient.del('tasks', (err) => {
+						if (err) throw Error()
+					})
+				}
+
+				const tasks = await new GetTasksService().returninAll()
+				await setRedis('tasks', JSON.stringify(tasks))
+
+				return reply.status(StatusCodes.Success).send(tasks)
+			} catch (e) {
+				console.error(e)
+				reply.status(StatusCodes.ServerError).send('Internal Error - [500]')
 			}
-
-			const tasks = await this.getTaskService.returninAll()
-			await setRedis('tasks', JSON.stringify(tasks))
-
-			return res.status(200).send(tasks)
-		} catch (e) { console.log(e) }
+		})
 	}
 }
