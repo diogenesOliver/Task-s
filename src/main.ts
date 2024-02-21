@@ -3,6 +3,7 @@ import 'reflect-metadata'
 import fastify from 'fastify'
 import fastifyExpress from '@fastify/express'
 import cors from 'cors'
+import websocket from '@fastify/websocket'
 
 import { pinoHttp } from 'pino-http'
 import { urlencoded } from 'body-parser'
@@ -16,6 +17,7 @@ import { deleteTaskInstance } from './useCases/DeleteTaskFeature/deleteTaskInsta
 
 const app = fastify()
 
+app.register(websocket)
 app.register(fastifyExpress)
 	.after(() => {
 		app.use(urlencoded({ extended: true }))
