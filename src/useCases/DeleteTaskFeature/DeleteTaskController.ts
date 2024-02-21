@@ -1,10 +1,8 @@
 import { StatusCodes } from '../../logs/statusCode'
-
-import { Request, Response } from 'express'
-import { DeleteTaskService } from '../../repositories/DeleteTaskService/DeletTaskRepository'
-
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
+
+import { DeleteTaskService } from '../../repositories/DeleteTaskService/DeletTaskRepository'
 
 export class DeleteTaskController {
 	constructor(

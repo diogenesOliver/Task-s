@@ -1,15 +1,11 @@
 import { StatusCodes } from '../../logs/statusCode'
-
-import { Request, Response } from 'express'
-import { Task } from '@prisma/client'
-
-import { CreateTaskService } from '../../repositories/CreateTaskService/CreateTaskService'
-import { countOfDaysToCompleteATask } from './countDayTaskDay'
-
-import { setEndsDate } from './setEndsDate_Function'
-
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
+
+import { CreateTaskService } from '../../repositories/CreateTaskService/CreateTaskService'
+
+import { countOfDaysToCompleteATask } from './countDayTaskDay'
+import { setEndsDate } from './setEndsDate_Function'
 
 export class CreateTaskController {
 	constructor(

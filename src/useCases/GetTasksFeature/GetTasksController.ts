@@ -1,8 +1,7 @@
 import { StatusCodes } from '../../logs/statusCode'
-
 import { FastifyInstance } from 'fastify'
+
 import { getRedis, setRedis, redisClient } from '../../redisConfig'
-import { Request, Response } from 'express'
 import { GetTasksService } from '../../repositories/GetTaskService/GetTasksService'
 
 export class GetTaskController {

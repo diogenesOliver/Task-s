@@ -3,17 +3,17 @@ config()
 
 import { StatusCodes } from '../../logs/statusCode'
 
-import { Request, Response } from 'express'
-import { verify } from 'jsonwebtoken'
-import { getRedis, redisClient, setRedis } from '../../redisConfig'
-import { UserLoginService } from '../../repositories/LoginUserService/LoginUserService'
-import { User } from '@prisma/client'
-
 import { verifyPasswordWithCryptPassword } from './verifyPassword_Function'
 import { generateAToken } from './generateToken_Function'
 
+import { verify } from 'jsonwebtoken'
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
+
+import { getRedis, redisClient, setRedis } from '../../redisConfig'
+import { UserLoginService } from '../../repositories/LoginUserService/LoginUserService'
+
+
 
 export class UserLoginController {
 	constructor(

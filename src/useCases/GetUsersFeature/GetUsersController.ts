@@ -1,8 +1,9 @@
+import { StatusCodes } from '../../logs/statusCode'
 import { FastifyInstance } from 'fastify'
+import { z } from 'zod'
+
 import { GetUserService } from '../../repositories/GetUserService/GetUsersService'
 import { getRedis, redisClient, setRedis } from '../../redisConfig'
-import { StatusCodes } from '../../logs/statusCode'
-import { z } from 'zod'
 
 export class GetUserController {
 	constructor(

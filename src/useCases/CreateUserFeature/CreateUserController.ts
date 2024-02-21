@@ -1,16 +1,12 @@
 import { StatusCodes } from '../../logs/statusCode'
-
-import { Request, Response } from 'express'
-import { genSalt, hash } from 'bcrypt'
+import { FastifyInstance } from 'fastify'
+import { z } from 'zod'
 
 import { CreateUserService } from '../../repositories/CreateUserService/CreateUserService'
-import { User } from '@prisma/client'
 
 import { verifyngInputsValues } from './inputValidation_Feature'
 import { cryptingPassword } from './cryptingPassword_Feature'
 
-import { FastifyInstance } from 'fastify'
-import { z } from 'zod'
 
 export class CreateUserController {
 	constructor(
