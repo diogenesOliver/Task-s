@@ -2,6 +2,10 @@ import { IGetAll, PrismaClientInstance } from '../GenericsInterfaces/GenericRepo
 
 export class GetTasksService implements IGetAll<object[]>{
 	async returninAll(): Promise<object[]> {
-		return await PrismaClientInstance.task.findMany() as object[]
+		return await PrismaClientInstance.task.findMany({
+			include: {
+				Comment: true
+			}
+		}) as object[]
 	}
 }
