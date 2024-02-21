@@ -16,7 +16,8 @@ model User {
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
-  Task Task[]
+  Task    Task[]
+  Comment Comment[]
 
   @@map("users")
 }
@@ -32,7 +33,21 @@ model Task {
   authorId    String
   updatedAt   DateTime @updatedAt
 
-  author User @relation(fields: [authorId], references: [id])
+  author  User      @relation(fields: [authorId], references: [id])
+  Comment Comment[]
 
   @@map("tasks")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  comment   String   @db.Char(120)
+  createdAt DateTime @default(now())
+  taskId    String
+  userId    String
+
+  task Task @relation(fields: [taskId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("comments")
 }
