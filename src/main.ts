@@ -15,6 +15,8 @@ import { createUserInstance } from './useCases/CreateUserFeature/createUserInsta
 import { createTaskInstance } from './useCases/CreateTaskFeature/createTaskInstance'
 import { deleteTaskInstance } from './useCases/DeleteTaskFeature/deleteTaskInstance'
 
+import { commentTaskInstance } from './useCases/TaskComments/TaskCommentController'
+
 const app = fastify()
 
 app.register(websocket)
@@ -39,5 +41,7 @@ app.register(userLoginInstance.verifyEmailInDatabase)
 app.register(createUserInstance.createUserController)
 app.register(createTaskInstance.createTaskController)
 app.register(deleteTaskInstance.deleteTaskController)
+
+app.register(commentTaskInstance.taskComment)
 
 export { app }
