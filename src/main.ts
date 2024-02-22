@@ -14,8 +14,9 @@ import { userLoginInstance } from './useCases/LoginUserFeature/loginUserInstance
 import { createUserInstance } from './useCases/CreateUserFeature/createUserInstance'
 import { createTaskInstance } from './useCases/CreateTaskFeature/createTaskInstance'
 import { deleteTaskInstance } from './useCases/DeleteTaskFeature/deleteTaskInstance'
+import { createCommentInstance } from './useCases/TaskComments/CreateCommentController'
 
-import { commentTaskInstance } from './useCases/TaskComments/TaskCommentController'
+//import { commentTaskInstance } from './useCases/TaskComments/AddingComment'
 
 const app = fastify()
 
@@ -42,6 +43,8 @@ app.register(createUserInstance.createUserController)
 app.register(createTaskInstance.createTaskController)
 app.register(deleteTaskInstance.deleteTaskController)
 
-app.register(commentTaskInstance.taskComment)
+app.register(createCommentInstance.createCommentController)
+
+//app.register(commentTaskInstance.taskComment)
 
 export { app }
