@@ -18,3 +18,8 @@
    "endsDate": "2023-10-21"
 }
 ```
+
+<h2> Features to be implemented </h2>
+
+- [] Websocket
+- [] Email notification 
