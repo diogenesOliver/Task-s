@@ -40,7 +40,7 @@ model Task {
 
 model Comment {
   id        String   @id @default(cuid())
-  comment   String   @db.Char(120)
+  comment   String
   createdAt DateTime @default(now())
   taskId    String
 
