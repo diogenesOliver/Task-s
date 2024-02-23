@@ -14,6 +14,8 @@ export class CreateCommentController {
 					taskId: z.string().cuid()
 				})
 
+				const { taskId } = inputDataValidation.parse(request.body)
+
 				await new CreateCommentService().save(
 					inputDataValidation.parse(request.body)
 				)
@@ -21,6 +23,11 @@ export class CreateCommentController {
 				reply.status(StatusCodes.SuccessfullyCreated).send({
 					message: 'Comment added succesfully'
 				})
+
+				commenting.publish(
+					taskId, inputDataValidation.parse(request.body)
+				)
+
 			} catch (e) {
 				console.log(e)
 				reply.status(StatusCodes.ServerError).send('Inetrnal Error - 500')
