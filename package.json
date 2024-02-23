@@ -23,6 +23,7 @@
   "homepage": "https://github.com/diogenesOliver/Task-s.#readme",
   "dependencies": {
     "@fastify/express": "^2.3.0",
+    "@fastify/websocket": "^9.0.0",
     "@prisma/client": "^4.12.0",
     "@types/ioredis": "^5.0.0",
     "@types/supertest": "^2.0.12",

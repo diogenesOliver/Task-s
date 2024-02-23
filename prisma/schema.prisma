@@ -32,7 +32,19 @@ model Task {
   authorId    String
   updatedAt   DateTime @updatedAt
 
-  author User @relation(fields: [authorId], references: [id])
+  author  User      @relation(fields: [authorId], references: [id])
+  Comment Comment[]
 
   @@map("tasks")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  comment   String
+  createdAt DateTime @default(now())
+  taskId    String
+
+  task Task @relation(fields: [taskId], references: [id])
+
+  @@map("comments")
 }
