@@ -1,4 +1,4 @@
-import { Redis } from 'ioredis'
+/* import { Redis } from 'ioredis'
 import { promisify } from 'util'
 
 const redisClient = new Redis()
@@ -13,4 +13,4 @@ function setRedis(key: string, value: string){
 	return syncRedisSet(key, value)
 }
 
-export { redisClient, getRedis, setRedis }
+export { redisClient, getRedis, setRedis } */
