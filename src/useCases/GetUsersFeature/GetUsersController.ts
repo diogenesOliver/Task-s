@@ -25,7 +25,7 @@ export class GetUserController {
 					return reply.status(StatusCodes.Success).send(JSON.parse(userFromCache))
 
 				const user = await new GetUserService().get(id)
-				await redisClient.set('user', JSON.stringify(user), 'EX', 60)
+				await redisClient.set('user', JSON.stringify(user), 'EX', 10)
 
 				return reply.status(StatusCodes.Success).send(user)
 			} catch (e) {
