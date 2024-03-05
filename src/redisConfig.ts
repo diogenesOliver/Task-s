@@ -13,4 +13,8 @@ function setRedis(key: string, value: string){
 	return syncRedisSet(key, value)
 }
 
-export { redisClient, getRedis, setRedis }
+function expireRedis(key: string, expireTime: number){
+	return redisClient.expire(key, expireTime)
+}
+
+export { redisClient, getRedis, setRedis, expireRedis }

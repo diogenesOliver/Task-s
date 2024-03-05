@@ -10,8 +10,9 @@ import { verify } from 'jsonwebtoken'
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
 
-import { getRedis, redisClient, setRedis } from '../../redisConfig'
+/* import { getRedis, redisClient, setRedis } from '../../redisConfig' */
 import { UserLoginService } from '../../repositories/LoginUserService/LoginUserService'
+import { redisClient } from '../../redisConfig'
 
 
 
@@ -29,19 +30,13 @@ export class UserLoginController {
 				})
 				const { email, password } = inputDataValidation.parse(request.body)
 
-				const userFromCache = await getRedis('userLogin').catch(err => {
-					console.error('Error fetching from Redis: ', err)
-				})
+				const userFromCache = await redisClient.get('userLogin')
 
-				if (userFromCache) {
-					reply.status(StatusCodes.Success).send(JSON.parse(userFromCache))
-					return redisClient.del('userLogin', err => {
-						if (err) throw Error()
-					})
-				}
+				if (userFromCache)
+					return reply.status(StatusCodes.Success).send(JSON.parse(userFromCache))
 
 				const findEmail = await new UserLoginService().findData(email)
-				await setRedis('userLogin', JSON.stringify(findEmail))
+				await redisClient.set('userLogin', JSON.stringify(findEmail), 'EX', 10)
 
 				const user: boolean = await verifyPasswordWithCryptPassword(password, findEmail.password)
 				if (user == false)

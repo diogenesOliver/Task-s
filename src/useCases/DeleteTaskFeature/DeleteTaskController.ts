@@ -3,6 +3,7 @@ import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
 
 import { DeleteTaskService } from '../../repositories/DeleteTaskService/DeletTaskRepository'
+import { getRedis, setRedis, redisClient } from '../../redisConfig'
 
 export class DeleteTaskController {
 	constructor(
@@ -18,6 +19,9 @@ export class DeleteTaskController {
 				const { id } = getParam.parse(request.params)
 
 				await new DeleteTaskService().deleteData(id)
+				await redisClient.del('tasks', (err) => {
+					if (err) throw Error()
+				})
 
 				return reply.status(StatusCodes.Success).send({ msg: 'Task deleted successfully' })
 			} catch (e: any) {
