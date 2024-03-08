@@ -23,10 +23,12 @@ model User {
 }
 
 model Room {
-  id           String @id @default(uuid())
+  id           String   @id @default(uuid())
   name         String
   tasks_number Int
   userId       String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   author User   @relation(fields: [userId], references: [id])
   Task   Task[]
