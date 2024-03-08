@@ -17,6 +17,7 @@ model User {
   updatedAt        DateTime @updatedAt
 
   Task Task[]
+  Room Room[]
 
   @@map("users")
 }
@@ -32,7 +33,12 @@ model Task {
   authorId    String
   updatedAt   DateTime @updatedAt
 
-  author  User      @relation(fields: [authorId], references: [id])
+  taskId String
+  roomId String
+
+  author User @relation(fields: [authorId], references: [id])
+  room   Room @relation(fields: [roomId], references: [id])
+
   Comment Comment[]
 
   @@map("tasks")
@@ -47,4 +53,16 @@ model Comment {
   task Task @relation(fields: [taskId], references: [id])
 
   @@map("comments")
+}
+
+model Room {
+  id           String @id @default(uuid())
+  name         String
+  tasks_number Int    @default(autoincrement())
+  userId       String
+
+  author User   @relation(fields: [userId], references: [id])
+  Task   Task[]
+
+  @@map("rooms")
 }
