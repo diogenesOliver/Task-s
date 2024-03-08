@@ -22,6 +22,18 @@ model User {
   @@map("users")
 }
 
+model Room {
+  id           String @id @default(uuid())
+  name         String
+  tasks_number Int
+  userId       String
+
+  author User   @relation(fields: [userId], references: [id])
+  Task   Task[]
+
+  @@map("rooms")
+}
+
 model Task {
   id          String   @id @default(cuid())
   title       String   @unique
@@ -31,10 +43,8 @@ model Task {
   endsDate    String?
   createdAt   DateTime @default(now())
   authorId    String
+  roomId      String
   updatedAt   DateTime @updatedAt
-
-  taskId String
-  roomId String
 
   author User @relation(fields: [authorId], references: [id])
   room   Room @relation(fields: [roomId], references: [id])
@@ -53,16 +63,4 @@ model Comment {
   task Task @relation(fields: [taskId], references: [id])
 
   @@map("comments")
-}
-
-model Room {
-  id           String @id @default(uuid())
-  name         String
-  tasks_number Int    @default(autoincrement())
-  userId       String
-
-  author User   @relation(fields: [userId], references: [id])
-  Task   Task[]
-
-  @@map("rooms")
 }
