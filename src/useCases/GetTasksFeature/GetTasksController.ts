@@ -9,7 +9,7 @@ export class GetTaskController {
 		private getTaskService: GetTasksService
 	) { }
 
-	async getTaskController(app: FastifyInstance) {
+	getTaskController = async (app: FastifyInstance) => {
 		app.get('/all/tasks', async (request, reply) => {
 			try {
 				const tasksFromCache = await getRedis('tasks')
@@ -20,7 +20,7 @@ export class GetTaskController {
 					})
 				}
 
-				const tasks = await new GetTasksService().returninAll()
+				const tasks = await this.getTaskService.returninAll()
 				await setRedis('tasks', JSON.stringify(tasks))
 
 				return reply.status(StatusCodes.Success).send(tasks)
