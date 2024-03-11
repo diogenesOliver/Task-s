@@ -13,7 +13,7 @@ export class CreateUserController {
 		private createUserService: CreateUserService
 	) { }
 
-	async createUserController(app: FastifyInstance) {
+	createUserController = async (app: FastifyInstance) => {
 		app.post('/create/user', async (request, reply) => {
 			try {
 				const inputDataValidation = z.object({
@@ -35,7 +35,7 @@ export class CreateUserController {
 				userData.password = cryptingInputs.password
 				userData.confirm_password = cryptingInputs.confirmPassword
 
-				const createUserExec = await new CreateUserService().save(userData)
+				const createUserExec = await this.createUserService.save(userData)
 				return reply.status(StatusCodes.Success).send(createUserExec)
 			} catch (e) {
 				console.error(e)

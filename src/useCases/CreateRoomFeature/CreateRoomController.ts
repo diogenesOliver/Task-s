@@ -6,10 +6,10 @@ import { CreateRoomService } from '../../repositories/CreateRoomService/CreateRo
 
 export class CreateRoomController{
 	constructor(
-		createRoomService: CreateRoomService 
+		private createRoomService: CreateRoomService 
 	){}
     
-	async createRoomController(app: FastifyInstance){
+	createRoomController = async (app: FastifyInstance) => {
 		app.post('/create/room', async (request, reply) => {
 			try{
 				const inputDataValidation = z.object({
@@ -20,7 +20,7 @@ export class CreateRoomController{
 
 				const roomData = inputDataValidation.parse(request.body)
 
-				await new CreateRoomService().save(roomData)
+				await this.createRoomService.save(roomData)
 				return reply.status(StatusCodes.SuccessfullyCreated).send(roomData)
 			}catch(e){
 				console.error(e)

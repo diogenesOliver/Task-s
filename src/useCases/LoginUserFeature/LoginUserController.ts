@@ -20,7 +20,7 @@ export class UserLoginController {
 		private userLoginService: UserLoginService
 	) { }
 
-	async verifyEmailInDatabase(app: FastifyInstance) {
+	verifyEmailInDatabase = async (app: FastifyInstance) => {
 		app.post('/user/sign-up', async (request, reply) => {
 			try {
 				const inputDataValidation = z.object({
@@ -40,7 +40,7 @@ export class UserLoginController {
 					})
 				}
 
-				const findEmail = await new UserLoginService().findData(email)
+				const findEmail = await this.userLoginService.findData(email)
 				await setRedis('userLogin', JSON.stringify(findEmail))
 
 				const user: boolean = await verifyPasswordWithCryptPassword(password, findEmail.password)

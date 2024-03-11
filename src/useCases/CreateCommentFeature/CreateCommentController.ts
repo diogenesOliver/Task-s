@@ -6,7 +6,12 @@ import { CreateCommentService } from '../../repositories/CreateCommentService/Cr
 import { commenting } from '../../utils/comments-pub-sub'
 
 export class CreateCommentController {
-	async createCommentController(app: FastifyInstance) {
+	
+	constructor(
+		private createCommentService: CreateCommentService
+	){}
+
+	createCommentController = async (app: FastifyInstance) => {
 		app.post('/create/comment', async (request, reply) => {
 			try {
 				const inputDataValidation = z.object({
@@ -16,7 +21,7 @@ export class CreateCommentController {
 
 				const { taskId } = inputDataValidation.parse(request.body)
 
-				await new CreateCommentService().save(
+				await this.createCommentService.save(
 					inputDataValidation.parse(request.body)
 				)
 
@@ -25,7 +30,8 @@ export class CreateCommentController {
 				})
 
 				commenting.publish(
-					taskId, inputDataValidation.parse(request.body)
+					taskId,
+					inputDataValidation.parse(request.body)
 				)
 
 			} catch (e) {
@@ -36,4 +42,6 @@ export class CreateCommentController {
 	}
 }
 
-export const createCommentInstance = new CreateCommentController()
+export const createCommentInstance = new CreateCommentController(
+	new CreateCommentService()
+)

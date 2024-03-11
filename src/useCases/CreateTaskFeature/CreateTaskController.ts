@@ -12,7 +12,7 @@ export class CreateTaskController {
 		private createTaskService: CreateTaskService
 	) { }
 
-	async createTaskController(app: FastifyInstance) {
+	createTaskController = async (app: FastifyInstance) => {
 		app.post('/create/task', async (request, reply) => {
 			try {
 				const inputDataValidation = z.object({
@@ -20,7 +20,8 @@ export class CreateTaskController {
 					description: z.string(),
 					difficulty: z.number(),
 					endsDate: z.string(),
-					authorId: z.string().cuid()
+					authorId: z.string().cuid(),
+					roomId: z.string().uuid()
 				})
 
 				const taskData = inputDataValidation.parse(request.body)
@@ -34,7 +35,7 @@ export class CreateTaskController {
 				if (!(taskData.difficulty > 0 && taskData.difficulty <= 9))
 					return reply.status(StatusCodes.BadRequest).send('Invalid value from difficulty level.')
 
-				await new CreateTaskService().save(taskData)
+				await this.createTaskService.save(taskData)
 				return reply.status(StatusCodes.SuccessfullyCreated).send({
 					message: 'Task created successfully'
 				})

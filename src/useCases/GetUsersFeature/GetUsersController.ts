@@ -7,10 +7,10 @@ import { getRedis, redisClient, setRedis } from '../../redisConfig'
 
 export class GetUserController {
 	constructor(
-		getUserService: GetUserService
+		private getUserService: GetUserService
 	) {}
 
-	async getUserController(app: FastifyInstance) {
+	getUserController = async (app: FastifyInstance) => {
 		app.get('/user/:id', async (request, reply) => {
 			try {
 				const userFromCache = await getRedis('user')
@@ -26,8 +26,7 @@ export class GetUserController {
 				})
 
 				const { id } = getUserParam.parse(request.params)
-				const user = await new GetUserService().get(id)
-				console.log(user)
+				const user = await this.getUserService.get(id)
 				await setRedis('user', JSON.stringify(user))
 
 				return reply.status(StatusCodes.Success).send(user)

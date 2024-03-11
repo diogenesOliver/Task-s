@@ -9,7 +9,7 @@ export class DeleteTaskController {
 		private deleteTaskService: DeleteTaskService
 	) { }
 
-	async deleteTaskController(app: FastifyInstance) {
+	deleteTaskController = async (app: FastifyInstance) => {
 		app.delete('/delete/task/:id', async (request, reply) => {
 			try {
 				const getParam = z.object({
@@ -17,7 +17,7 @@ export class DeleteTaskController {
 				})
 				const { id } = getParam.parse(request.params)
 
-				await new DeleteTaskService().deleteData(id)
+				await this.deleteTaskService.deleteData(id)
 
 				return reply.status(StatusCodes.Success).send({ msg: 'Task deleted successfully' })
 			} catch (e: any) {
