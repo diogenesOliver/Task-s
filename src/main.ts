@@ -16,6 +16,7 @@ import { createTaskInstance } from './useCases/CreateTaskFeature/createTaskInsta
 import { deleteTaskInstance } from './useCases/DeleteTaskFeature/deleteTaskInstance'
 import { createCommentInstance } from './useCases/CreateCommentFeature/CreateCommentController'
 import { createRoomInstance } from './useCases/CreateRoomFeature/createRoomInstance'
+import { getRoomsInstance } from './useCases/GetRoomsFeature/GetRoomController'
 
 import { commentTaskPubSubInstance } from './useCases/ws/comments-ws'
 
@@ -47,6 +48,8 @@ app.register(createTaskInstance.createTaskController)
 app.register(deleteTaskInstance.deleteTaskController)
 app.register(createCommentInstance.createCommentController)
 app.register(createRoomInstance.createRoomController)
+app.register(getRoomsInstance.getRoomController)
+
 
 // WebSocket Request
 app.register(commentTaskPubSubInstance.taskComment)
