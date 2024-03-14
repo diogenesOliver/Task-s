@@ -7,6 +7,7 @@ import { CreateUserService } from '../../repositories/CreateUserService/CreateUs
 import { verifyngInputsValues } from './inputValidation_Feature'
 import { cryptingPassword } from './cryptingPassword_Feature'
 
+import SendMail from '../../config/SendMail'
 
 export class CreateUserController {
 	constructor(
@@ -36,6 +37,14 @@ export class CreateUserController {
 				userData.confirm_password = cryptingInputs.confirmPassword
 
 				const createUserExec = await this.createUserService.save(userData)
+
+				await SendMail.sendMail({
+					from: 'Que Test <queue@queuetest.com.br>',
+					to: `${createUserExec.name} <${createUserExec.email}>`,
+					subject: 'Cadastro de Usuário',
+					html: 'Welcome to Task-s Service'
+				})				
+
 				return reply.status(StatusCodes.Success).send(createUserExec)
 			} catch (e) {
 				console.error(e)
