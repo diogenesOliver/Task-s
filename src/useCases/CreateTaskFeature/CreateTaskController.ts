@@ -46,3 +46,7 @@ export class CreateTaskController {
 		})
 	}
 }
+
+export const createTaskInstance = new CreateTaskController(
+	new CreateTaskService()
+)

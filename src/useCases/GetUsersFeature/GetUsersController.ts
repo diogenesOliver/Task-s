@@ -37,3 +37,7 @@ export class GetUserController {
 		})
 	}
 }
+
+export const getUserInstance = new GetUserController(
+	new GetUserService()
+)

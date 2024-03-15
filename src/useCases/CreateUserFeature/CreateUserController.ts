@@ -44,3 +44,7 @@ export class CreateUserController {
 		})
 	}
 }
+
+export const createUserInstance = new CreateUserController(
+	new CreateUserService()
+)

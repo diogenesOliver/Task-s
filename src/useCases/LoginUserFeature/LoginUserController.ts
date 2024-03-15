@@ -68,3 +68,7 @@ export class UserLoginController {
 		})
 	}
 }
+
+export const userLoginInstance = new UserLoginController(
+	new UserLoginService()
+)

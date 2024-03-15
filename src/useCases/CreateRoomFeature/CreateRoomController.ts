@@ -29,3 +29,7 @@ export class CreateRoomController{
 		})
 	}
 }
+
+export const createRoomInstance = new CreateRoomController(
+	new CreateRoomService()
+)

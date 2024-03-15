@@ -31,3 +31,7 @@ export class GetTaskController {
 		})
 	}
 }
+
+export const getTaskInstance = new GetTaskController(
+	new GetTasksService()
+)

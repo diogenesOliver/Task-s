@@ -27,3 +27,7 @@ export class DeleteTaskController {
 		})
 	}
 }
+
+export const deleteTaskInstance = new DeleteTaskController(
+	new DeleteTaskService()
+)
