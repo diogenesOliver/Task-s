@@ -1,5 +1,5 @@
 import { Room } from '@prisma/client'
-import { ISaveFunctionGeneric, PrismaClientInstance } from '../GenericsInterfaces/GenericRepository'
+import { ISaveFunctionGeneric, PrismaClientInstance } from '../GenericRepository'
 
 export class CreateRoomService implements ISaveFunctionGeneric<Room> {
 	async save(data: any): Promise<Room> {

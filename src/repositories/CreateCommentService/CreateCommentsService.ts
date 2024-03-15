@@ -1,5 +1,5 @@
 import { Comment } from '@prisma/client'
-import { ISaveFunctionGeneric, PrismaClientInstance } from '../GenericsInterfaces/GenericRepository'
+import { ISaveFunctionGeneric, PrismaClientInstance } from '../GenericRepository'
 
 export class CreateCommentService implements ISaveFunctionGeneric<Comment>{
 	async save(data: any): Promise<Comment> {

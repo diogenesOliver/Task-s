@@ -1,4 +1,4 @@
-import { IGetAll, PrismaClientInstance } from '../GenericsInterfaces/GenericRepository'
+import { IGetAll, PrismaClientInstance } from '../GenericRepository'
 
 export class GetRoomsService implements IGetAll<object[]>{
 	async returninAll(): Promise<object[]> {

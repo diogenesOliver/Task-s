@@ -1,4 +1,4 @@
-import { PrismaClientInstance, IFindData } from '../GenericsInterfaces/GenericRepository'
+import { PrismaClientInstance, IFindData } from '../GenericRepository'
 
 export class UserLoginService implements IFindData<string>{
 	async findData(data: string): Promise<any> {

@@ -1,4 +1,4 @@
-import { IGetFunctionGeneric, PrismaClientInstance } from '../GenericsInterfaces/GenericRepository'
+import { IGetFunctionGeneric, PrismaClientInstance } from '../GenericRepository'
 
 export class GetUserService implements IGetFunctionGeneric<any>{
 	async get(params: string): Promise<object> {

@@ -1,4 +1,4 @@
-import { IDelete, PrismaClientInstance } from '../GenericsInterfaces/GenericRepository'
+import { IDelete, PrismaClientInstance } from '../GenericRepository'
 
 export class DeleteTaskService implements IDelete<string>{
 	async deleteData(id: string): Promise<string> {
