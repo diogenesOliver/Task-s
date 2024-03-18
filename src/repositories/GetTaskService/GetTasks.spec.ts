@@ -6,7 +6,8 @@ describe('Testing class that return all tasks on Database', () => {
 		const returnAllTasks = await new GetTasksService().returninAll()
 		
 		if(returnAllTasks.length > 0){
-			expect(returnAllTasks[0]).toHaveProperty('title')
+			expect(returnAllTasks[0])
+				.toHaveProperty('title')
 		}
 
 		expect(returnAllTasks).toBeInstanceOf(Array<GetTasksService>)

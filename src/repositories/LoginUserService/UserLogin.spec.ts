@@ -1,6 +1,5 @@
-import { expect, test } from 'vitest'
+import { expect, test, describe } from 'vitest'
 import { UserLoginService } from './LoginUserService'
-import { describe } from 'node:test'
 
 const userData = new UserLoginService()
 
@@ -14,7 +13,7 @@ describe('Testing the RepositoryClass for user login functionality',() => {
 
 	test('Should return an error if the users email is not found', () => {
 		return expect(async () => {
-			await new UserLoginService().findData('')
+			await userData.findData('')
 		}).rejects.toThrow('User not found')
 	})
 })
